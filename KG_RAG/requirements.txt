@@ -11,6 +11,7 @@ node2vec>=0.4.6
 torch>=2.2
 transformers>=4.40
 sentence-transformers>=2.6
+accelerate>=0.28
 
 # Vector search
 faiss-cpu>=1.8.0
