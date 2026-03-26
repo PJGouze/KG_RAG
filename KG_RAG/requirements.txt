@@ -1,0 +1,27 @@
+# Core
+numpy>=1.26
+pandas>=2.2
+scikit-learn>=1.4
+
+# Graph
+networkx>=3.2
+node2vec>=0.4.6
+
+# NLP / Embeddings
+torch>=2.2
+transformers>=4.40
+sentence-transformers>=2.6
+
+# Vector search
+faiss-cpu>=1.8.0
+
+# Visualisation
+matplotlib>=3.8
+
+# Knowledge Graph / RAG
+neo4j>=5.18
+elasticsearch>=8.13
+
+# LangChain
+langchain>=0.1.20
+langchain-community>=0.0.38
