@@ -22,42 +22,160 @@ def build_kg() -> nx.DiGraph:
     -------
     nx.DiGraph
         A directed graph where:
-        - nodes are entity names (str)
+        - nodes are entity names (str) and description
         - edges have a "relation" attribute (str)
     """
+
     G = nx.DiGraph()
 
+    # =========================
+    # 1. Nodes (STRUCTURED)
+    # =========================
+    nodes = {
+        "Sepsis": {
+            "description": "Life-threatening condition caused by infection leading to organ dysfunction",
+            "type": "disease",
+            "synonyms": ["septic condition", "systemic infection"]
+        },
+        "Infection": {
+            "description": "Invasion of the body by pathogenic microorganisms",
+            "type": "condition",
+            "synonyms": ["pathogen invasion"]
+        },
+        "Bacteria": {
+            "description": "Microscopic organisms that can cause infections",
+            "type": "pathogen",
+            "synonyms": ["bacterial agent"]
+        },
+        "Fever": {
+            "description": "Elevated body temperature, often due to infection",
+            "type": "symptom",
+            "synonyms": ["high temperature"]
+        },
+        "Hypotension": {
+            "description": "Low blood pressure, common in sepsis and septic shock",
+            "type": "symptom",
+            "synonyms": ["low blood pressure"]
+        },
+        "Tachycardia": {
+            "description": "Abnormally fast heart rate, often seen in infection",
+            "type": "symptom",
+            "synonyms": ["high heart rate"]
+        },
+        "Organ Failure": {
+            "description": "Loss of function of one or more organs",
+            "type": "condition",
+            "synonyms": ["organ dysfunction"]
+        },
+        "Septic Shock": {
+            "description": "Severe sepsis with persistent hypotension and organ failure",
+            "type": "disease",
+            "synonyms": ["shock due to sepsis"]
+        },
+        "Severe Hypotension": {
+            "description": "Critically low blood pressure requiring intervention",
+            "type": "symptom",
+            "synonyms": []
+        },
+        "Multi-Organ Failure": {
+            "description": "Failure of multiple organ systems",
+            "type": "condition",
+            "synonyms": []
+        },
+        "Bloodstream": {
+            "description": "Circulatory system transporting blood",
+            "type": "anatomy",
+            "synonyms": []
+        },
+        "Immune Response": {
+            "description": "Body defense mechanism against pathogens",
+            "type": "process",
+            "synonyms": ["immune reaction"]
+        },
+        "Inflammation": {
+            "description": "Biological response to harmful stimuli",
+            "type": "process",
+            "synonyms": []
+        },
+        "Organ Dysfunction": {
+            "description": "Impaired organ function",
+            "type": "condition",
+            "synonyms": []
+        },
+        "Antibiotics": {
+            "description": "Drugs used to treat bacterial infections",
+            "type": "treatment",
+            "synonyms": []
+        },
+        "Fluid Resuscitation": {
+            "description": "Administration of fluids to restore blood volume",
+            "type": "treatment",
+            "synonyms": []
+        },
+        "ICU": {
+            "description": "Intensive care unit for critically ill patients",
+            "type": "location",
+            "synonyms": ["intensive care"]
+        },
+        "Lactate": {
+            "description": "Biomarker indicating severity of sepsis and tissue hypoxia",
+            "type": "biomarker",
+            "synonyms": []
+        },
+        "Blood Culture": {
+            "description": "Test used to detect bacteria in blood",
+            "type": "test",
+            "synonyms": []
+        },
+        "SOFA Score": {
+            "description": "Clinical score assessing organ failure in sepsis",
+            "type": "score",
+            "synonyms": []
+        },
+        "Sepsis Severity": {
+            "description": "Degree of severity of sepsis",
+            "type": "concept",
+            "synonyms": []
+        },
+    }
+
+    for node, attributes in nodes.items():
+        G.add_node(node, **attributes)
+
+    # =========================
+    # 2. Edges
+    # =========================
     edges = [
-    ("Sepsis", "Infection", "caused_by"),
-    ("Sepsis", "Bacteria", "often_caused_by"),
-    ("Sepsis", "Fever", "has_symptom"),
-    ("Sepsis", "Hypotension", "has_symptom"),
-    ("Sepsis", "Tachycardia", "has_symptom"),
-    ("Sepsis", "Organ Failure", "can_lead_to"),
-    ("Sepsis", "Septic Shock", "can_progress_to"),
-    
-    ("Septic Shock", "Sepsis", "is_a"),
-    ("Septic Shock", "Severe Hypotension", "characterized_by"),
-    ("Septic Shock", "Multi-Organ Failure", "can_lead_to"),
-    
-    ("Bacteria", "Bloodstream", "can_infect"),
-    ("Infection", "Immune Response", "triggers"),
-    ("Immune Response", "Inflammation", "causes"),
-    ("Inflammation", "Organ Dysfunction", "can_lead_to"),
-    
-    ("Sepsis", "Antibiotics", "treated_with"),
-    ("Sepsis", "Fluid Resuscitation", "treated_with"),
-    ("Sepsis", "ICU", "managed_in"),
-    
-    ("Lactate", "Sepsis", "biomarker_of"),
-    ("Blood Culture", "Bacteria", "detects"),
-    ("SOFA Score", "Sepsis Severity", "assesses"),
+        ("Sepsis", "Infection", "caused_by"),
+        ("Sepsis", "Bacteria", "often_caused_by"),
+        ("Sepsis", "Fever", "has_symptom"),
+        ("Sepsis", "Hypotension", "has_symptom"),
+        ("Sepsis", "Tachycardia", "has_symptom"),
+        ("Sepsis", "Organ Failure", "can_lead_to"),
+        ("Sepsis", "Septic Shock", "can_progress_to"),
+
+        ("Septic Shock", "Sepsis", "is_a"),
+        ("Septic Shock", "Severe Hypotension", "characterized_by"),
+        ("Septic Shock", "Multi-Organ Failure", "can_lead_to"),
+
+        ("Bacteria", "Bloodstream", "can_infect"),
+        ("Infection", "Immune Response", "triggers"),
+        ("Immune Response", "Inflammation", "causes"),
+        ("Inflammation", "Organ Dysfunction", "can_lead_to"),
+
+        ("Sepsis", "Antibiotics", "treated_with"),
+        ("Sepsis", "Fluid Resuscitation", "treated_with"),
+        ("Sepsis", "ICU", "managed_in"),
+
+        ("Lactate", "Sepsis", "biomarker_of"),
+        ("Blood Culture", "Bacteria", "detects"),
+        ("SOFA Score", "Sepsis Severity", "assesses"),
     ]
+
     for source, target, relation in edges:
         G.add_edge(source, target, relation=relation)
 
     return G
-
 
 # =========================
 # 2. Embeddings
@@ -68,15 +186,21 @@ def build_embeddings(
     model: SentenceTransformer
 ) -> Tuple[np.ndarray, Dict[str, int], Dict[int, str]]:
     """
-    Compute embeddings for all nodes in the graph.
+    Compute embeddings for all nodes in the graph using enriched node attributes.
 
-    Each node is encoded using a sentence transformer model,
-    then normalized to allow cosine similarity via dot product.
+    Each node is represented by a textual description including:
+    - its name
+    - its description
+    - its type
+    - its synonyms
+
+    The resulting embeddings are normalized for cosine similarity.
 
     Parameters
     ----------
-    G : nx.Graph
-        Input graph containing nodes to encode.
+    G : nx.DiGraph
+        Input graph containing nodes with attributes:
+        'description', 'type', 'synonyms'.
     model : SentenceTransformer
         Pretrained embedding model.
 
@@ -89,16 +213,38 @@ def build_embeddings(
     idx_to_node : Dict[int, str]
         Reverse mapping from index to node name.
     """
+
     node_list = list(G.nodes)
 
-    embeddings = model.encode(node_list, convert_to_numpy=True)
+    # =========================
+    # Build enriched text
+    # =========================
+    texts = []
+    for node in node_list:
+        data = G.nodes[node]
+
+        description = data.get("description", "")
+        node_type = data.get("type", "")
+        synonyms = data.get("synonyms", [])
+
+        synonyms_text = ", ".join(synonyms) if synonyms else ""
+
+        text = f"{node}. {description}. Type: {node_type}. Synonyms: {synonyms_text}"
+        texts.append(text)
+
+    # =========================
+    # Compute embeddings
+    # =========================
+    embeddings = model.encode(texts, convert_to_numpy=True)
     embeddings = normalize(embeddings)
 
+    # =========================
+    # Mappings
+    # =========================
     node_to_idx = {node: i for i, node in enumerate(node_list)}
     idx_to_node = {i: node for node, i in node_to_idx.items()}
 
     return embeddings, node_to_idx, idx_to_node
-
 
 # =========================
 # 3. FAISS Index
@@ -426,7 +572,7 @@ class KGRAGPipeline:
             self.node_to_idx,
             self.idx_to_node,
             hops=2,
-            k=3
+            k=5
         )
 
         subgraph = build_subgraph(self.graph, nodes)
