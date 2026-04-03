@@ -280,7 +280,7 @@ def build_faiss_index(embeddings: np.ndarray) -> faiss.Index:
     index.add(embeddings.astype("float32"))
     return index
 
-
+## Heuristic method ##
 def search_nodes(
     index: faiss.Index,
     query_embedding: np.ndarray,
@@ -307,7 +307,7 @@ def search_nodes(
     _, indices = index.search(query, k)
     return indices[0].tolist()
 
-
+## Deep method ##
 class PolicyNetwork(nn.Module):
     def __init__(self, input_dim, hidden_dim=128):
         super().__init__()
@@ -440,10 +440,6 @@ class HeuristicRetriever(BaseRetriever):
             hops=hops,
             k=k
         )
-
-import torch
-import numpy as np
-from typing import List, Tuple, Dict
 
 
 class DeepRetriever(BaseRetriever):
