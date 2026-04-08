@@ -7,183 +7,13 @@ from typing import Dict, List, Tuple
 import torch
 import torch.nn as nn
 
-
-# =========================
-# 1. Knowledge Graph
-# =========================
-
-def build_kg() -> nx.DiGraph:
-    """
-    Build a directed biomedical Knowledge Graph.
-
-    The graph contains nodes representing biomedical entities
-    (e.g., symptoms, diseases, biological processes) and directed
-    edges representing semantic relationships.
-
-    Returns
-    -------
-    nx.DiGraph
-        A directed graph where:
-        - nodes are entity names (str) and description
-        - edges have a "relation" attribute (str)
-    """
-
-    G = nx.DiGraph()
-
-    # =========================
-    # 1. Nodes (STRUCTURED)
-    # =========================
-    nodes = {
-        "Sepsis": {
-            "description": "Life-threatening condition caused by infection leading to organ dysfunction",
-            "type": "disease",
-            "synonyms": ["septic condition", "systemic infection"]
-        },
-        "Infection": {
-            "description": "Invasion of the body by pathogenic microorganisms",
-            "type": "condition",
-            "synonyms": ["pathogen invasion"]
-        },
-        "Bacteria": {
-            "description": "Microscopic organisms that can cause infections",
-            "type": "pathogen",
-            "synonyms": ["bacterial agent"]
-        },
-        "Fever": {
-            "description": "Elevated body temperature, often due to infection",
-            "type": "symptom",
-            "synonyms": ["high temperature"]
-        },
-        "Hypotension": {
-            "description": "Low blood pressure, common in sepsis and septic shock",
-            "type": "symptom",
-            "synonyms": ["low blood pressure"]
-        },
-        "Tachycardia": {
-            "description": "Abnormally fast heart rate, often seen in infection",
-            "type": "symptom",
-            "synonyms": ["high heart rate"]
-        },
-        "Organ Failure": {
-            "description": "Loss of function of one or more organs",
-            "type": "condition",
-            "synonyms": ["organ dysfunction"]
-        },
-        "Septic Shock": {
-            "description": "Severe sepsis with persistent hypotension and organ failure",
-            "type": "disease",
-            "synonyms": ["shock due to sepsis"]
-        },
-        "Severe Hypotension": {
-            "description": "Critically low blood pressure requiring intervention",
-            "type": "symptom",
-            "synonyms": []
-        },
-        "Multi-Organ Failure": {
-            "description": "Failure of multiple organ systems",
-            "type": "condition",
-            "synonyms": []
-        },
-        "Bloodstream": {
-            "description": "Circulatory system transporting blood",
-            "type": "anatomy",
-            "synonyms": []
-        },
-        "Immune Response": {
-            "description": "Body defense mechanism against pathogens",
-            "type": "process",
-            "synonyms": ["immune reaction"]
-        },
-        "Inflammation": {
-            "description": "Biological response to harmful stimuli",
-            "type": "process",
-            "synonyms": []
-        },
-        "Organ Dysfunction": {
-            "description": "Impaired organ function",
-            "type": "condition",
-            "synonyms": []
-        },
-        "Antibiotics": {
-            "description": "Drugs used to treat bacterial infections",
-            "type": "treatment",
-            "synonyms": []
-        },
-        "Fluid Resuscitation": {
-            "description": "Administration of fluids to restore blood volume",
-            "type": "treatment",
-            "synonyms": []
-        },
-        "ICU": {
-            "description": "Intensive care unit for critically ill patients",
-            "type": "location",
-            "synonyms": ["intensive care"]
-        },
-        "Lactate": {
-            "description": "Biomarker indicating severity of sepsis and tissue hypoxia",
-            "type": "biomarker",
-            "synonyms": []
-        },
-        "Blood Culture": {
-            "description": "Test used to detect bacteria in blood",
-            "type": "test",
-            "synonyms": []
-        },
-        "SOFA Score": {
-            "description": "Clinical score assessing organ failure in sepsis",
-            "type": "score",
-            "synonyms": []
-        },
-        "Sepsis Severity": {
-            "description": "Degree of severity of sepsis",
-            "type": "concept",
-            "synonyms": []
-        },
-    }
-
-    for node, attributes in nodes.items():
-        G.add_node(node, **attributes)
-
-    # =========================
-    # 2. Edges
-    # =========================
-    edges = [
-        ("Sepsis", "Infection", "caused_by"),
-        ("Sepsis", "Bacteria", "often_caused_by"),
-        ("Sepsis", "Fever", "has_symptom"),
-        ("Sepsis", "Hypotension", "has_symptom"),
-        ("Sepsis", "Tachycardia", "has_symptom"),
-        ("Sepsis", "Organ Failure", "can_lead_to"),
-        ("Sepsis", "Septic Shock", "can_progress_to"),
-
-        ("Septic Shock", "Sepsis", "is_a"),
-        ("Septic Shock", "Severe Hypotension", "characterized_by"),
-        ("Septic Shock", "Multi-Organ Failure", "can_lead_to"),
-
-        ("Bacteria", "Bloodstream", "can_infect"),
-        ("Infection", "Immune Response", "triggers"),
-        ("Immune Response", "Inflammation", "causes"),
-        ("Inflammation", "Organ Dysfunction", "can_lead_to"),
-
-        ("Sepsis", "Antibiotics", "treated_with"),
-        ("Sepsis", "Fluid Resuscitation", "treated_with"),
-        ("Sepsis", "ICU", "managed_in"),
-
-        ("Lactate", "Sepsis", "biomarker_of"),
-        ("Blood Culture", "Bacteria", "detects"),
-        ("SOFA Score", "Sepsis Severity", "assesses"),
-    ]
-
-    for source, target, relation in edges:
-        G.add_edge(source, target, relation=relation)
-
-    return G
+from KG_utility import build_kg
 
 # =========================
 # 2. Embeddings
 # =========================
 
-def build_embeddings(
+def build_node_embeddings(
     G: nx.DiGraph,
     model: SentenceTransformer
 ) -> Tuple[np.ndarray, Dict[str, int], Dict[int, str]]:
@@ -249,6 +79,34 @@ def build_embeddings(
     return embeddings, node_to_idx, idx_to_node
 
 def build_relation_embeddings(G, model):
+    """
+    Compute embeddings for all relation types in the knowledge graph.
+
+    Each unique relation label present in the graph edges is encoded
+    using the same sentence transformer model as the nodes. This allows
+    the model to incorporate semantic information about edge types
+    during graph traversal.
+
+    Parameters
+    ----------
+    G : nx.DiGraph
+        Input knowledge graph. Each edge must have a "relation" attribute.
+    model : SentenceTransformer
+        Pretrained sentence transformer used to encode relation labels.
+
+    Returns
+    -------
+    Dict[str, np.ndarray]
+        Dictionary mapping each relation label to its embedding vector.
+
+    Notes
+    -----
+    - Relation embeddings are shared across all edges of the same type.
+    - These embeddings are later converted to torch tensors inside the
+        DeepRetriever.
+    - If a relation is missing at inference time, a zero vector is used
+    as fallback.
+    """
     relations = list(set([data["relation"] for _, _, data in G.edges(data=True)]))
     rel_embeddings = model.encode(relations, convert_to_numpy=True)
     rel_embeddings = normalize(rel_embeddings)
@@ -279,6 +137,7 @@ def build_faiss_index(embeddings: np.ndarray) -> faiss.Index:
     index = faiss.IndexFlatIP(dim)
     index.add(embeddings.astype("float32"))
     return index
+
 
 ## Heuristic method ##
 def search_nodes(
@@ -441,6 +300,215 @@ class HeuristicRetriever(BaseRetriever):
             k=k
         )
 
+class RelationalGATLayer(nn.Module):
+    """
+    Relational Graph Attention Layer.
+
+    This layer performs message passing over a directed graph while
+    incorporating edge (relation) information into the attention mechanism.
+
+    For each node, it aggregates messages from its predecessors using
+    attention weights computed from:
+    - source node embedding
+    - target node embedding
+    - relation embedding
+
+    Parameters
+    ----------
+    dim : int
+        Dimension of node and relation embeddings.
+    """
+
+    def __init__(self, dim):
+        super().__init__()
+        self.W_node = nn.Linear(dim, dim)
+        self.W_rel = nn.Linear(dim, dim)
+        self.attn = nn.Linear(3 * dim, 1)
+
+    def forward(self, G, node_embeddings, relation_embeddings):
+        """
+        Forward pass of the relational GAT layer.
+
+        Parameters
+        ----------
+        G : nx.DiGraph
+            Input knowledge graph.
+        node_embeddings : Dict[str, torch.Tensor]
+            Dictionary mapping node names to embedding tensors.
+        relation_embeddings : Dict[str, torch.Tensor]
+            Dictionary mapping relation names to embedding tensors.
+
+        Returns
+        -------
+        Dict[str, torch.Tensor]
+            Updated node embeddings after one message passing step.
+        """
+        new_embeddings = {}
+
+        for node in G.nodes:
+            neighbors = list(G.predecessors(node))
+
+            if not neighbors:
+                new_embeddings[node] = node_embeddings[node]
+                continue
+
+            messages = []
+            attn_scores = []
+
+            for nbr in neighbors:
+                rel = G[nbr][node]["relation"]
+
+                h_src = node_embeddings[nbr]
+                h_tgt = node_embeddings[node]
+                h_rel = relation_embeddings[rel]
+
+                attn_input = torch.cat([h_src, h_tgt, h_rel])
+                score = self.attn(attn_input)
+
+                message = self.W_node(h_src) + self.W_rel(h_rel)
+
+                messages.append(message)
+                attn_scores.append(score)
+
+            attn_scores = torch.softmax(torch.stack(attn_scores), dim=0)
+            agg = sum(a * m for a, m in zip(attn_scores, messages))
+
+            new_embeddings[node] = agg
+
+        return new_embeddings
+
+
+class GNNEncoder(nn.Module):
+    """
+    Multi-layer Graph Neural Network encoder with relational attention.
+
+    This encoder stacks multiple RelationalGATLayer layers to compute
+    context-aware node embeddings based on graph structure and relations.
+
+    Parameters
+    ----------
+    dim : int
+        Embedding dimension.
+    num_layers : int, optional
+        Number of GNN layers, by default 2.
+    """
+
+    def __init__(self, dim, num_layers=2):
+        super().__init__()
+        self.layers = nn.ModuleList([
+            RelationalGATLayer(dim) for _ in range(num_layers)
+        ])
+
+    def forward(self, G, node_embeddings, relation_embeddings):
+        """
+        Forward pass of the GNN encoder.
+
+        Parameters
+        ----------
+        G : nx.DiGraph
+            Input knowledge graph.
+        node_embeddings : Dict[str, torch.Tensor]
+            Initial node embeddings.
+        relation_embeddings : Dict[str, torch.Tensor]
+            Relation embeddings.
+
+        Returns
+        -------
+        Dict[str, torch.Tensor]
+            Updated node embeddings after all GNN layers.
+        """
+        h = node_embeddings
+        for layer in self.layers:
+            h = layer(G, h, relation_embeddings)
+        return h
+
+def init_node_embeddings_tensor(embeddings, idx_to_node, device):
+    """
+    Convert numpy node embeddings into PyTorch tensors.
+
+    Parameters
+    ----------
+    embeddings : np.ndarray
+        Node embeddings matrix of shape (num_nodes, dim).
+    idx_to_node : Dict[int, str]
+        Mapping from index to node name.
+    device : str
+        Device to place tensors on ("cpu" or "cuda").
+
+    Returns
+    -------
+    Dict[str, torch.Tensor]
+        Dictionary mapping node names to torch tensors.
+    """
+    return {
+        node: torch.tensor(embeddings[idx], dtype=torch.float32).to(device)
+        for idx, node in idx_to_node.items()
+    }
+
+
+
+def find_rational_paths(G, query_emb, embeddings, node_to_idx, max_hops=3, top_k=3):
+    """
+    Generate pseudo-gold reasoning paths (RAPL-style) for training.
+
+    This function explores the graph starting from nodes similar to the query,
+    and builds candidate paths up to a maximum number of hops. Paths are then
+    scored based on their relevance to the query.
+
+    Parameters
+    ----------
+    G : nx.DiGraph
+        Knowledge graph.
+    query_emb : np.ndarray
+        Query embedding vector.
+    embeddings : np.ndarray
+        Node embeddings matrix.
+    node_to_idx : Dict[str, int]
+        Mapping from node name to embedding index.
+    max_hops : int, optional
+        Maximum length of paths, by default 3.
+    top_k : int, optional
+        Number of top paths to return, by default 3.
+
+    Returns
+    -------
+    List[List[str]]
+        List of top-k reasoning paths.
+    """
+    sims = np.dot(embeddings, query_emb)
+    start_indices = np.argsort(sims)[-top_k:]
+    node_list = list(node_to_idx.keys())
+    start_nodes = [node_list[i] for i in start_indices]
+
+    paths = []
+
+    for start in start_nodes:
+        stack = [(start, [start])]
+
+        while stack:
+            current, path = stack.pop()
+
+            if len(path) >= max_hops:
+                paths.append(path)
+                continue
+
+            for neighbor in G.successors(current):
+                if neighbor in path:
+                    continue
+
+                stack.append((neighbor, path + [neighbor]))
+
+    scored = []
+    for path in paths:
+        last = path[-1]
+        score = np.dot(embeddings[node_to_idx[last]], query_emb)
+        score -= 0.1 * len(path)  # penalty for long paths
+        scored.append((path, score))
+
+    scored.sort(key=lambda x: x[1], reverse=True)
+
+    return [p for p, _ in scored[:top_k]]
+
 
 class DeepRetriever(BaseRetriever):
     """
@@ -479,6 +547,7 @@ class DeepRetriever(BaseRetriever):
         idx_to_node,
         relation_embeddings,
         PolicyNetwork,
+        gnn_encoder,
         device: str = "cpu"
     ):
         self.G = G
@@ -486,8 +555,36 @@ class DeepRetriever(BaseRetriever):
         self.node_to_idx = node_to_idx
         self.idx_to_node = idx_to_node
         self.relation_embeddings = relation_embeddings
+        self.node_embeddings_torch = {
+            node: torch.tensor(embeddings[idx], dtype=torch.float32).to(device)
+            for node, idx in node_to_idx.items()
+            }
+
+        self.relation_embeddings = {
+            k: torch.tensor(v, dtype=torch.float32).to(device)
+            for k, v in relation_embeddings.items()
+        }
+
         self.PolicyNetwork = PolicyNetwork.to(device)
+        self.gnn = gnn_encoder.to(device)  
         self.device = device
+        self._cached_gnn_embeddings = None
+    
+    def encode_graph(self):
+        """
+        Compute context-aware node embeddings using the GNN.
+
+        Returns
+        -------
+        Dict[str, torch.Tensor]
+            Updated node embeddings.
+        """
+        self._cached_gnn_embeddings = self.gnn(
+            self.G,
+            self.node_embeddings_torch,
+            self.relation_embeddings
+        )
+        return self._cached_gnn_embeddings
 
     # =========================
     # State construction
@@ -498,7 +595,7 @@ class DeepRetriever(BaseRetriever):
         query_emb: np.ndarray,
         current_node: str,
         neighbor: str
-    ) -> np.ndarray:
+    ) -> torch.Tensor:
         """
         Build the state representation for a candidate action.
 
@@ -519,16 +616,23 @@ class DeepRetriever(BaseRetriever):
 
         Returns
         -------
-        np.ndarray
+        torch.Tensor
             Concatenated state vector.
         """
-        node_emb = self.embeddings[self.node_to_idx[current_node]]
-        neighbor_emb = self.embeddings[self.node_to_idx[neighbor]]
+        # convertir query
+        query_tensor = torch.tensor(query_emb, dtype=torch.float32).to(self.device)
+
+        # embeddings GNN
+        node_emb = self._cached_gnn_embeddings[current_node]
+        neighbor_emb = self._cached_gnn_embeddings[neighbor]
 
         rel = self.G[current_node][neighbor]["relation"]
-        rel_emb = self.relation_embeddings.get(rel, np.zeros_like(node_emb))
+        rel_emb = self.relation_embeddings.get(
+            rel,
+            torch.zeros_like(node_emb)
+        )
 
-        return np.concatenate([query_emb, node_emb, neighbor_emb, rel_emb])
+        return torch.cat([query_tensor, node_emb, neighbor_emb, rel_emb])
 
     # =========================
     # Action selection
@@ -536,7 +640,7 @@ class DeepRetriever(BaseRetriever):
 
     def select_next(
         self,
-        states: List[np.ndarray],
+        states: List[torch.Tensor],
         candidates: List[str],
         training: bool = False
     ) -> Tuple[str, torch.Tensor]:
@@ -545,7 +649,7 @@ class DeepRetriever(BaseRetriever):
 
         Parameters
         ----------
-        states : List[np.ndarray]
+        states : List[torch.Tensor]
             List of state vectors (one per candidate).
         candidates : List[str]
             Candidate neighbor nodes.
@@ -560,18 +664,16 @@ class DeepRetriever(BaseRetriever):
         log_prob : torch.Tensor
             Log-probability of the selected action (used for RL).
         """
-        states_tensor = torch.tensor(states, dtype=torch.float32).to(self.device)
+        states_tensor = torch.stack(states).to(self.device)
 
-        scores = self.PolicyNetwork(states_tensor).squeeze()  # (num_candidates,)
+        scores = self.PolicyNetwork(states_tensor).squeeze(-1)
         probs = torch.softmax(scores, dim=0)
 
         if training:
-            # Sampling for exploration (RL)
             dist = torch.distributions.Categorical(probs)
             action = dist.sample()
             log_prob = dist.log_prob(action)
         else:
-            # Greedy selection (inference)
             action = torch.argmax(probs)
             log_prob = torch.log(probs[action] + 1e-10)
 
@@ -588,7 +690,7 @@ class DeepRetriever(BaseRetriever):
         steps: int = 3
     ) -> Tuple[List[List[str]], List[torch.Tensor]]:
         """
-        Sample paths from the graph using the learned policy.
+        Sample paths from the graph using the GNN and the learned policy.
 
         This function is used during training and returns both:
         - sampled paths
@@ -610,6 +712,8 @@ class DeepRetriever(BaseRetriever):
         log_probs : List[torch.Tensor]
             Log-probabilities of each path.
         """
+
+        self.encode_graph()
         sims = np.dot(self.embeddings, query_embedding)
         start_indices = np.argsort(sims)[-start_k:]
         start_nodes = [self.idx_to_node[i] for i in start_indices]
@@ -677,6 +781,8 @@ class DeepRetriever(BaseRetriever):
         List[str]
             Set of visited nodes.
         """
+        self.encode_graph()
+
         sims = np.dot(self.embeddings, query_embedding)
         start_indices = np.argsort(sims)[-start_k:]
         start_nodes = [self.idx_to_node[i] for i in start_indices]
@@ -710,6 +816,88 @@ class DeepRetriever(BaseRetriever):
                 current = next_node
 
         return list(visited)
+
+    def compute_reward(
+        self,
+        path: List[str],
+        query_emb: np.ndarray
+    ) -> float:
+        """
+        Compute reward for a sampled path.
+
+        The reward is based on the similarity between the query embedding
+        and the embedding of the final node in the path.
+
+        Parameters
+        ----------
+        path : List[str]
+            Traversed path.
+        query_emb : np.ndarray
+            Query embedding.
+
+        Returns
+        -------
+        float
+            Reward value.
+        """
+        last_node = path[-1]
+        node_emb = self.embeddings[self.node_to_idx[last_node]]
+
+        reward = float(np.dot(node_emb, query_emb))
+
+        return reward
+    
+    def train_step(
+    self,
+    query_embedding: np.ndarray,
+    optimizer
+    ):
+        """
+        Perform one REINFORCE training step.
+
+        This function:
+        1. Samples paths using the current policy
+        2. Computes rewards for each path
+        3. Updates the policy using REINFORCE
+
+        Parameters
+        ----------
+        query_embedding : np.ndarray
+            Query embedding.
+        optimizer : torch.optim.Optimizer
+            Optimizer for policy network.
+
+        Returns
+        -------
+        torch.Tensor
+            Training loss.
+        """
+        # 🔹 Sample paths
+        paths, log_probs = self.sample_paths(query_embedding)
+
+        rewards = []
+        for path in paths:
+            r = self.compute_reward(path, query_embedding)
+            rewards.append(r)
+
+        rewards = torch.tensor(rewards, dtype=torch.float32).to(self.device)
+
+        # 🔥 NORMALISATION (CRUCIAL pour stabilité)
+        rewards = (rewards - rewards.mean()) / (rewards.std() + 1e-6)
+
+        # 🔹 Compute loss
+        losses = []
+        for log_prob, reward in zip(log_probs, rewards):
+            losses.append(-log_prob * reward)
+
+        loss = torch.stack(losses).mean()
+
+        # 🔹 Backprop
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+        return loss
     
 # =========================
 # 5. Subgraph & Context
@@ -734,25 +922,47 @@ def build_subgraph(G: nx.DiGraph, nodes: List[str]) -> nx.DiGraph:
     return G.subgraph(nodes).copy()
 
 
-def linearize_graph(G_sub: nx.DiGraph) -> str:
+def linearize_graph(G: nx.DiGraph, paths: List[List[str]]) -> str:
     """
-    Convert a graph into a textual representation (triples).
+    Convert reasoning paths into a textual representation.
+
+    This function follows the RAPL paradigm: instead of representing
+    the graph as independent triples, it encodes structured reasoning
+    paths as sequences of nodes and relations.
 
     Parameters
     ----------
-    G_sub : nx.DiGraph
-        Subgraph to linearize.
+    G : nx.DiGraph
+        Knowledge graph.
+    paths : List[List[str]]
+        List of paths, where each path is a sequence of nodes.
 
     Returns
     -------
     str
-        Text representation of edges as triples.
+        Textual representation of reasoning paths.
     """
-    triples = []
-    for u, v, data in G_sub.edges(data=True):
-        rel = data.get("relation", "related_to")
-        triples.append(f"{u} --{rel}--> {v}")
-    return "\n".join(triples)
+    path_texts = []
+
+    for path in paths:
+        if len(path) < 2:
+            continue
+
+        elements = [path[0]]
+
+        for i in range(len(path) - 1):
+            u = path[i]
+            v = path[i + 1]
+
+            rel = G[u][v].get("relation", "related_to")
+
+            elements.append(rel)
+            elements.append(v)
+
+        path_text = " -> ".join(elements)
+        path_texts.append(path_text)
+
+    return "\n".join(path_texts)
 
 
 # =========================
@@ -844,7 +1054,8 @@ class KGRAGPipeline:
 
     def __init__(self,
                 retriever_type: str ="heuristic",
-                model_name: str = "all-MiniLM-L6-v2"
+                model_name: str = "all-MiniLM-L6-v2",
+                device: str = "cpu"
                 ):
         """
         Initialize the pipeline.
@@ -856,6 +1067,7 @@ class KGRAGPipeline:
         model_name : str, optional
             SentenceTransformer model name, by default "all-MiniLM-L6-v2".
         """
+        self.device = device
         self.model = SentenceTransformer(model_name)
         self.graph = build_kg()
 
@@ -864,7 +1076,9 @@ class KGRAGPipeline:
         )
 
         self.index = build_faiss_index(self.embeddings)
-
+        # =========================
+        # Heuristic retriever
+        # =========================
         if retriever_type == "heuristic":
             self.retriever = HeuristicRetriever(
                 self.graph,
@@ -874,8 +1088,39 @@ class KGRAGPipeline:
                 self.idx_to_node
             )
 
+        # =========================
+        # Deep retriever
+        # =========================
         elif retriever_type == "deep":
-            self.retriever = self._init_deep_retriever()
+            self.relation_embeddings = build_relation_embeddings(
+                self.graph,
+                self.model
+            )
+
+            dim = self.embeddings.shape[1]
+
+            # Policy network
+            self.policy_net = PolicyNetwork(
+                input_dim=4 * dim,  # query + node + neighbor + relation
+                hidden_dim=128
+            )
+
+            # GNN encoder
+            self.gnn_encoder = GNNEncoder(
+                dim=dim,
+                num_layers=2
+            )
+            # Deep retriever
+            self.retriever = DeepRetriever(
+                G=self.graph,
+                embeddings=self.embeddings,
+                node_to_idx=self.node_to_idx,
+                idx_to_node=self.idx_to_node,
+                relation_embeddings=self.relation_embeddings,
+                PolicyNetwork=self.policy_net,
+                gnn_encoder=self.gnn_encoder,
+                device=self.device
+            )
 
         else:
             raise ValueError("Unknown retriever type")
@@ -897,10 +1142,11 @@ class KGRAGPipeline:
         query_embedding = self.model.encode([query], convert_to_numpy=True)
         query_embedding = normalize(query_embedding)[0]
 
-        nodes = self.retriever.retrieve(query_embedding)
-
-        subgraph = build_subgraph(self.graph, nodes)
-        context = linearize_graph(subgraph)
+        #nodes = self.retriever.retrieve(query_embedding)
+        paths, _ = self.retriever.sample_paths(query_embedding)
+        
+        #subgraph = build_subgraph(self.graph, nodes)
+        context = linearize_graph(self.graph,paths)
 
         return generate_answer(context, query)
 
@@ -910,8 +1156,8 @@ class KGRAGPipeline:
 # =========================
 
 if __name__ == "__main__":
-    pipeline = KGRAGPipeline(retriever_type='heuristic')
-    query = input("What is your query?")
+    pipeline = KGRAGPipeline(retriever_type='deep')
+    query = "What causes sepsis?"
     
     answer = pipeline.query(query)
 
