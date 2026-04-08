@@ -781,8 +781,10 @@ class DeepRetriever(BaseRetriever):
         List[str]
             Set of visited nodes.
         """
-        self.encode_graph()
 
+        if self._cached_gnn_embeddings is None:
+            self.encode_graph()
+            
         sims = np.dot(self.embeddings, query_embedding)
         start_indices = np.argsort(sims)[-start_k:]
         start_nodes = [self.idx_to_node[i] for i in start_indices]
@@ -1071,7 +1073,7 @@ class KGRAGPipeline:
         self.model = SentenceTransformer(model_name)
         self.graph = build_kg()
 
-        self.embeddings, self.node_to_idx, self.idx_to_node = build_embeddings(
+        self.embeddings, self.node_to_idx, self.idx_to_node = build_node_embeddings(
             self.graph, self.model
         )
 
