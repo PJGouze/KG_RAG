@@ -1,9 +1,6 @@
 import torch
-import torch.nn as nn
 import numpy as np
-import networkx as nx
-import faiss
-from typing import Dict, List, Tuple
+from typing import List, Tuple
 
 class BaseRetriever:
     def retrieve(self, query_embedding):
@@ -72,20 +69,20 @@ class DeepRetriever(BaseRetriever):
     
     def encode_graph(self):
         """
-        Compute context-aware node embeddings using the GNN.
+        Compute context-aware node embeddings using the GNN if it has not been encoded before
 
         Returns
         -------
         Dict[str, torch.Tensor]
             Updated node embeddings.
         """
-        self._cached_gnn_embeddings = self.gnn(
-            self.G,
-            self.node_embeddings_torch,
-            self.relation_embeddings
-        )
+        if self._cached_gnn_embeddings is None:
+            self._cached_gnn_embeddings = self.gnn(
+                self.G,
+                self.node_embeddings_torch,
+                self.relation_embeddings
+            )
         return self._cached_gnn_embeddings
-
     # =========================
     # State construction
     # =========================
@@ -167,7 +164,8 @@ class DeepRetriever(BaseRetriever):
         states_tensor = torch.stack(states).to(self.device)
 
         scores = self.PolicyNetwork(states_tensor).squeeze(-1)
-        probs = torch.softmax(scores, dim=0)
+        temperature = 0.5
+        probs = torch.softmax(scores / temperature, dim=0)
 
         if training:
             dist = torch.distributions.Categorical(probs)
@@ -212,7 +210,7 @@ class DeepRetriever(BaseRetriever):
         log_probs : List[torch.Tensor]
             Log-probabilities of each path.
         """
-
+        
         self.encode_graph()
         sims = np.dot(self.embeddings, query_embedding)
         start_indices = np.argsort(sims)[-start_k:]
@@ -243,6 +241,8 @@ class DeepRetriever(BaseRetriever):
                     training=True
                 )
 
+                if next_node in path:
+                    break
                 path.append(next_node)
                 path_log_prob += log_prob
                 current = next_node
@@ -317,6 +317,124 @@ class DeepRetriever(BaseRetriever):
 
         return list(visited)
 
+    def retrieve_paths(
+    self,
+    query_embedding: np.ndarray,
+    start_k: int = 5,
+    steps: int = 3
+) -> List[List[str]]:
+        """
+    Retrieve reasoning paths from the knowledge graph using a learned policy.
+
+    This function performs inference-time traversal of the knowledge graph,
+    guided by the trained policy network. Unlike `retrieve`, which returns
+    a set of visited nodes, this method explicitly returns structured paths,
+    making it suitable for reasoning-based downstream tasks (e.g., RAPL-style
+    linearization for LLM prompting).
+
+    The traversal is deterministic (greedy) and operates as follows:
+    - Select top-k starting nodes based on similarity to the query
+    - Iteratively expand each path using the policy network
+    - At each step, select the most relevant neighbor (argmax policy)
+    - Stop when no valid expansion is possible or a cycle is detected
+
+    Parameters
+    ----------
+    query_embedding : np.ndarray
+        Normalized embedding vector representing the input query.
+    start_k : int, optional
+        Number of initial nodes selected via similarity search (default: 5).
+    steps : int, optional
+        Maximum number of expansion steps per path (default: 3).
+
+    Returns
+    -------
+    List[List[str]]
+        A list of reasoning paths, where each path is a sequence of nodes.
+
+    Algorithm
+    ---------
+    1. Encode the graph using the GNN to obtain context-aware node embeddings.
+    2. Compute similarity between the query and all node embeddings.
+    3. Select the top-k most relevant nodes as starting points.
+    4. For each starting node:
+        a. Initialize a path with the starting node.
+        b. For a fixed number of steps:
+            - Retrieve outgoing neighbors of the current node.
+            - Build state representations for each candidate neighbor.
+            - Score candidates using the policy network.
+            - Select the best candidate (greedy).
+            - Append it to the path.
+            - Stop if:
+                * no neighbors exist
+                * the next node creates a cycle
+    5. Return all generated paths.
+
+    Notes
+    -----
+    - This function is intended for inference (no stochastic sampling).
+    - It preserves path structure, unlike `retrieve`.
+    - Compatible with RAPL-style linearization.
+    - The GNN embeddings are cached for efficiency.
+
+    Limitations
+    -----------
+    - Greedy selection may miss globally optimal paths.
+    - No beam search or reranking is applied.
+    - Only forward traversal (successors) is considered.
+
+    Possible Improvements
+    ---------------------
+    - Beam search instead of greedy decoding.
+    - Path scoring and reranking.
+    - Bidirectional traversal (add predecessors).
+    - Early stopping based on confidence threshold.
+        """
+
+    # 🔹 Encode graph (cached)
+        self.encode_graph()
+
+    # 🔹 Select starting nodes via similarity
+        sims = np.dot(self.embeddings, query_embedding)
+        start_indices = np.argsort(sims)[-start_k:]
+        start_nodes = [self.idx_to_node[i] for i in start_indices]
+
+        paths = []
+
+        for start in start_nodes:
+            current = start
+            path = [current]
+
+            for _ in range(steps):
+                neighbors = list(self.G.successors(current))
+
+                if not neighbors:
+                    break
+
+            # 🔹 Build states
+                states = [
+                    self.build_state(query_embedding, current, n)
+                    for n in neighbors
+                ]
+
+            # 🔹 Greedy selection
+                next_node, _ = self.select_next(
+                    states,
+                    neighbors,
+                    training=False
+                )
+
+            # 🔹 Stop if cycle
+                if next_node in path:
+                    break
+
+            path.append(next_node)
+            current = next_node
+
+        paths.append(path)
+
+        return paths
+
     def compute_reward(
         self,
         path: List[str],
@@ -343,9 +461,23 @@ class DeepRetriever(BaseRetriever):
         last_node = path[-1]
         node_emb = self.embeddings[self.node_to_idx[last_node]]
 
-        reward = float(np.dot(node_emb, query_emb))
+        sim_reward = float(np.dot(node_emb, query_emb))
 
-        return reward
+        # pénalité longueur
+        length_penalty = -0.05 * len(path)
+
+        coherence = 0
+        for i in range(len(path) - 1):
+            u = path[i]
+            v = path[i+1]
+            coherence += np.dot(
+                self.embeddings[self.node_to_idx[u]],
+                self.embeddings[self.node_to_idx[v]]
+            )
+
+        coherence /= (len(path) - 1 + 1e-6)
+
+        return sim_reward + length_penalty + 0.1 * coherence
     
     def train_step(
     self,
@@ -372,6 +504,8 @@ class DeepRetriever(BaseRetriever):
         torch.Tensor
             Training loss.
         """
+        self._cached_gnn_embeddings = None
+
         # 🔹 Sample paths
         paths, log_probs = self.sample_paths(query_embedding)
 
@@ -382,17 +516,19 @@ class DeepRetriever(BaseRetriever):
 
         rewards = torch.tensor(rewards, dtype=torch.float32).to(self.device)
 
-        # 🔥 NORMALISATION (CRUCIAL pour stabilité)
+        # NORMALISATION (CRUCIAL pour stabilité)
         rewards = (rewards - rewards.mean()) / (rewards.std() + 1e-6)
 
         # 🔹 Compute loss
+        baseline = rewards.mean()
+
         losses = []
         for log_prob, reward in zip(log_probs, rewards):
-            losses.append(-log_prob * reward)
-
+            advantage = reward - baseline
+            losses.append(-log_prob * advantage)
+        
         loss = torch.stack(losses).mean()
 
-        # 🔹 Backprop
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
