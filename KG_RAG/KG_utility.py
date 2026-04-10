@@ -1,4 +1,9 @@
 import networkx as nx
+import numpy as np
+import faiss
+from typing import Dict, List, Tuple
+from sentence_transformers import SentenceTransformer
+from sklearn.preprocessing import normalize
 
 def build_kg() -> nx.DiGraph:
     """
@@ -166,3 +171,196 @@ def build_kg() -> nx.DiGraph:
         G.add_edge(source, target, relation=relation)
 
     return G
+
+# =========================
+# FAISS indexing
+# =========================
+
+def build_faiss_index(embeddings: np.ndarray) -> faiss.Index:
+    """
+    Build a FAISS index for fast similarity search.
+
+    The index uses inner product similarity, which is equivalent
+    to cosine similarity when embeddings are normalized.
+
+    Parameters
+    ----------
+    embeddings : np.ndarray
+        Normalized embeddings of shape (num_nodes, dim).
+
+    Returns
+    -------
+    faiss.Index
+        FAISS index containing all node embeddings.
+    """
+    dim = embeddings.shape[1]
+    index = faiss.IndexFlatIP(dim)
+    index.add(embeddings.astype("float32"))
+    return index
+
+
+
+# ==============================
+# Embeddings
+# ==============================
+
+def build_node_embeddings(
+    G: nx.DiGraph,
+    model: SentenceTransformer
+) -> Tuple[np.ndarray, Dict[str, int], Dict[int, str]]:
+    """
+    Compute embeddings for all nodes in the graph using enriched node attributes.
+
+    Each node is represented by a textual description including:
+    - its name
+    - its description
+    - its type
+    - its synonyms
+
+    The resulting embeddings are normalized for cosine similarity.
+
+    Parameters
+    ----------
+    G : nx.DiGraph
+        Input graph containing nodes with attributes:
+        'description', 'type', 'synonyms'.
+    model : SentenceTransformer
+        Pretrained embedding model.
+
+    Returns
+    -------
+    embeddings : np.ndarray
+        Normalized embeddings of shape (num_nodes, dim).
+    node_to_idx : Dict[str, int]
+        Mapping from node name to embedding index.
+    idx_to_node : Dict[int, str]
+        Reverse mapping from index to node name.
+    """
+
+    node_list = list(G.nodes)
+
+    # =========================
+    # Build enriched text
+    # =========================
+    texts = []
+    for node in node_list:
+        data = G.nodes[node]
+
+        description = data.get("description", "")
+        node_type = data.get("type", "")
+        synonyms = data.get("synonyms", [])
+
+        synonyms_text = ", ".join(synonyms) if synonyms else ""
+
+        text = f"{node}. {description}. Type: {node_type}. Synonyms: {synonyms_text}"
+        texts.append(text)
+
+    # =========================
+    # Compute embeddings
+    # =========================
+    embeddings = model.encode(texts, convert_to_numpy=True)
+    embeddings = normalize(embeddings)
+
+    # =========================
+    # Mappings
+    # =========================
+    node_to_idx = {node: i for i, node in enumerate(node_list)}
+    idx_to_node = {i: node for node, i in node_to_idx.items()}
+
+    return embeddings, node_to_idx, idx_to_node
+
+
+def build_relation_embeddings(G, model):
+    """
+    Compute embeddings for all relation types in the knowledge graph.
+
+    Each unique relation label present in the graph edges is encoded
+    using the same sentence transformer model as the nodes. This allows
+    the model to incorporate semantic information about edge types
+    during graph traversal.
+
+    Parameters
+    ----------
+    G : nx.DiGraph
+        Input knowledge graph. Each edge must have a "relation" attribute.
+    model : SentenceTransformer
+        Pretrained sentence transformer used to encode relation labels.
+
+    Returns
+    -------
+    Dict[str, np.ndarray]
+        Dictionary mapping each relation label to its embedding vector.
+
+    Notes
+    -----
+    - Relation embeddings are shared across all edges of the same type.
+    - These embeddings are later converted to torch tensors inside the
+        DeepRetriever.
+    - If a relation is missing at inference time, a zero vector is used
+    as fallback.
+    """
+    relations = list(set([data["relation"] for _, _, data in G.edges(data=True)]))
+    rel_embeddings = model.encode(relations, convert_to_numpy=True)
+    rel_embeddings = normalize(rel_embeddings)
+    return dict(zip(relations, rel_embeddings))
+
+def build_subgraph(G: nx.DiGraph, nodes: List[str]) -> nx.DiGraph:
+    """
+    Extract a subgraph induced by a set of nodes.
+
+    Parameters
+    ----------
+    G : nx.DiGraph
+        Original graph.
+    nodes : List[str]
+        Nodes to include in the subgraph.
+
+    Returns
+    -------
+    nx.DiGraph
+        Subgraph containing only the specified nodes.
+    """
+    return G.subgraph(nodes).copy()
+
+
+def linearize_graph(G: nx.DiGraph, paths: List[List[str]]) -> str:
+    """
+    Convert reasoning paths into a textual representation.
+
+    This function follows the RAPL paradigm: instead of representing
+    the graph as independent triples, it encodes structured reasoning
+    paths as sequences of nodes and relations.
+
+    Parameters
+    ----------
+    G : nx.DiGraph
+        Knowledge graph.
+    paths : List[List[str]]
+        List of paths, where each path is a sequence of nodes.
+
+    Returns
+    -------
+    str
+        Textual representation of reasoning paths.
+    """
+    path_texts = []
+
+    for path in paths:
+        if len(path) < 2:
+            continue
+
+        elements = [path[0]]
+
+        for i in range(len(path) - 1):
+            u = path[i]
+            v = path[i + 1]
+
+            rel = G[u][v].get("relation", "related_to")
+
+            elements.append(rel)
+            elements.append(v)
+
+        path_text = " -> ".join(elements)
+        path_texts.append(path_text)
+
+    return "\n".join(path_texts)
