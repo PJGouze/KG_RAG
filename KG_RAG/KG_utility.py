@@ -198,8 +198,6 @@ def build_faiss_index(embeddings: np.ndarray) -> faiss.Index:
     index.add(embeddings.astype("float32"))
     return index
 
-
-
 # ==============================
 # Embeddings
 # ==============================
@@ -269,7 +267,6 @@ def build_node_embeddings(
 
     return embeddings, node_to_idx, idx_to_node
 
-
 def build_relation_embeddings(G, model):
     """
     Compute embeddings for all relation types in the knowledge graph.
@@ -322,7 +319,6 @@ def build_subgraph(G: nx.DiGraph, nodes: List[str]) -> nx.DiGraph:
     """
     return G.subgraph(nodes).copy()
 
-
 def linearize_graph(G: nx.DiGraph, paths: List[List[str]]) -> str:
     """
     Convert reasoning paths into a textual representation.
@@ -364,3 +360,50 @@ def linearize_graph(G: nx.DiGraph, paths: List[List[str]]) -> str:
         path_texts.append(path_text)
 
     return "\n".join(path_texts)
+
+def linearize_graph_v2(G, paths):
+    """
+    Build a linearized graph of triples (RAPL-style).
+
+    Each triple becomes a node, and edges are created between
+    triples if:
+        tail(triple_1) == head(triple_2)
+
+    Parameters
+    ----------
+    G : nx.DiGraph
+        Original knowledge graph (not directly used here but kept for compatibility).
+    paths : List[List[Tuple[str, str, str]]]
+        List of reasoning paths (triples).
+
+    Returns
+    -------
+    str
+        Textual representation of connected triples.
+    """
+
+    triples = []
+    edges = []
+
+    # 🔹 Flatten all triples
+    for path in paths:
+        for triple in path:
+            triples.append(triple)
+
+    # 🔹 Remove duplicates
+    triples = list(set(triples))
+
+    # 🔹 Build connections between triples
+    for t1 in triples:
+        for t2 in triples:
+            if t1 != t2 and t1[2] == t2[0]:
+                edges.append((t1, t2))
+
+    # 🔹 Convert to text
+    lines = []
+
+    for t1, t2 in edges:
+        line = f"({t1[0]}, {t1[1]}, {t1[2]}) -> ({t2[0]}, {t2[1]}, {t2[2]})"
+        lines.append(line)
+
+    return "\n".join(lines)

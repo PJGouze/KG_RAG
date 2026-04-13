@@ -7,77 +7,10 @@ from typing import Dict, List, Tuple
 import torch
 import torch.nn as nn
 
-from KG_utility import build_kg, build_subgraph, linearize_graph, build_faiss_index, build_node_embeddings, build_relation_embeddings
+from KG_utility import build_kg, build_subgraph, linearize_graph_v2, build_faiss_index, build_node_embeddings, build_relation_embeddings
 from DeepRetrieval import DeepRetriever
 from HeuristicRetrieval import search_nodes, get_neighbors, multi_hop_retrieval, HeuristicRetriever
 from GNN_utility import PolicyNetwork, GNNEncoder, RelationalGATLayer
-
-
-
-
-
-def find_rational_paths(G, query_emb, embeddings, node_to_idx, max_hops=3, top_k=3):
-    """
-    Generate pseudo-gold reasoning paths (RAPL-style) for training.
-
-    This function explores the graph starting from nodes similar to the query,
-    and builds candidate paths up to a maximum number of hops. Paths are then
-    scored based on their relevance to the query.
-
-    Parameters
-    ----------
-    G : nx.DiGraph
-        Knowledge graph.
-    query_emb : np.ndarray
-        Query embedding vector.
-    embeddings : np.ndarray
-        Node embeddings matrix.
-    node_to_idx : Dict[str, int]
-        Mapping from node name to embedding index.
-    max_hops : int, optional
-        Maximum length of paths, by default 3.
-    top_k : int, optional
-        Number of top paths to return, by default 3.
-
-    Returns
-    -------
-    List[List[str]]
-        List of top-k reasoning paths.
-    """
-    sims = np.dot(embeddings, query_emb)
-    start_indices = np.argsort(sims)[-top_k:]
-    node_list = list(node_to_idx.keys())
-    start_nodes = [node_list[i] for i in start_indices]
-
-    paths = []
-
-    for start in start_nodes:
-        stack = [(start, [start])]
-
-        while stack:
-            current, path = stack.pop()
-
-            if len(path) >= max_hops:
-                paths.append(path)
-                continue
-
-            for neighbor in G.successors(current):
-                if neighbor in path:
-                    continue
-
-                stack.append((neighbor, path + [neighbor]))
-
-    scored = []
-    for path in paths:
-        last = path[-1]
-        score = np.dot(embeddings[node_to_idx[last]], query_emb)
-        score -= 0.1 * len(path)  # penalty for long paths
-        scored.append((path, score))
-
-    scored.sort(key=lambda x: x[1], reverse=True)
-
-    return [p for p, _ in scored[:top_k]]
-
 
 # =========================
 # 6. Answer Generation
@@ -256,10 +189,10 @@ class KGRAGPipeline:
         query_embedding = normalize(query_embedding)[0]
 
         #nodes = self.retriever.retrieve(query_embedding)
-        paths = self.retriever.sample_paths(query_embedding)
+        paths = self.retriever.retrieve_paths_v2(query_embedding)
         
         #subgraph = build_subgraph(self.graph, nodes)
-        context = linearize_graph(self.graph,paths)
+        context = linearize_graph_v2(self.graph,paths)
 
         return generate_answer(context, query)
 

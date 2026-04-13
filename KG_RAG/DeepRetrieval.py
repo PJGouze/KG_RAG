@@ -334,7 +334,7 @@ class DeepRetriever(BaseRetriever):
 
     The traversal is deterministic (greedy) and operates as follows:
     - Select top-k starting nodes based on similarity to the query
-    - Iteratively expand each path using the policy network
+    - Iteratively expand each path using the policy network (a trained NN)
     - At each step, select the most relevant neighbor (argmax policy)
     - Stop when no valid expansion is possible or a cycle is detected
 
@@ -428,12 +428,75 @@ class DeepRetriever(BaseRetriever):
                 if next_node in path:
                     break
 
-            path.append(next_node)
-            current = next_node
+                path.append(next_node)
+                current = next_node
 
-        paths.append(path)
+            paths.append(path)
 
         return paths
+    
+    def retrieve_paths_v2(
+    self,
+    query_embedding: np.ndarray,
+    start_k: int = 5,
+    steps: int = 3
+) -> List[List[Tuple[str, str, str]]]:
+        """
+        Retrieve reasoning paths as sequences of triples.
+
+        Each path is a list of triples (head, relation, tail),
+        instead of raw nodes.
+
+        Returns
+        -------
+        List[List[Tuple[str, str, str]]]
+            List of paths, each path being a sequence of triples.
+        """
+
+        self.encode_graph()
+
+        sims = np.dot(self.embeddings, query_embedding)
+        start_indices = np.argsort(sims)[-start_k:]
+        start_nodes = [self.idx_to_node[i] for i in start_indices]
+
+        all_paths = []
+
+        for start in start_nodes:
+            current = start
+            path = []
+
+            for _ in range(steps):
+                neighbors = list(self.G.successors(current))
+
+                if not neighbors:
+                    break
+
+                states = [
+                    self.build_state(query_embedding, current, n)
+                    for n in neighbors
+                ]
+
+                next_node, _ = self.select_next(
+                    states,
+                    neighbors,
+                    training=False
+                )
+
+                if any(triple[2] == next_node for triple in path):
+                    break
+
+                rel = self.G[current][next_node].get("relation", "related_to")
+
+                #  IMPORTANT : on stocke un TRIPLET
+                triple = (current, rel, next_node)
+                path.append(triple)
+
+                current = next_node
+
+            if path:
+                all_paths.append(path)
+
+        return all_paths
 
     def compute_reward(
         self,
