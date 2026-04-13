@@ -360,7 +360,7 @@ if __name__ == "__main__":
         val_queries_embeddings=val_set,
         optimizer=optimizer,
         find_rational_paths_fn=find_rational_paths,
-        supervised_loss_fn=loss_fn,
+        loss_fn=loss_fn,
         epochs=20
     )
 
