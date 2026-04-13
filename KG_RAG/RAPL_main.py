@@ -189,7 +189,7 @@ class KGRAGPipeline:
         query_embedding = normalize(query_embedding)[0]
 
         #nodes = self.retriever.retrieve(query_embedding)
-        paths = self.retriever.retrieve_paths_v2(query_embedding)
+        paths = self.retriever.retrieve_paths(query_embedding)
         
         #subgraph = build_subgraph(self.graph, nodes)
         context = linearize_graph_v2(self.graph,paths)

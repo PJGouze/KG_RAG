@@ -1,5 +1,6 @@
 from typing import List
 import torch
+import random
 from RAPL_main import *
 
 def train_deep_retriever(
@@ -54,9 +55,6 @@ def train_deep_retriever(
         if epoch % print_every == 0:
             print(f"[Epoch {epoch}] Loss: {avg_loss:.4f}")
 
-
-import random
-
 def train_deep_retriever_v2(
     retriever,
     queries: List[str],
@@ -92,7 +90,7 @@ def train_deep_retriever_v2(
     )
 
     for epoch in range(epochs):
-        random.shuffle(queries)
+        #random.shuffle(queries)
         total_loss = 0
 
         for i in range(0, len(queries), batch_size):
@@ -109,6 +107,110 @@ def train_deep_retriever_v2(
             total_loss += batch_loss.item()
 
         print(f"[Epoch {epoch}] Loss: {total_loss:.4f}")
+
+# ====================================
+# pipeline d'entrainement + evaluation
+# ====================================
+
+def train_one_epoch(
+    retriever,
+    queries_embeddings,
+    optimizer,
+    find_rational_paths_fn,
+    loss_fn,
+    device="cpu"
+):
+    retriever.PolicyNetwork.train()
+    retriever.gnn.train()
+
+    total_loss = 0
+
+    for query_emb in queries_embeddings:
+        loss = retriever.train_step(
+            query_embedding=query_emb,
+            optimizer=optimizer,
+            find_rational_paths_fn=find_rational_paths_fn,
+            reward_fn=None,
+            supervised_loss_fn=loss_fn
+        )
+
+        total_loss += loss.item()
+
+    return total_loss / len(queries_embeddings)
+
+def evaluate(
+    retriever,
+    queries_embeddings,
+    device="cpu"
+):
+    retriever.PolicyNetwork.eval()
+    retriever.gnn.eval()
+
+    total_reward = 0
+
+    with torch.no_grad():
+        for query_emb in queries_embeddings:
+            paths = retriever.retrieve_paths(query_emb)
+
+            rewards = [
+                retriever.compute_reward(
+                    [triple[0] for triple in path] + [path[-1][2]],
+                    query_emb
+                )
+                for path in paths if len(path) > 0
+            ]
+
+            if rewards:
+                total_reward += max(rewards)
+
+    return total_reward / len(queries_embeddings)
+
+def train_loop(
+    retriever,
+    train_queries_embeddings,
+    val_queries_embeddings,
+    optimizer,
+    find_rational_paths_fn,
+    loss_fn,
+    epochs=10,
+    device="cpu"
+):
+    history = {
+        "train_loss": [],
+        "val_reward": []
+    }
+
+    for epoch in range(epochs):
+        print(f"\nEpoch {epoch+1}/{epochs}")
+
+        # =========================
+        # TRAIN
+        # =========================
+        train_loss = train_one_epoch(
+            retriever,
+            train_queries_embeddings,
+            optimizer,
+            find_rational_paths_fn,
+            loss_fn,
+            device
+        )
+
+        # =========================
+        # VALIDATION
+        # =========================
+        val_reward = evaluate(
+            retriever,
+            val_queries_embeddings,
+            device
+        )
+
+        history["train_loss"].append(train_loss)
+        history["val_reward"].append(val_reward)
+
+        print(f"Train Loss: {train_loss:.4f}")
+        print(f"Val Reward: {val_reward:.4f}")
+
+    return history
 
 def find_rational_paths(G, query_emb, embeddings, node_to_idx, max_hops=3, top_k=3):
     """
@@ -187,21 +289,86 @@ def evaluate_retriever(retriever, queries, model):
 # ==================================             
 
 if __name__ == "__main__":
-    pipeline = KGRAGPipeline(retriever_type='deep')
+    # =========================
+    # 1. Init pipeline
+    # =========================
+    pipeline = KGRAGPipeline(retriever_type="deep")
 
+    # =========================
+    # 2. Dataset (toy)
+    # =========================
     queries = [
         "What causes sepsis?",
         "What are symptoms of sepsis?",
         "How is sepsis treated?"
     ]
 
-    train_deep_retriever(
-        pipeline.retriever,
-        queries,
-        pipeline.model,
-        epochs=50
+    # 🔹 Convert queries → embeddings
+    train_embeddings = [
+        pipeline.model.encode(q, convert_to_numpy=True)
+        for q in queries
+    ]
+
+    # 🔹 Normalisation (important)
+    train_embeddings = [
+        emb / (np.linalg.norm(emb) + 1e-6)
+        for emb in train_embeddings
+    ]
+
+    # split simple
+    train_set = train_embeddings[:2]
+    val_set = train_embeddings[2:]
+
+    # =========================
+    # 3. Optimizer
+    # =========================
+    optimizer = torch.optim.Adam(
+        list(pipeline.retriever.PolicyNetwork.parameters()) +
+        list(pipeline.retriever.gnn.parameters()),
+        lr=1e-3
     )
 
-    # Test
-    answer = pipeline.query("What causes sepsis?")
+    # =========================
+    # 4. Loss function (simple)
+    # =========================
+    def loss_fn(path, query_emb, gold_paths):
+        """
+        Reward shaping simple :
+        + similarité finale
+        + bonus si overlap avec gold
+        """
+        last_node = path[-1]
+        node_emb = pipeline.retriever.embeddings[
+            pipeline.retriever.node_to_idx[last_node]
+        ]
+
+        sim = float(np.dot(node_emb, query_emb))
+
+        # bonus imitation learning (overlap)
+        overlap = 0
+        for gold in gold_paths:
+            overlap += len(set(path) & set(gold))
+
+        return sim + 0.1 * overlap
+
+    # =========================
+    # 5. Training loop
+    # =========================
+    history = train_loop(
+        retriever=pipeline.retriever,
+        train_queries_embeddings=train_set,
+        val_queries_embeddings=val_set,
+        optimizer=optimizer,
+        find_rational_paths_fn=find_rational_paths,
+        supervised_loss_fn=loss_fn,
+        epochs=20
+    )
+
+    # =========================
+    # 6. Test inference
+    # =========================
+    query = "What causes sepsis?"
+    answer, _ = pipeline.query(query)
+
+    print("\nFinal Answer:")
     print(answer)
