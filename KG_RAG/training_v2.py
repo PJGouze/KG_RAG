@@ -1,7 +1,10 @@
 import torch
 from typing import List, Callable
 import numpy as np
+from sentence_transformers import SentenceTransformer
 from DeepRetrieval import *
+from RAPL_main import *
+from losses import calculate_reward_for_path, compute_rl_loss, compute_supervised_loss
 
 # =================================
 # Pseudo Ground truth
@@ -114,69 +117,41 @@ def find_rational_paths(
     return [p for p, _ in scored_paths[:top_k]]
 
 # =================================
-# Different Losses
-# =================================
-
-def compute_rl_loss(
-    log_probs: List[torch.Tensor],
-    rewards: List[float]
-) -> torch.Tensor:
-    """
-    Compute the REINFORCE loss for a batch of sampled paths.
-
-    This function implements the policy gradient objective:
-        L = - E[ log(pi(a|s)) * reward ]
-
-    Rewards are normalized for training stability.
-
-    Parameters
-    ----------
-    log_probs : List[torch.Tensor]
-        Log-probabilities of sampled trajectories.
-    rewards : List[float]
-        Scalar rewards associated with each trajectory.
-
-    Returns
-    -------
-    torch.Tensor
-        Scalar RL loss.
-    """
-    if len(log_probs) == 0:
-        return torch.tensor(0.0, requires_grad=True)
-
-    device = log_probs[0].device
-
-    rewards_tensor = torch.tensor(
-        rewards,
-        dtype=torch.float32,
-        device=device
-    )
-
-    # 🔹 Normalize rewards (critical for stability)
-    rewards_tensor = (
-        rewards_tensor - rewards_tensor.mean()
-    ) / (rewards_tensor.std() + 1e-6)
-
-    # 🔹 REINFORCE loss
-    losses = [
-        -log_prob * reward
-        for log_prob, reward in zip(log_probs, rewards_tensor)
-    ]
-
-    return torch.stack(losses).mean()
-
-# =================================
 # Training functions
 # =================================
+
+def check_gradients(model):
+    total = 0.0
+    count = 0
+
+    for p in model.parameters():
+        if p.grad is not None:
+            total += p.grad.abs().mean().item()
+            count += 1
+
+    print("avg grad signal:", total / max(count, 1))
+
+def triples_to_nodes(path_triples):
+    """
+    A function to convert in the right format the path extracted
+
+    Returns : 
+        list of nodes
+    """
+    nodes = [path_triples[0][0]]
+    for (_, _, t) in path_triples:
+        nodes.append(t)
+    return nodes
 
 def training_step(
     retriever,
     query_embedding,
     optimizer,
     find_rational_paths_fn: Callable,
-    reward_fn: Callable,
-    supervised_loss_fn: Callable = None,
-    alpha: float = 0.5
+    calculate_reward_for_path:  Callable,
+    compute_supervised_loss: Callable = None,
+    alpha: float = 0.5,
+    debug=False
 ) -> torch.Tensor:
     """
     Perform one training step combining:
@@ -201,9 +176,9 @@ def training_step(
         Optimizer used to update model parameters.
     find_rational_paths_fn : Callable
         Function generating pseudo-gold reasoning paths.
-    reward_fn : Callable
+    calculate_reward_for_path : Callable
         Function computing reward(path, query_embedding, gold_paths).
-    supervised_loss_fn : Callable, optional
+    compute_supervised_loss : Callable, optional
         Function computing supervised imitation loss.
     alpha : float, optional
         Weight of supervised loss in total loss.
@@ -223,28 +198,38 @@ def training_step(
     # =========================
     # 2. Rational paths (RAPL)
     # =========================
-    gold_paths = find_rational_paths_fn(
+    gold_paths_triples = find_rational_paths_fn(
         retriever.G,
         query_embedding,
         retriever.embeddings,
         retriever.node_to_idx
     )
 
+    gold_paths = [
+        triples_to_nodes(p) for p in gold_paths_triples
+    ]
+
     # =========================
     # 3. Compute rewards
     # =========================
     rewards = [
-        reward_fn(path, query_embedding, gold_paths)
+        calculate_reward_for_path(
+            path,
+            query_embedding,
+            gold_paths,
+            retriever.embeddings,
+            retriever.node_to_idx
+        )
         for path in paths
-    ]
+        ]
 
     rl_loss = compute_rl_loss(log_probs, rewards)
 
     # =========================
     # 4. Supervised loss (optional)
     # =========================
-    if supervised_loss_fn is not None and len(gold_paths) > 0:
-        sup_loss = supervised_loss_fn(
+    if compute_supervised_loss is not None and len(gold_paths) > 0:
+        sup_loss = compute_supervised_loss(
             retriever,
             query_embedding,
             gold_paths
@@ -262,6 +247,11 @@ def training_step(
     # =========================
     optimizer.zero_grad()
     total_loss.backward()
+    if debug:
+        print("===== GRADIENT CHECK =====")
+        check_gradients(retriever.gnn_encoder)
+        check_gradients(retriever.PolicyNetwork)
+
     optimizer.step()
 
     return total_loss
@@ -328,7 +318,8 @@ def train_loop(
                 find_rational_paths_fn,
                 reward_fn,
                 supervised_loss_fn,
-                alpha
+                alpha,
+                debug=True
             )
 
             epoch_loss += loss.item()
@@ -337,3 +328,231 @@ def train_loop(
 
         if verbose:
             print(f"[Epoch {epoch+1}/{epochs}] Loss: {avg_loss:.4f}")
+
+# =====================================================
+# TRAIN PIPELINE
+# =====================================================
+
+class KGRAGTrainPipeline:
+    """
+    Training pipeline for Deep KG-RAG retriever.
+
+    This class is ONLY responsible for:
+    - building graph
+    - building embeddings
+    - initializing retriever
+    - launching training loop
+    """
+
+    def __init__(
+        self,
+        model_name: str = "all-MiniLM-L6-v2",
+        device: str = "cpu"
+    ):
+        self.device = device
+
+        # =========================
+        # 1. Text encoder
+        # =========================
+        self.model = SentenceTransformer(model_name)
+
+        # =========================
+        # 2. Build graph
+        # =========================
+        self.graph = build_kg()
+
+        # =========================
+        # 3. Node embeddings (static)
+        # =========================
+        self.embeddings, self.node_to_idx, self.idx_to_node = build_node_embeddings(
+            self.graph,
+            self.model
+        )
+
+        # =========================
+        # 4. Relation embeddings
+        # =========================
+        self.relation_embeddings = build_relation_embeddings(
+            self.graph,
+            self.model
+        )
+
+        dim = self.embeddings.shape[1]
+
+        # =========================
+        # 5. Policy Network
+        # =========================
+        self.policy_net = PolicyNetwork(
+            input_dim=4 * dim,
+            hidden_dim=128
+        )
+
+        # =========================
+        # 6. GNN encoder
+        # =========================
+        self.gnn_encoder = GNNEncoder(
+            dim=dim,
+            num_layers=2
+        )
+
+        # =========================
+        # 7. Deep Retriever
+        # =========================
+        self.retriever = DeepRetriever(
+            G=self.graph,
+            embeddings=self.embeddings,
+            node_to_idx=self.node_to_idx,
+            idx_to_node=self.idx_to_node,
+            relation_embeddings=self.relation_embeddings,
+            PolicyNetwork=self.policy_net,
+            gnn_encoder=self.gnn_encoder,
+            device=self.device
+        )
+
+        # =========================
+        # 8. Optimizer
+        # =========================
+        self.optimizer = torch.optim.Adam(
+            list(self.retriever.PolicyNetwork.parameters()) +
+            list(self.retriever.gnn_encoder.parameters()),
+            lr=1e-4
+        )
+
+    # =====================================================
+    # EMBEDDING FUNCTION (used in training loop)
+    # =====================================================
+    def embed_fn(self, query: str):
+        emb = self.model.encode([query], convert_to_numpy=True)
+        return normalize(emb)[0]
+
+    # =====================================================
+    # TRAIN ENTRY POINT
+    # =====================================================
+    def train(
+        self,
+        queries,
+        epochs: int = 10,
+        alpha: float = 0.5,
+        verbose: bool = True
+    ):
+        """
+        Run full training loop.
+
+        Parameters
+        ----------
+        queries : List[str]
+            Training queries
+        epochs : int
+            Number of epochs
+        alpha : float
+            Weight of supervised loss
+        """
+
+        # =========================
+        # Train mode
+        # =========================
+        self.retriever.PolicyNetwork.train()
+        self.retriever.gnn_encoder.train()
+
+        # =========================
+        # Loop
+        # =========================
+        for epoch in range(epochs):
+            total_loss = 0.0
+
+            for query in queries:
+
+                query_emb = self.embed_fn(query)
+
+                loss = training_step(
+                    retriever=self.retriever,
+                    query_embedding=query_emb,
+                    optimizer=self.optimizer,
+                    find_rational_paths_fn=find_rational_paths,
+                    calculate_reward_for_path=calculate_reward_for_path,
+                    compute_supervised_loss=compute_supervised_loss,
+                    alpha=alpha,
+                    debug=True
+                )
+
+                total_loss += loss.item()
+
+            avg_loss = total_loss / len(queries)
+
+            if verbose:
+                print(f"[Epoch {epoch+1}/{epochs}] Loss = {avg_loss:.4f}")
+
+    # =====================================================
+    # SAVE / LOAD (important for training)
+    # =====================================================
+    def save(self, path="retriever.pt"):
+        torch.save({
+            "policy": self.policy_net.state_dict(),
+            "gnn": self.gnn_encoder.state_dict()
+        }, path)
+
+    def load(self, path="retriever.pt"):
+        checkpoint = torch.load(path, map_location=self.device)
+        self.policy_net.load_state_dict(checkpoint["policy"])
+        self.gnn_encoder.load_state_dict(checkpoint["gnn"])
+
+# =====================================================
+# MAIN (ENTRY POINT)
+# =====================================================
+
+if __name__ == "__main__":
+
+    import numpy as np
+
+    # =========================
+    # 1. Init training pipeline
+    # =========================
+    pipeline = KGRAGTrainPipeline(
+        model_name="all-MiniLM-L6-v2",
+        device="cpu"   # mets "cuda" si GPU
+    )
+
+    # =========================
+    # 2. Training dataset
+    # =========================
+    queries = [
+        "What causes sepsis?",
+        "What are symptoms of sepsis?",
+        "How is sepsis treated?",
+        "What causes infection?",
+        "What are symptoms of infection?",
+        "What is hypotension?",
+        "What is tachycardia?"
+    ]
+
+    # =========================
+    # 3. Launch training
+    # =========================
+    print("🚀 Starting training...\n")
+
+    pipeline.train(
+        queries=queries,
+        epochs=20,
+        alpha=0.5,
+        verbose=True
+    )
+
+    # =========================
+    # 4. Save model
+    # =========================
+    pipeline.save("deep_retriever.pt")
+    print("\n✅ Model saved")
+
+    # =========================
+    # 5. Quick evaluation
+    # =========================
+    print("\n🔎 Testing trained retriever...")
+
+    test_query = "What causes sepsis?"
+    query_emb = pipeline.embed_fn(test_query)
+
+    paths = pipeline.retriever.retrieve_paths(query_emb)
+
+    print("\nRetrieved paths:")
+    for p in paths:
+        print(p)

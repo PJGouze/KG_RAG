@@ -1,7 +1,6 @@
 import torch
 import numpy as np
 from typing import List, Tuple
-import force
 
 class BaseRetriever:
     def retrieve(self, query_embedding):
@@ -89,6 +88,7 @@ class DeepRetriever(BaseRetriever):
                 self.relation_embeddings
             )
         return self._cached_gnn_embeddings
+    
     # =========================
     # State construction
     # =========================
@@ -228,7 +228,7 @@ class DeepRetriever(BaseRetriever):
         for start in start_nodes:
             current = start
             path = [current]
-            path_log_prob = 0
+            path_log_prob = torch.tensor(0.0, device=self.device)
 
             for _ in range(steps):
                 neighbors = list(self.G.successors(current))
@@ -248,9 +248,10 @@ class DeepRetriever(BaseRetriever):
                 )
 
                 if next_node in path:
-                    break
+                    continue
+                
                 path.append(next_node)
-                path_log_prob += log_prob
+                path_log_prob = log_prob + path_log_prob
                 current = next_node
 
             paths.append(path)
