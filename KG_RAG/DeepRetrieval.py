@@ -1,6 +1,7 @@
 import torch
 import numpy as np
 from typing import List, Tuple
+import force
 
 class BaseRetriever:
     def retrieve(self, query_embedding):
@@ -63,21 +64,26 @@ class DeepRetriever(BaseRetriever):
         }
 
         self.PolicyNetwork = PolicyNetwork.to(device)
-        self.gnn = gnn_encoder.to(device)  
+        self.gnn_encoder = gnn_encoder.to(device)  
         self.device = device
         self._cached_gnn_embeddings = None
     
-    def encode_graph(self):
+    def encode_graph(self, force: bool = False):
         """
         Compute context-aware node embeddings using the GNN if it has not been encoded before
+
+        Parameters
+        ----------
+        force : bool, optional
+            If True, recompute embeddings even if cached.
 
         Returns
         -------
         Dict[str, torch.Tensor]
             Updated node embeddings.
         """
-        if self._cached_gnn_embeddings is None:
-            self._cached_gnn_embeddings = self.gnn(
+        if force or self._cached_gnn_embeddings is None:
+            self._cached_gnn_embeddings = self.gnn_encoder(
                 self.G,
                 self.node_embeddings_torch,
                 self.relation_embeddings
@@ -211,7 +217,7 @@ class DeepRetriever(BaseRetriever):
             Log-probabilities of each path.
         """
         
-        self.encode_graph()
+        self.encode_graph(force=True)
         sims = np.dot(self.embeddings, query_embedding)
         start_indices = np.argsort(sims)[-start_k:]
         start_nodes = [self.idx_to_node[i] for i in start_indices]
@@ -255,67 +261,6 @@ class DeepRetriever(BaseRetriever):
     # =========================
     # Inference retrieval
     # =========================
-
-    def retrieve(
-        self,
-        query_embedding: np.ndarray,
-        start_k: int = 5,
-        steps: int = 3
-    ) -> List[str]:
-        """
-        Retrieve relevant nodes using greedy policy traversal.
-
-        This function is used at inference time.
-
-        Parameters
-        ----------
-        query_embedding : np.ndarray
-            Query embedding vector.
-        start_k : int, optional
-            Number of starting nodes.
-        steps : int, optional
-            Number of traversal steps.
-
-        Returns
-        -------
-        List[str]
-            Set of visited nodes.
-        """
-        self.encode_graph()
-
-        sims = np.dot(self.embeddings, query_embedding)
-        start_indices = np.argsort(sims)[-start_k:]
-        start_nodes = [self.idx_to_node[i] for i in start_indices]
-
-        visited = set(start_nodes)
-
-        for start in start_nodes:
-            current = start
-
-            for _ in range(steps):
-                neighbors = list(self.G.successors(current))
-
-                if not neighbors:
-                    break
-
-                states = [
-                    self.build_state(query_embedding, current, n)
-                    for n in neighbors
-                ]
-
-                next_node, _ = self.select_next(
-                    states,
-                    neighbors,
-                    training=False
-                )
-
-                if next_node in visited:
-                    break
-
-                visited.add(next_node)
-                current = next_node
-
-        return list(visited)
 
     def retrieve_paths(
     self,
@@ -379,217 +324,3 @@ class DeepRetriever(BaseRetriever):
                 all_paths.append(path)
 
         return all_paths
-
-    def compute_reward(
-        self,
-        path: List[str],
-        query_emb: np.ndarray,
-        gold_paths: List[List[str]] = None
-    ) -> float:
-        """
-        Compute loss for a sampled path.
-
-        The loss combines:
-        - semantic similarity with the query
-        - path coherence
-        - length penalty
-        - optional bonus if the path matches rational paths (RAPL-style)
-
-        Parameters
-        ----------
-        path : List[str]
-            Traversed path.
-        query_emb : np.ndarray
-            Query embedding.
-        gold_paths : List[List[str]], optional
-            Pseudo-gold reasoning paths.
-
-        Returns
-        -------
-        float
-            Loss value.
-        """
-        last_node = path[-1]
-        node_emb = self.embeddings[self.node_to_idx[last_node]]
-
-        # 🔹 1. Similarité avec la query
-        sim_reward = float(np.dot(node_emb, query_emb))
-
-        # 🔹 2. Pénalité longueur
-        length_penalty = -0.05 * len(path)
-
-        # 🔹 3. Cohérence interne du path
-        coherence = 0
-        for i in range(len(path) - 1):
-            u = path[i]
-            v = path[i + 1]
-            coherence += np.dot(
-                self.embeddings[self.node_to_idx[u]],
-                self.embeddings[self.node_to_idx[v]]
-            )
-        coherence /= (len(path) - 1 + 1e-6)
-
-        # 🔹 4. BONUS RAPL (matching partiel)
-        rapl_bonus = 0
-        if gold_paths is not None:
-            for gold in gold_paths:
-                overlap = len(set(path) & set(gold))
-                rapl_bonus = max(rapl_bonus, overlap / len(gold))
-
-        return sim_reward + length_penalty + 0.1 * coherence + 0.5 * rapl_bonus
-    
-    def compute_supervised_loss(
-        self,
-        query_embedding: np.ndarray,
-        gold_paths: List[List[str]]
-    ) -> torch.Tensor:
-        """
-        Compute imitation learning loss from pseudo-gold paths.
-
-        The model learns to select the correct next node at each step.
-
-        Parameters
-        ----------
-        query_embedding : np.ndarray
-            Query embedding.
-        gold_paths : List[List[str]]
-            Pseudo-gold reasoning paths.
-
-        Returns
-        -------
-        torch.Tensor
-            Supervised loss.
-        """
-        losses = []
-
-        for path in gold_paths:
-            for i in range(len(path) - 1):
-                current = path[i]
-                target = path[i + 1]
-
-                neighbors = list(self.G.successors(current))
-                if target not in neighbors:
-                    continue
-
-                states = [
-                    self.build_state(query_embedding, current, n)
-                    for n in neighbors
-                ]
-
-                states_tensor = torch.stack(states).to(self.device)
-                scores = self.PolicyNetwork(states_tensor).squeeze(-1)
-
-                target_idx = neighbors.index(target)
-
-                loss = torch.nn.functional.cross_entropy(
-                    scores.unsqueeze(0),
-                    torch.tensor([target_idx]).to(self.device)
-                )
-
-                losses.append(loss)
-
-        if len(losses) == 0:
-            return torch.tensor(0.0, requires_grad=True).to(self.device)
-
-        return torch.stack(losses).mean()
-
-    def train_step(
-        self,
-        query_embedding: np.ndarray,
-        optimizer,
-        find_rational_paths_fn,
-        reward_fn=None,
-        supervised_loss_fn=None,
-        alpha: float = 0.5
-    ):
-        """
-        Perform one training step combining RL and optional supervised loss.
-
-        Parameters
-        ----------
-        query_embedding : np.ndarray
-            Query embedding.
-        optimizer : torch.optim.Optimizer
-            Optimizer.
-        find_rational_paths_fn : callable
-            Function generating pseudo-gold paths.
-        reward_fn : callable, optional
-            Function computing reward(path, query_embedding, gold_paths).
-        supervised_loss_fn : callable, optional
-            Function computing supervised loss.
-        alpha : float
-            Weight of supervised loss.
-
-        Returns
-        -------
-        torch.Tensor
-            Training loss.
-        """
-
-        # 🔹 Default functions
-        if reward_fn is None:
-            reward_fn = self.compute_reward
-
-        if supervised_loss_fn is None:
-            supervised_loss_fn = self.compute_supervised_loss
-
-        # 🔹 Reset GNN (important pour backprop)
-        self._cached_gnn_embeddings = None
-        self.encode_graph()
-
-        # =========================
-        # 1. Rational paths
-        # =========================
-        gold_paths = find_rational_paths_fn(
-            self.G,
-            query_embedding,
-            self.embeddings,
-            self.node_to_idx
-        )
-
-        # =========================
-        # 2. RL sampling
-        # =========================
-        paths, log_probs = self.sample_paths(query_embedding)
-
-        rewards = []
-        for path in paths:
-            r = reward_fn(path, query_embedding, gold_paths)
-            rewards.append(r)
-
-        rewards = torch.tensor(rewards, dtype=torch.float32).to(self.device)
-
-        # 🔹 Normalize
-        rewards = (rewards - rewards.mean()) / (rewards.std() + 1e-6)
-        baseline = rewards.mean()
-
-        rl_losses = []
-        for log_prob, reward in zip(log_probs, rewards):
-            advantage = reward - baseline
-            rl_losses.append(-log_prob * advantage)
-
-        rl_loss = torch.stack(rl_losses).mean()
-
-        # =========================
-        # 3. Supervised loss
-        # =========================
-        sup_loss = torch.tensor(0.0, device=self.device)
-
-        if supervised_loss_fn is not None and len(gold_paths) > 0:
-            sup_loss = supervised_loss_fn(query_embedding, gold_paths)
-
-        # =========================
-        # 4. Total loss
-        # =========================
-        total_loss = rl_loss + alpha * sup_loss
-
-        # =========================
-        # 5. Backprop
-        # =========================
-        optimizer.zero_grad()
-        total_loss.backward()
-        optimizer.step()
-
-        return total_loss
-    
-

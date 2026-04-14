@@ -300,7 +300,9 @@ if __name__ == "__main__":
     queries = [
         "What causes sepsis?",
         "What are symptoms of sepsis?",
-        "How is sepsis treated?"
+        "How is sepsis treated?",
+        "How is Lactate liked to sepsis?",
+        "How does sepsis affect organs?"
     ]
 
     # 🔹 Convert queries → embeddings
@@ -324,7 +326,7 @@ if __name__ == "__main__":
     # =========================
     optimizer = torch.optim.Adam(
         list(pipeline.retriever.PolicyNetwork.parameters()) +
-        list(pipeline.retriever.gnn.parameters()),
+        list(pipeline.retriever.gnn_encoder.parameters()),
         lr=1e-3
     )
 

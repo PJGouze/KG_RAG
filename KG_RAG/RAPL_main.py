@@ -53,7 +53,7 @@ def generate_answer(context: str, query: str) -> str:
     # Prompt structuré (important pour la qualité)
     prompt = f"""You are a medical assistant using a knowledge graph.
 
-    Answer the question ONLY using the information from the graph.
+    Answer the question using ONLY the information from the graph.
     Be concise and medically accurate.
 
     Question:
