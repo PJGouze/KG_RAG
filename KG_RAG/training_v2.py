@@ -248,9 +248,12 @@ def training_step(
     optimizer.zero_grad()
     total_loss.backward()
     if debug:
-        print("===== GRADIENT CHECK =====")
-        check_gradients(retriever.gnn_encoder)
-        check_gradients(retriever.PolicyNetwork)
+        print("===== GRADIENT CHECK GNN =====")
+        for name, param in retriever.gnn_encoder.named_parameters():
+            if param.grad is not None:
+                print(name, param.grad.abs().mean().item())
+            else:
+                print(name, "NO GRAD")
 
     optimizer.step()
 
@@ -486,23 +489,32 @@ class KGRAGTrainPipeline:
     # SAVE / LOAD (important for training)
     # =====================================================
     def save(self, path="retriever.pt"):
+        """
+        Save trained model weights.
+
+        Saves both:
+        - Policy Network
+        - GNN encoder
+        """
         torch.save({
-            "policy": self.policy_net.state_dict(),
-            "gnn": self.gnn_encoder.state_dict()
+            "policy_state_dict": self.policy_net.state_dict(),
+            "gnn_state_dict": self.gnn_encoder.state_dict(),
         }, path)
 
     def load(self, path="retriever.pt"):
+        """
+        Load trained model weights.
+        """
         checkpoint = torch.load(path, map_location=self.device)
-        self.policy_net.load_state_dict(checkpoint["policy"])
-        self.gnn_encoder.load_state_dict(checkpoint["gnn"])
+
+        self.policy_net.load_state_dict(checkpoint["policy_state_dict"])
+        self.gnn_encoder.load_state_dict(checkpoint["gnn_state_dict"])
 
 # =====================================================
 # MAIN (ENTRY POINT)
 # =====================================================
 
-if __name__ == "__main__":
-
-    import numpy as np
+if __name__ == "__main__": 
 
     # =========================
     # 1. Init training pipeline
@@ -532,7 +544,7 @@ if __name__ == "__main__":
 
     pipeline.train(
         queries=queries,
-        epochs=20,
+        epochs=200,
         alpha=0.5,
         verbose=True
     )

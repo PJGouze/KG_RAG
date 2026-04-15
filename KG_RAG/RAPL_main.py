@@ -101,6 +101,7 @@ class KGRAGPipeline:
     def __init__(self,
                 retriever_type: str ="heuristic",
                 model_name: str = "all-MiniLM-L6-v2",
+                checkpoint_path: str = None,
                 device: str = "cpu"
                 ):
         """
@@ -167,6 +168,19 @@ class KGRAGPipeline:
                 gnn_encoder=self.gnn_encoder,
                 device=self.device
             )
+            if checkpoint_path is not None:
+                checkpoint = torch.load(checkpoint_path, map_location=device)
+                print(checkpoint.keys())    
+
+                self.retriever.PolicyNetwork.load_state_dict(
+                    checkpoint["policy_state_dict"]
+                )
+                self.retriever.gnn_encoder.load_state_dict(
+                    checkpoint["gnn_state_dict"]
+                )
+
+                self.retriever.PolicyNetwork.eval()
+                self.retriever.gnn_encoder.eval()
 
         else:
             raise ValueError("Unknown retriever type")
@@ -202,7 +216,7 @@ class KGRAGPipeline:
 # =========================
 
 if __name__ == "__main__":
-    pipeline = KGRAGPipeline(retriever_type='deep')
+    pipeline = KGRAGPipeline(retriever_type='deep', checkpoint_path="deep_retriever.pt")
     query = "What causes sepsis?"
     
     answer = pipeline.query(query)
