@@ -101,8 +101,8 @@ class RelationalGATLayer(nn.Module):
                 rel = G[nbr][node]["relation"]
 
                 h_src = node_embeddings[nbr]
-                h_tgt = node_embeddings[node]
                 h_rel = relation_embeddings[rel]
+                h_tgt = node_embeddings[node]
 
                 attn_input = torch.cat([h_src, h_tgt, h_rel])
                 score = self.attn(attn_input)

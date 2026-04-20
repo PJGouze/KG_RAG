@@ -32,6 +32,8 @@ class DeepRetriever(BaseRetriever):
         Embeddings for relations.
     PolicyNetwork : torch.nn.Module
         Neural network scoring actions.
+    gnn_encoder : torch.nn.Module
+        Neural network creating the embedding for a given graph
     device : str, optional
         Device for computation ("cpu" or "cuda").
     """
@@ -81,6 +83,7 @@ class DeepRetriever(BaseRetriever):
         Dict[str, torch.Tensor]
             Updated node embeddings.
         """
+        
         if force or self._cached_gnn_embeddings is None:
             self._cached_gnn_embeddings = self.gnn_encoder(
                 self.G,
@@ -196,7 +199,7 @@ class DeepRetriever(BaseRetriever):
         """
         Sample paths from the graph using the GNN and the learned policy.
 
-        This function is used during training and returns both:
+        This function is used during TRAINING and returns both:
         - sampled paths
         - log-probabilities for REINFORCE
 
@@ -216,7 +219,7 @@ class DeepRetriever(BaseRetriever):
         log_probs : List[torch.Tensor]
             Log-probabilities of each path.
         """
-        
+        # encoding the graph
         self.encode_graph(force=True)
         sims = np.dot(self.embeddings, query_embedding)
         start_indices = np.argsort(sims)[-start_k:]
@@ -281,6 +284,7 @@ class DeepRetriever(BaseRetriever):
             List of paths, each path being a sequence of triples.
         """
 
+        # Encoding with the GNN+GATlayer
         self.encode_graph()
 
         sims = np.dot(self.embeddings, query_embedding)
@@ -289,36 +293,41 @@ class DeepRetriever(BaseRetriever):
 
         all_paths = []
 
-        for start in start_nodes:
+        for start in start_nodes: # evaluating the neighbors of each of the starting nodes found
             current = start
             path = []
 
             for _ in range(steps):
+                # researching neighbors in the graph
                 neighbors = list(self.G.successors(current))
 
                 if not neighbors:
                     break
-
+                
+                # states is building the set : <query, head, tail, relation>
                 states = [
                     self.build_state(query_embedding, current, n)
                     for n in neighbors
                 ]
 
+                # choosing the next node based on the state and the PolicyNetwork
                 next_node, _ = self.select_next(
                     states,
                     neighbors,
                     training=False
                 )
 
+                # breaking the process if the next node is creating a cycle 
                 if any(triple[2] == next_node for triple in path):
                     break
 
                 rel = self.G[current][next_node].get("relation", "related_to")
 
-                #  IMPORTANT : on stocke un TRIPLET
+                #  IMPORTANT : stocking ONE triple
                 triple = (current, rel, next_node)
                 path.append(triple)
 
+                # Recursive process : doing the whole process based on the next node
                 current = next_node
 
             if path:

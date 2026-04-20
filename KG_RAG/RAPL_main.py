@@ -100,7 +100,7 @@ class KGRAGPipeline:
 
     def __init__(self,
                 retriever_type: str ="heuristic",
-                model_name: str = "all-MiniLM-L6-v2",
+                model_name: str = "all-MiniLM-L6-v2", 
                 checkpoint_path: str = None,
                 device: str = "cpu"
                 ):
@@ -117,12 +117,13 @@ class KGRAGPipeline:
         self.device = device
         self.model = SentenceTransformer(model_name)
         self.graph = build_kg()
-
+        # First encoding of the KG
         self.embeddings, self.node_to_idx, self.idx_to_node = build_node_embeddings(
             self.graph, self.model
         )
-
+        # Indexing the KG embeddings
         self.index = build_faiss_index(self.embeddings)
+
         # =========================
         # Heuristic retriever
         # =========================
@@ -139,12 +140,17 @@ class KGRAGPipeline:
         # Deep retriever
         # =========================
         elif retriever_type == "deep":
+            # Adding the relation embedding to the mix in order to create a better message passing with the GNN
             self.relation_embeddings = build_relation_embeddings(
                 self.graph,
                 self.model
             )
 
             dim = self.embeddings.shape[1]
+
+            # =====================================================================
+            #Creating the Neural Networks object, can be modified for experimenting
+            # =====================================================================
 
             # Policy network
             self.policy_net = PolicyNetwork(
@@ -157,6 +163,7 @@ class KGRAGPipeline:
                 dim=dim,
                 num_layers=2
             )
+
             # Deep retriever
             self.retriever = DeepRetriever(
                 G=self.graph,
@@ -168,6 +175,7 @@ class KGRAGPipeline:
                 gnn_encoder=self.gnn_encoder,
                 device=self.device
             )
+            # Loading the trained weights for both of the Neural Networks
             if checkpoint_path is not None:
                 checkpoint = torch.load(checkpoint_path, map_location=device)
                 print(checkpoint.keys())    

@@ -2,6 +2,7 @@
 numpy>=1.26
 pandas>=2.2
 scikit-learn>=1.4
+pyarrow 
 
 # Graph
 networkx>=3.2
@@ -26,3 +27,6 @@ elasticsearch>=8.13
 # LangChain
 langchain>=0.1.20
 langchain-community>=0.0.38
+
+# Hugging Face
+datasets
