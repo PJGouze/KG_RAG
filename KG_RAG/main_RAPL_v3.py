@@ -1,19 +1,14 @@
-import networkx as nx
-import numpy as np
-import faiss
 from sentence_transformers import SentenceTransformer
 from sklearn.preprocessing import normalize
-from typing import Dict, List, Tuple
 import torch
-import torch.nn as nn
-
-from utilities.KG_utility import build_kg, build_subgraph, linearize_graph_v2, build_faiss_index, build_node_embeddings, build_relation_embeddings
-from Retrievers.DeepRetrieval import DeepRetriever
-from Retrievers.HeuristicRetrieval import search_nodes, get_neighbors, multi_hop_retrieval, HeuristicRetriever
-from utilities.GNN_utility import PolicyNetwork, GNNEncoder, RelationalGATLayer
-
 from transformers import AutoModelForCausalLM, AutoTokenizer
-import torch
+
+
+from utilities.KG_utility import build_kg, build_faiss_index, build_node_embeddings, build_relation_embeddings
+from Retrievers.DeepRetrieval import DeepRetriever
+from Retrievers.HeuristicRetrieval import HeuristicRetriever
+from utilities.GNN_utility import PolicyNetwork, GNNEncoder
+
 
 def generate_answer(context: str, query: str) -> str:
     """
