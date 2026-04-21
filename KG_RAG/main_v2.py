@@ -12,10 +12,6 @@ from DeepRetrieval import DeepRetriever
 from HeuristicRetrieval import search_nodes, get_neighbors, multi_hop_retrieval, HeuristicRetriever
 from GNN_utility import PolicyNetwork, GNNEncoder, RelationalGATLayer
 
-# =========================
-# 6. Answer Generation
-# =========================
-
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 
@@ -86,23 +82,22 @@ def generate_answer(context: str, query: str) -> str:
 # 7. Pipeline
 # =========================
 
-class KGRAGPipeline:
+class NewKGRAGPipeline:
     """
-    End-to-end pipeline for Knowledge Graph Retrieval-Augmented Generation.
-
-    This class encapsulates:
-    - Graph construction
-    - Node embedding
-    - FAISS indexing
-    - KG retrieval
-    - Answer generation
+    Pipeline targeted 
+    - Input Query
+    - Extracting the relevant triples regarding the query
+    - Generating path with dynamic stoping process 
+    - Selecting the most relevant path and suppressing copies
+    - Generating LLM answer with the context retrieval
     """
 
     def __init__(self,
-                retriever_type: str ="heuristic",
+                retriever_type: str ="Deep",
                 model_name: str = "all-MiniLM-L6-v2", 
                 checkpoint_path: str = None,
-                device: str = "cpu"
+                device: str = "cpu",
+                graph : str = None
                 ):
         """
         Initialize the pipeline.
@@ -113,10 +108,22 @@ class KGRAGPipeline:
             by default "heuristic", can be "deep"
         model_name : str, optional
             SentenceTransformer model name, by default "all-MiniLM-L6-v2".
+        checkpoint_path : str, optional 
+            None by default, used to load the weights of a pretrained model.
+        device : str, optional
+            Device for computation ("cpu" or "cuda").
+        graph : str, optional
+            Knowledge Graph used in the process, generic KG if not precised.
         """
+
         self.device = device
         self.model = SentenceTransformer(model_name)
-        self.graph = build_kg()
+
+        if not self. graph: 
+            self.graph = build_kg()
+        else: 
+            self.graph = graph
+
         # First encoding of the KG
         self.embeddings, self.node_to_idx, self.idx_to_node = build_node_embeddings(
             self.graph, self.model
@@ -192,6 +199,8 @@ class KGRAGPipeline:
 
         else:
             raise ValueError("Unknown retriever type")
+        
+        self.reasoner = self.build_reasoner()
 
     def query(self, query: str) -> str:
         """
@@ -208,15 +217,22 @@ class KGRAGPipeline:
             Generated answer.
         """
         query_embedding = self.model.encode([query], convert_to_numpy=True)
-        query_embedding = normalize(query_embedding)[0]
+        query_embedding = normalize(query_embedding)[0] # to verify if needed
 
-        #nodes = self.retriever.retrieve(query_embedding)
-        paths = self.retriever.retrieve_paths(query_embedding)
+        eq = self.entity_linking(query_embedding)
+
+        Gq = self.extract_subgraph(eq)
+
+        paths = self.retriever.retrieve_paths(
+            query_embedding, 
+            Gq
+            )
         
-        #subgraph = build_subgraph(self.graph, nodes)
-        context = linearize_graph_v2(self.graph,paths)
+        context = self.format_paths(paths)
 
-        return generate_answer(context, query)
+        answer = self.generate_answer(query, context)
+
+        return answer
 
 
 # =========================
@@ -224,7 +240,7 @@ class KGRAGPipeline:
 # =========================
 
 if __name__ == "__main__":
-    pipeline = KGRAGPipeline(retriever_type='deep', checkpoint_path="deep_retriever.pt")
+    pipeline = NewKGRAGPipeline(retriever_type='deep', checkpoint_path="deep_retriever.pt")
     query = "What causes sepsis?"
     
     answer = pipeline.query(query)

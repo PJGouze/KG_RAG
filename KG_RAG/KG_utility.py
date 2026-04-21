@@ -4,6 +4,7 @@ import faiss
 from typing import Dict, List, Tuple
 from sentence_transformers import SentenceTransformer
 from sklearn.preprocessing import normalize
+from collections import defaultdict
 
 def build_kg() -> nx.DiGraph:
     """
@@ -361,7 +362,7 @@ def linearize_graph(G: nx.DiGraph, paths: List[List[str]]) -> str:
 
     return "\n".join(path_texts)
 
-def linearize_graph_v2(G, paths):
+def linearize_graph_v2(G: nx.DiGraph, paths):
     """
     Build a linearized graph of triples (RAPL-style).
 
@@ -407,3 +408,49 @@ def linearize_graph_v2(G, paths):
         lines.append(line)
 
     return "\n".join(lines)
+
+def linearize_graph_v3(G: nx.DiGraph) -> nx.DiGraph:
+    """
+    Convert a KG into its directed line graph.
+
+    Nodes: triplets (h, r, t)
+    Edges: (h1,r1,t1) -> (h2,r2,t2) if t1 == h2
+
+    Parameters
+    ----------
+    G : nx.DiGraph
+        Original knowledge graph (not directly used here but kept for compatibility).
+
+    Returns
+    -------
+    nx.Digraph
+        Representing a graph connecting triplets
+    """
+
+    LG = nx.DiGraph()
+
+    # index: subject → list of triplets
+    subject_index = defaultdict(list)
+
+    # =========================
+    # Create nodes + index
+    # =========================
+    for h, t, data in G.edges(data=True):
+        r = data.get("relation", "related_to")
+        triplet = (h, r, t)
+
+        LG.add_node(triplet)
+        subject_index[h].append(triplet)
+
+    # =========================
+    # Create edges efficiently
+    # =========================
+    for h, t, data in G.edges(data=True):
+        r = data.get("relation", "related_to")
+        triplet1 = (h, r, t)
+
+        # find all triplets starting from t
+        for triplet2 in subject_index[t]:
+            LG.add_edge(triplet1, triplet2)
+
+    return LG
