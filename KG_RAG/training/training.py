@@ -1,7 +1,7 @@
 from typing import List
 import torch
 import random
-from RAPL_main import *
+from main_RAPL_v2 import *
 
 def train_deep_retriever(
     retriever,

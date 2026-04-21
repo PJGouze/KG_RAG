@@ -7,10 +7,10 @@ from typing import Dict, List, Tuple
 import torch
 import torch.nn as nn
 
-from KG_utility import build_kg, build_subgraph, linearize_graph_v2, build_faiss_index, build_node_embeddings, build_relation_embeddings
-from DeepRetrieval import DeepRetriever
-from HeuristicRetrieval import search_nodes, get_neighbors, multi_hop_retrieval, HeuristicRetriever
-from GNN_utility import PolicyNetwork, GNNEncoder, RelationalGATLayer
+from utilities.KG_utility import build_kg, build_subgraph, linearize_graph_v2, build_faiss_index, build_node_embeddings, build_relation_embeddings
+from Retrievers.DeepRetrieval import DeepRetriever
+from Retrievers.HeuristicRetrieval import search_nodes, get_neighbors, multi_hop_retrieval, HeuristicRetriever
+from utilities.GNN_utility import PolicyNetwork, GNNEncoder, RelationalGATLayer
 
 # =========================
 # 6. Answer Generation

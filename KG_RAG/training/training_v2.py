@@ -2,9 +2,9 @@ import torch
 from typing import List, Callable
 import numpy as np
 from sentence_transformers import SentenceTransformer
-from DeepRetrieval import *
-from RAPL_main import *
-from losses import calculate_reward_for_path, compute_rl_loss, compute_supervised_loss
+from Retrievers.DeepRetrieval import *
+from main_RAPL_v2 import *
+from training.losses import calculate_reward_for_path, compute_rl_loss, compute_supervised_loss
 
 # =================================
 # Pseudo Ground truth
