@@ -192,13 +192,13 @@ class RAPLRetriever:
     # START SELECTION
     # =========================================================
 
-   def get_start_triplets(
-    self,
-    query_embedding: np.ndarray,
-    G_line: nx.DiGraph,
-    R_star: List[str],
-    eq: str
-) -> List[Tuple[str, str, str]]:
+    def get_start_triplets(
+        self,
+        query_embedding: np.ndarray,
+        G_line: nx.DiGraph,
+        R_star: List[str],
+        eq: str
+        ) -> List[Tuple[str, str, str]]:
         """
         Select initial triplets for reasoning based on:
             - connection to question entity (eq)
@@ -278,60 +278,125 @@ class RAPLRetriever:
         self,
         start_triplet: Tuple[str, str, str],
         query_embedding: np.ndarray,
-        G_line: nx.DiGraph
+        G_line: nx.DiGraph,
+        training: bool = False,
+        return_details: bool = False
     ) -> Tuple[List[Tuple[str, str, str]], float]:
         """
-        Perform a rollout (sequential path generation) starting from a triplet.
+        Perform a RAPL-style rollout (sequential reasoning path generation).
 
-        At each step:
-            - Retrieve neighboring triplets
-            - Include STOP action
-            - Select next action using policy network
+        The rollout iteratively selects the next triplet using the policy network,
+        until either:
+            - STOP is selected
+            - max_steps is reached
+            - no valid neighbors exist
 
         Parameters
         ----------
         start_triplet : tuple
-            Initial triplet.
+            Initial triplet (h, r, t).
         query_embedding : np.ndarray
             Query representation.
         G_line : nx.DiGraph
             Line graph.
+        training : bool, optional
+            If True, uses stochastic sampling (exploration).
+            If False, uses greedy selection.
+        return_details : bool, optional
+            If True, also returns states/actions/log-probs (useful for training).
 
         Returns
         -------
-        Tuple[List[Tuple[str, str, str]], float]
-            Generated path and its cumulative score.
+        Tuple[path, score] or Tuple[path, score, details]
+            path : list of triplets
+            score : cumulative log-probability
+            details (optional) : dict for training
         """
 
         current = start_triplet
-        path = []
-        total_score = 0.0
+        path = [start_triplet]
 
-        for _ in range(self.max_steps):
+        total_log_prob = 0.0
 
+        # For training (policy gradient / supervised)
+        states_history = []
+        actions_history = []
+        log_probs_history = []
+
+        for step in range(self.max_steps):
+
+            # =========================
+            # 1. Get neighbors
+            # =========================
             neighbors = self.get_neighbors(current, G_line)
 
+            # Dead-end → stop
             if not neighbors:
                 break
 
+            # =========================
+            # 2. Add STOP action
+            # =========================
             candidates = neighbors + ["STOP"]
 
+            # =========================
+            # 3. Build states
+            # =========================
             states = [
                 self.build_state(query_embedding, current, c, path)
                 for c in candidates
             ]
 
-            next_node, score = self.select_next(states, candidates)
+            # =========================
+            # 4. Select next action
+            # =========================
+            next_action, prob = self.select_next(
+                states,
+                candidates,
+                training=training
+            )
 
-            if next_node == "STOP":
+            # Convert prob → log-prob (more stable for training)
+            log_prob = np.log(prob + 1e-12)
+
+            total_log_prob += log_prob
+
+            # Store training info
+            if training:
+                states_history.append(states)
+                actions_history.append(next_action)
+                log_probs_history.append(log_prob)
+
+            # =========================
+            # 5. STOP condition (RAPL key)
+            # =========================
+            if next_action == "STOP":
                 break
 
-            path.append(next_node)
-            total_score += score
-            current = next_node
+            # =========================
+            # 6. Avoid cycles
+            # =========================
+            if next_action in path:
+                break
 
-        return path, total_score
+            # =========================
+            # 7. Move forward
+            # =========================
+            path.append(next_action)
+            current = next_action
 
+        # =========================
+        # 8. Return
+        # =========================
+        if return_details:
+            return path, total_log_prob, {
+                "states": states_history,
+                "actions": actions_history,
+                "log_probs": log_probs_history
+            }
+
+        return path, total_log_prob
+    
     # =========================================================
     # NEIGHBORS
     # =========================================================
@@ -368,29 +433,81 @@ class RAPLRetriever:
         current_triplet: Tuple[str, str, str],
         candidate_triplet: Any,
         path: List[Tuple[str, str, str]]
-    ) -> np.ndarray:
+        ) -> np.ndarray:
         """
-        Construct the state representation used by the policy network.
+        Build the state representation for the RAPL policy network.
 
-        Typically includes:
-            - query embedding
-            - current triplet embedding
-            - candidate triplet embedding
-            - path embedding (history)
+        This state encodes:
+            - global query intent
+            - current reasoning position
+            - candidate next action
+            - accumulated reasoning path
 
         Parameters
         ----------
         query_embedding : np.ndarray
+            Embedding of the input query.
         current_triplet : tuple
+            Current node in the line graph (h, r, t).
         candidate_triplet : tuple or "STOP"
-        path : list
+            Candidate next action.
+        path : list of tuples
+            Current reasoning history.
 
         Returns
         -------
         np.ndarray
-            State vector.
+            State vector used by the policy network.
         """
-        raise NotImplementedError
+
+        # =========================
+        # 1. Query embedding
+        # =========================
+        q = query_embedding
+
+        # =========================
+        # 2. Current triplet embedding
+        # =========================
+        idx_curr = self.node_to_idx.get(current_triplet)
+        if idx_curr is None:
+            curr_emb = np.zeros_like(q)
+        else:
+            curr_emb = self.triplet_embeddings[idx_curr]
+
+        # =========================
+        # 3. Candidate embedding
+        # =========================
+        if candidate_triplet == "STOP":
+            cand_emb = self.compute_stop_embedding(path)
+        else:
+            idx_cand = self.node_to_idx.get(candidate_triplet)
+            if idx_cand is None:
+                cand_emb = np.zeros_like(q)
+            else:
+                cand_emb = self.triplet_embeddings[idx_cand]
+
+        # =========================
+        # 4. Path embedding (memory)
+        # =========================
+        if len(path) == 0:
+            path_emb = np.zeros_like(q)
+        else:
+            path_emb = np.mean(
+                [self.triplet_embeddings[self.node_to_idx[t]] for t in path],
+                axis=0
+            )
+
+        # =========================
+        # 5. Concatenation (RAPL-style state)
+        # =========================
+        state = np.concatenate([
+            q,
+            curr_emb,
+            cand_emb,
+            path_emb
+        ])
+
+        return state
 
     # =========================================================
     # POLICY
@@ -399,24 +516,75 @@ class RAPLRetriever:
     def select_next(
         self,
         states: List[np.ndarray],
-        candidates: List[Any]
+        candidates: List[Any],
+        training: bool = False
     ) -> Tuple[Any, float]:
         """
-        Select the next action using the policy network.
+        RAPL-style action selection using a learned policy network.
+
+        This function computes scores for all candidate actions
+        (triplets + STOP) and selects the next step in the reasoning path.
 
         Parameters
         ----------
-        states : list of np.ndarray
-            State representations for each candidate.
-        candidates : list
-            Candidate actions (triplets + STOP).
+        states : List[np.ndarray]
+            State representations for each candidate action.
+            Each state encodes:
+                (query, current_triplet, candidate_triplet, path_memory)
+
+        candidates : List[Any]
+            Candidate triplets + special "STOP" action.
+
+        training : bool, optional
+            If True, samples stochastically (exploration).
+            If False, uses argmax (inference).
 
         Returns
         -------
         Tuple[Any, float]
-            Selected action and its score.
+            Selected action (triplet or "STOP") and its score.
         """
-        raise NotImplementedError
+
+        # =========================
+        # 1. Stack states
+        # =========================
+        state_tensor = np.stack(states)  # (n_candidates, dim)
+
+        # =========================
+        # 2. Policy network forward pass
+        # =========================
+        # output: raw logits (one per candidate)
+        logits = self.policy_network(state_tensor)
+
+        logits = logits.squeeze()
+
+        # =========================
+        # 3. Numerical stability
+        # =========================
+        logits = logits - np.max(logits)
+
+        probs = np.exp(logits) / np.sum(np.exp(logits))
+
+        # =========================
+        # 4. Selection strategy
+        # =========================
+        if training:
+            # stochastic sampling (exploration)
+            idx = np.random.choice(len(candidates), p=probs)
+        else:
+            # greedy selection (inference)
+            idx = int(np.argmax(probs))
+
+        selected_action = candidates[idx]
+        selected_score = float(probs[idx])
+
+        # =========================
+        # 5. STOP handling (RAPL key idea)
+        # =========================
+        if selected_action == "STOP":
+            return "STOP", selected_score
+
+        return selected_action, selected_score
 
     # =========================================================
     # STOP NODE
