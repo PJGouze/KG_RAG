@@ -1,0 +1,8 @@
+rdflib
+pandas
+rapidfuzz
+networkx
+pydantic
+loguru
+scispacy
+spacy
