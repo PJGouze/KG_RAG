@@ -3,7 +3,7 @@ from rdflib import Graph
 from config import ACTIVE_ONTOLOGY
 
 from ontology import EX
-from ontology import ONTOLOGIES
+from ontology import ONTOLOGY_REGISTRY
 
 
 class GraphStore:
@@ -20,7 +20,7 @@ class GraphStore:
 
         self.active_ontology = ACTIVE_ONTOLOGY
 
-        self.ontology_config = ONTOLOGIES[self.active_ontology]
+        self.ontology_config = ONTOLOGY_REGISTRY[self.active_ontology]
 
         self._bind_namespaces()
 

@@ -1,6 +1,3 @@
-from linker import SnomedLinker
-
-
 def normalize_entities(report, linker):
     """
     Link all report entities to ontology concepts.

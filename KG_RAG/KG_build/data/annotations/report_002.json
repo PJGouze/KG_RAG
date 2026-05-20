@@ -1,0 +1,26 @@
+{
+  "report_id": "R002",
+  "patient_id": "P002",
+
+  "entities": [
+    {
+      "id": "E1",
+      "text": "diabetes mellitus",
+      "type": "DISEASE"
+    },
+
+    {
+      "id": "E2",
+      "text": "insulin",
+      "type": "MEDICATION"
+    }
+  ],
+
+  "relations": [
+    {
+      "source": "E1",
+      "target": "E2",
+      "type": "treated_by"
+    }
+  ]
+}

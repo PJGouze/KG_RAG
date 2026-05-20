@@ -1,0 +1,26 @@
+@prefix ex: <http://example.org/medical/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix snomed: <http://snomed.info/id/> .
+
+<http://example.org/medical/patient/P001> ex:hasEntity <http://purl.obolibrary.org/obo/HP_271327008>,
+        snomed:363406005 ;
+    ex:hasReport <http://example.org/medical/report/R001> .
+
+<http://example.org/medical/patient/P002> ex:hasEntity snomed:705129,
+        snomed:73211009 ;
+    ex:hasReport <http://example.org/medical/report/R002> .
+
+snomed:363406005 a ex:DISEASE ;
+    rdfs:label "Parkinson disease" ;
+    ex:hasSymptom <http://purl.obolibrary.org/obo/HP_271327008> .
+
+snomed:73211009 a ex:DISEASE ;
+    rdfs:label "diabetes mellitus" ;
+    ex:treatedBy snomed:705129 .
+
+<http://purl.obolibrary.org/obo/HP_271327008> a ex:SYMPTOM ;
+    rdfs:label "tremor" .
+
+snomed:705129 a ex:MEDICATION ;
+    rdfs:label "insulin" .
+
