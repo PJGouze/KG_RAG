@@ -1,48 +1,123 @@
 from pathlib import Path
 import json
+
 import pandas as pd
+
+from relation_mapper import RelationMapper
 
 
 class ConversionPipeline:
     """
-    Converts raw medical relational dataset into KG-ready JSON files.
+    Convert a medical relation dataset into
+    KG-ready JSON files.
 
-    Output is independent from KG construction pipeline.
+    The pipeline:
+    - groups rows by report
+    - extracts unique entities
+    - extracts graph relations
+    - exports one JSON file per report
     """
 
-    def __init__(self, df: pd.DataFrame, output_dir: str):
-        self.df = df.copy()
-        self.output_dir = Path(output_dir)
-        self.output_dir.mkdir(parents=True, exist_ok=True)
+    def __init__(
+        self,
+        dataframe: pd.DataFrame,
+        output_dir: str | Path
+    ):
+        """
+        Initialize conversion pipeline.
 
-    # ---------------------------------------------------------------------
+        Parameters
+        ----------
+        dataframe : pd.DataFrame
+            Input dataframe containing medical relations.
+
+        output_dir : str | Path
+            Directory where formatted JSON files
+            will be saved.
+        """
+
+        self.df = dataframe.copy()
+
+        self.output_dir = Path(output_dir)
+
+        self.output_dir.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
+    # =========================================================================
     # PUBLIC API
-    # ---------------------------------------------------------------------
+    # =========================================================================
 
     def run(self):
         """
-        Execute full conversion pipeline.
+        Execute the full conversion pipeline.
         """
+
+        self._clean_dataframe()
 
         grouped = self.df.groupby("report")
 
         for report_id, group in grouped:
 
-            kg_json = self._convert_group(report_id, group)
+            report_json = self._build_report_json(
+                report_id=report_id,
+                group=group
+            )
 
-            self._save_json(report_id, kg_json)
+            self._save_json(
+                report_id=report_id,
+                data=report_json
+            )
 
-    # ---------------------------------------------------------------------
-    # CORE TRANSFORMATION
-    # ---------------------------------------------------------------------
+    # =========================================================================
+    # DATA CLEANING
+    # =========================================================================
 
-    def _convert_group(self, report_id, group):
+    def _clean_dataframe(self):
         """
-        Convert a single report group into KG-ready JSON.
+        Normalize dataframe columns and text fields.
         """
 
-        entities = self._extract_entities(group)
-        relations = self._extract_relations(group)
+        self.df.columns = (
+            self.df.columns
+            .str.strip()
+        )
+
+    # =========================================================================
+    # REPORT CONSTRUCTION
+    # =========================================================================
+
+    def _build_report_json(
+        self,
+        report_id: str,
+        group: pd.DataFrame
+    ) -> dict:
+        """
+        Build KG-ready JSON for one report.
+
+        Parameters
+        ----------
+        report_id : str
+            Report identifier.
+
+        group : pd.DataFrame
+            Report-specific dataframe.
+
+        Returns
+        -------
+        dict
+            Structured KG-ready report.
+        """
+
+        entities, entity_map = (
+            self._extract_entities(group)
+        )
+
+        relations = self._extract_relations(
+            group=group,
+            entity_map=entity_map
+        )
 
         return {
             "report_id": report_id,
@@ -50,68 +125,193 @@ class ConversionPipeline:
             "relations": relations
         }
 
-    # ---------------------------------------------------------------------
-    # ENTITIES
-    # ---------------------------------------------------------------------
+    # =========================================================================
+    # ENTITY EXTRACTION
+    # =========================================================================
 
-    def _extract_entities(self, group):
+    def _extract_entities(
+        self,
+        group: pd.DataFrame
+    ):
         """
-        Build unique entity list.
+        Extract unique entities from a report.
+
+        Parameters
+        ----------
+        group : pd.DataFrame
+            Report dataframe.
+
+        Returns
+        -------
+        tuple
+            (
+                entities,
+                entity_map
+            )
         """
 
-        seen = {}
+        entity_map = {}
+
         entities = []
-        idx = 0
+
+        entity_counter = 0
 
         for _, row in group.iterrows():
 
-            for text in [row["source_text"], row["target_text"]]:
+            for text in [
+                row["source_text"],
+                row["target_text"]
+            ]:
 
-                if text not in seen:
+                if pd.isna(text):
+                    continue
 
-                    seen[text] = f"E{idx}"
-                    idx += 1
+                text = str(text).strip()
+
+                if text not in entity_map:
+
+                    entity_id = f"E{entity_counter}"
+
+                    entity_map[text] = entity_id
 
                     entities.append({
-                        "id": seen[text],
+                        "id": entity_id,
                         "text": text,
-                        "type": "ENTITY"
+                        "type": self._infer_entity_type(
+                            text
+                        )
                     })
 
-        return entities
+                    entity_counter += 1
 
-    # ---------------------------------------------------------------------
-    # RELATIONS
-    # ---------------------------------------------------------------------
+        return entities, entity_map
 
-    def _extract_relations(self, group):
+    # =========================================================================
+    # RELATION EXTRACTION
+    # =========================================================================
+
+    def _extract_relations(
+        self,
+        group: pd.DataFrame,
+        entity_map: dict
+    ):
         """
-        Build relations between entities.
+        Extract graph relations.
+
+        Parameters
+        ----------
+        group : pd.DataFrame
+            Report dataframe.
+
+        entity_map : dict
+            Mapping between entity text and entity ID.
+
+        Returns
+        -------
+        list
+            Graph relations.
         """
 
         relations = []
 
         for _, row in group.iterrows():
 
+            source_text = str(
+                row["source_text"]
+            ).strip()
+
+            target_text = str(
+                row["target_text"]
+            ).strip()
+
+            raw_relation = str(
+                row["relation_type"]
+            ).strip()
+
+            normalized_relation = (
+                RelationMapper.normalize(
+                    raw_relation
+                )
+            )
+
             relations.append({
-                "source_text": row["source_text"],
-                "target_text": row["target_text"],
-                "type": row["relation_type"]
+                "source": entity_map[source_text],
+                "target": entity_map[target_text],
+                "type": normalized_relation
             })
 
         return relations
 
-    # ---------------------------------------------------------------------
+    # =========================================================================
+    # ENTITY TYPING
+    # =========================================================================
+
+    def _infer_entity_type(
+        self,
+        text: str
+    ) -> str:
+        """
+        Infer entity semantic type.
+
+        Parameters
+        ----------
+        text : str
+            Entity text.
+
+        Returns
+        -------
+        str
+            Entity type.
+        """
+
+        text = text.lower()
+
+        if "streptococcus" in text:
+            return "PATHOGEN"
+
+        if "bactériémie" in text:
+            return "DISEASE"
+
+        if "hémoculture" in text:
+            return "EXAM"
+
+        return "ENTITY"
+
+    # =========================================================================
     # OUTPUT
-    # ---------------------------------------------------------------------
+    # =========================================================================
 
-    def _save_json(self, report_id, data):
+    def _save_json(
+        self,
+        report_id: str,
+        data: dict
+    ):
         """
-        Save KG-ready JSON.
+        Save report JSON.
+
+        Parameters
+        ----------
+        report_id : str
+            Report identifier.
+
+        data : dict
+            JSON data.
         """
 
-        path = self.output_dir / f"{report_id}.json"
+        output_path = (
+            self.output_dir /
+            f"{report_id}.json"
+        )
 
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-            
+        with open(
+            output_path,
+            "w",
+            encoding="utf-8"
+        ) as f:
+
+            json.dump(
+                data,
+                f,
+                ensure_ascii=False,
+                indent=2
+            )
