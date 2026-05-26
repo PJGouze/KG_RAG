@@ -1,0 +1,28 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00686_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "staphylocoque epidermidis",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "hémocultures positives",
+      "type": "EXAM"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

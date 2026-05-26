@@ -1,0 +1,139 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00637_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "E. coli",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "Hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E2",
+      "text": "L'ECBU",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "pyélonéphrite aiguë",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E4",
+      "text": "bactériémie",
+      "type": "DISEASE"
+    },
+    {
+      "id": "E5",
+      "text": "abcès rénal",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "l'abcès rénal",
+      "type": "ENTITY"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E6",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

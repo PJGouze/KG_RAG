@@ -1,0 +1,293 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00845_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "Érysipèle",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "bactériémie",
+      "type": "DISEASE"
+    },
+    {
+      "id": "E2",
+      "text": "Streptococcus dysgalactiae",
+      "type": "PATHOGEN"
+    },
+    {
+      "id": "E3",
+      "text": "Hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E4",
+      "text": "streptocoque bêta-hémolytique du groupe C/G",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E5",
+      "text": "à point de départ cutané jambe gauche",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "Bactériémie",
+      "type": "DISEASE"
+    },
+    {
+      "id": "E7",
+      "text": "point de départ cutané",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E8",
+      "text": "jambe gauche",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E9",
+      "text": "porte d'entrée à type d'intertrigo inter-orteils",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E10",
+      "text": "hémocultures positives",
+      "type": "EXAM"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E8",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E8",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E10",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E8",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E8",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00687_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "staphylocoque aureus",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "hémoculture",
+      "type": "EXAM"
+    },
+    {
+      "id": "E2",
+      "text": "Dermohypodermite bactérienne non nécrosante",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "membre inférieur gauche",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E4",
+      "text": "Hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E5",
+      "text": "érysipèle",
+      "type": "ENTITY"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

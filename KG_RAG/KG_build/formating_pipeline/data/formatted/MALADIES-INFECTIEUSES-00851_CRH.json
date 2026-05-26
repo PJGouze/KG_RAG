@@ -1,0 +1,341 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00851_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "Infection urinaire fébrile",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "bactériémie",
+      "type": "DISEASE"
+    },
+    {
+      "id": "E2",
+      "text": "infection urinaire fébrile",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "point de départ urinaire",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E4",
+      "text": "bactérie",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E5",
+      "text": "urinaire",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "BHRe",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E7",
+      "text": "Escherichia coli",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E8",
+      "text": "Bactériémie",
+      "type": "DISEASE"
+    },
+    {
+      "id": "E9",
+      "text": "ECBU",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E10",
+      "text": "hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E11",
+      "text": "Hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E12",
+      "text": "EPC",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E13",
+      "text": "bactérie hautement résistante émergente",
+      "type": "ENTITY"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E6",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E7",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E7",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E8",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E7",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E10",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E10",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E6",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E7",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E11",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E7",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E12",
+      "target": "E11",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E13",
+      "target": "E11",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E12",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E12",
+      "target": "E10",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

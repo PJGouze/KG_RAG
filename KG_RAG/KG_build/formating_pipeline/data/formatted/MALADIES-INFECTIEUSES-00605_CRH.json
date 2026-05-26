@@ -1,0 +1,177 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00605_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "Streptococcus pyogenes",
+      "type": "PATHOGEN"
+    },
+    {
+      "id": "E1",
+      "text": "Hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E2",
+      "text": "S. pyogenes",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "bactériémie",
+      "type": "DISEASE"
+    },
+    {
+      "id": "E4",
+      "text": "Dermo-hypodermite",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E5",
+      "text": "membre inférieur droit",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "Bactériémie",
+      "type": "DISEASE"
+    },
+    {
+      "id": "E7",
+      "text": "Demo-hypodermite non nécrosante",
+      "type": "ENTITY"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

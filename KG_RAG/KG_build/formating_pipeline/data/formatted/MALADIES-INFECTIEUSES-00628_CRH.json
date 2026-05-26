@@ -1,0 +1,263 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00628_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "Pyélonéphrite",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "P. aeruginosa",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E2",
+      "text": "l'ECBU",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "Pseudomonas aeruginosa",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E4",
+      "text": "Hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E5",
+      "text": "ECBU",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E7",
+      "text": "pyélonéphrite",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E8",
+      "text": "bactériémique",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E9",
+      "text": "survenant sur sonde vésicale à demeure",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E10",
+      "text": "Pyélonéphrite aiguë",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E11",
+      "text": "septicémie",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E12",
+      "text": "rein gauche",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E13",
+      "text": "néphrite",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E14",
+      "text": "micro-abcédation",
+      "type": "ENTITY"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E8",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E1",
+      "target": "E8",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E8",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E10",
+      "target": "E11",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E11",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E10",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E12",
+      "target": "E13",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E12",
+      "target": "E14",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E12",
+      "target": "E13",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

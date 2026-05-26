@@ -1,0 +1,108 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00764_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "E. coli",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "bactériémiante",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E2",
+      "text": "PNA",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "sur PAC",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E4",
+      "text": "d'hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E5",
+      "text": "périphériques",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "bactériémie",
+      "type": "DISEASE"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

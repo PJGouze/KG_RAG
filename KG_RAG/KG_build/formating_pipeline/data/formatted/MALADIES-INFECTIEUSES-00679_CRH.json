@@ -1,0 +1,211 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00679_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "Salmonella enterica",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "Hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E2",
+      "text": "Coproculture",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E4",
+      "text": "Salmonella Enteritidis",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E5",
+      "text": "septicémie",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "infection digestive",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E7",
+      "text": "toxi-infection alimentaire collective",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E8",
+      "text": "septicémique",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E9",
+      "text": "Infection digestive",
+      "type": "ENTITY"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E5",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E6",
+      "target": "E5",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E5",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E6",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E8",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E8",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E8",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

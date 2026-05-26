@@ -1,0 +1,184 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00665_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "Escherichia coli",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E2",
+      "text": "ECBU",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "E. coli",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E4",
+      "text": "bactériémie",
+      "type": "DISEASE"
+    },
+    {
+      "id": "E5",
+      "text": "Prostatite",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "prostatite",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E7",
+      "text": "sepsis",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E8",
+      "text": "brûlures mictionnelles",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E9",
+      "text": "Fièvre, frissons",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E10",
+      "text": "douleurs pelviennes",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E11",
+      "text": "fièvre à 39°C",
+      "type": "ENTITY"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E6",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E6",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E8",
+      "target": "E9",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E10",
+      "target": "E11",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

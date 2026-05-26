@@ -167,6 +167,9 @@ class ConversionPipeline:
                     continue
 
                 text = str(text).strip()
+                
+                if text == "":
+                    continue
 
                 if text not in entity_map:
 
@@ -189,59 +192,74 @@ class ConversionPipeline:
     # =========================================================================
     # RELATION EXTRACTION
     # =========================================================================
-
     def _extract_relations(
         self,
         group: pd.DataFrame,
         entity_map: dict
-    ):
+        ):
         """
-        Extract graph relations.
-
-        Parameters
-        ----------
-        group : pd.DataFrame
-            Report dataframe.
-
-        entity_map : dict
-            Mapping between entity text and entity ID.
-
-        Returns
-        -------
-        list
-            Graph relations.
+        Extract graph relations with robust handling
+        of missing or inconsistent annotations.
         """
 
         relations = []
 
         for _, row in group.iterrows():
 
-            source_text = str(
-                row["source_text"]
-            ).strip()
+            source_text = str(row["source_text"]).strip()
+            target_text = str(row["target_text"]).strip()
 
-            target_text = str(
-                row["target_text"]
-            ).strip()
+            # skip if entities missing from map
+            if source_text not in entity_map or target_text not in entity_map:
+                continue
 
-            raw_relation = str(
-                row["relation_type"]
-            ).strip()
+            raw_relation = row.get("relation_type", None)
+            raw_relation = None if pd.isna(raw_relation) else str(raw_relation).strip()
 
-            normalized_relation = (
-                RelationMapper.normalize(
-                    raw_relation
-                )
-            )
+            # ------------------------------------------------------------
+            # Collect attribute candidates (even if noisy)
+            # ------------------------------------------------------------
+
+            attr_agent = row.get("attribute_RelationAgentPathogene")
+            attr_site = row.get("attribute_RelationSitePrimaire")
+            attr_orig = row.get("attribute_RelationOrigine")
+
+            candidates = [
+                attr_agent,
+                attr_site,
+                attr_orig
+            ]
+
+            candidates = [
+                c.strip() for c in candidates
+                if isinstance(c, str) and c.strip() != ""
+            ]
+
+            # ------------------------------------------------------------
+            # Normalize relation type (if exists)
+            # ------------------------------------------------------------
+
+            if raw_relation:
+                normalized_relation = RelationMapper.normalize(raw_relation)
+            else:
+                normalized_relation = "UNKNOWN"
+
+            # ------------------------------------------------------------
+            # Build relation JSON
+            # ------------------------------------------------------------
 
             relations.append({
                 "source": entity_map[source_text],
                 "target": entity_map[target_text],
-                "type": normalized_relation
+
+                "relation": {
+                    "type": normalized_relation,
+                    "candidates": candidates,
+                    "source_of_truth": "relation_type" if raw_relation else "attribute"
+                }
             })
 
         return relations
-
     # =========================================================================
     # ENTITY TYPING
     # =========================================================================

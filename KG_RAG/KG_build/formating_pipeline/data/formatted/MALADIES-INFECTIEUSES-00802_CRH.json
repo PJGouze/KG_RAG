@@ -1,0 +1,156 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00802_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "d'orchite",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "Proteus mirabilis",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E2",
+      "text": "SERM",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "Bactériémie",
+      "type": "DISEASE"
+    },
+    {
+      "id": "E4",
+      "text": "abcès",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E5",
+      "text": "prostatiques",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "L'ECBU",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E7",
+      "text": "BGN",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E8",
+      "text": "P.mirabilis",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E9",
+      "text": "Hémocultures",
+      "type": "EXAM"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E6",
+      "target": "E7",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E8",
+      "target": "E9",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

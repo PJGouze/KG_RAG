@@ -1,0 +1,221 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00794_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "point de départ pulmonaire",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "S.pneumoniae",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E2",
+      "text": "Agurie",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "pneumocoque",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E4",
+      "text": "hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E5",
+      "text": "ECBU",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "S.saprophyticus",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E7",
+      "text": "colonisation",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E8",
+      "text": "Antigénurie",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E9",
+      "text": "ECBC",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E10",
+      "text": "s.saprophyticus",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E11",
+      "text": "sepsis",
+      "type": "ENTITY"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E1",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E8",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E1",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E10",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E10",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E10",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E8",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E11",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

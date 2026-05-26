@@ -1,0 +1,102 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00691_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "ECBC",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "staphylocoque aureus",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E2",
+      "text": "haemophilus influenzae",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "Haemophilus Inlfluenzae",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E4",
+      "text": "Hémoculture",
+      "type": "EXAM"
+    },
+    {
+      "id": "E5",
+      "text": "Pneumopathie grippale surinfectée",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "SAMS",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E7",
+      "text": "Haemophilus",
+      "type": "ENTITY"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E7",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

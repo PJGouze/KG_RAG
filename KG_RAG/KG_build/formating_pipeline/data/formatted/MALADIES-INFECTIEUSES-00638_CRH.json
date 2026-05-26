@@ -1,0 +1,222 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00638_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "Streptococcus pneumoniae",
+      "type": "PATHOGEN"
+    },
+    {
+      "id": "E1",
+      "text": "Hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E2",
+      "text": "Antigène urinaire",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "pneumococcique",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E4",
+      "text": "point de départ pulmonaire",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E5",
+      "text": "pneumonie lobaire inférieure droite",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "bactériémie",
+      "type": "DISEASE"
+    },
+    {
+      "id": "E7",
+      "text": "38,2 °C.",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E8",
+      "text": "hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E9",
+      "text": "pneumonie lobaire inférieure",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E10",
+      "text": "basale droite",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E11",
+      "text": "Infiltrat alvéolaire bas droit",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E12",
+      "text": "Fièvre",
+      "type": "ENTITY"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E8",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E10",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E11",
+      "target": "E12",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

@@ -9,14 +9,20 @@ from config import OUTPUT_DIR
 
 def main():
 
-    dfs = {cfg: load_dataset("HealthDataHub/PARHAF-infectiology-annotated",
-                              cfg, split="train")
-           .to_pandas()
-            for cfg in ["document_metadata", "spans", "relations"]
-            }
+    dfs = {
+        cfg: load_dataset(
+            "HealthDataHub/PARHAF-infectiology-annotated",
+            cfg,
+            split="train"
+        )
+        .to_pandas()
+        for cfg in [    
+            "document_metadata",
+            "spans",
+            "relations"
+            ]
+        }
     relations = dfs["relations"]
-
-    print(relations.columns.tolist())
 
     pipeline = ConversionPipeline(
         dataframe=relations,

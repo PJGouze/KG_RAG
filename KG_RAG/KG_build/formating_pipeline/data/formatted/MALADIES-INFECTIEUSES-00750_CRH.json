@@ -1,0 +1,204 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00750_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "S aureus",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "Bactériémie",
+      "type": "DISEASE"
+    },
+    {
+      "id": "E2",
+      "text": "SAMS",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "HC",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E4",
+      "text": "Porte d'entrée potentielle : cutanée",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E5",
+      "text": "Antigénuries",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "légionnelle",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E7",
+      "text": "pneumocoque",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E8",
+      "text": "Staphylococcus aureus",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E9",
+      "text": "bactériémie",
+      "type": "DISEASE"
+    },
+    {
+      "id": "E10",
+      "text": "hémocultures positives",
+      "type": "EXAM"
+    },
+    {
+      "id": "E11",
+      "text": "plaie du deuxième orteil",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E12",
+      "text": "à porte d'entrée cutanée",
+      "type": "ENTITY"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E7",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E8",
+      "target": "E9",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E8",
+      "target": "E10",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E8",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E11",
+      "target": "E9",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E8",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E12",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

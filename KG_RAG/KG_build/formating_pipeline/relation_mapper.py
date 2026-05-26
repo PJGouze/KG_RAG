@@ -1,7 +1,6 @@
 class RelationMapper:
     """
-    Normalize raw medical relation labels into
-    KG-compatible predicates.
+    Normalize medical relation labels.
     """
 
     RELATION_MAPPING = {
@@ -11,19 +10,12 @@ class RelationMapper:
     }
 
     @classmethod
-    def normalize(cls, relation_type: str):
+    def normalize(
+        cls,
+        relation_type: str
+    ) -> str:
         """
-        Normalize relation type.
-
-        Parameters
-        ----------
-        relation_type : str
-            Raw relation label.
-
-        Returns
-        -------
-        str
-            Normalized relation predicate.
+        Normalize relation label.
         """
 
         relation_type = str(

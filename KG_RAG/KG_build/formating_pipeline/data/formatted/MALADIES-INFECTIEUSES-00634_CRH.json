@@ -1,0 +1,28 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00634_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "nasopharyngée",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "M. pneumoniae",
+      "type": "ENTITY"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

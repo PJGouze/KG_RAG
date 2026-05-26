@@ -1,0 +1,358 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00714_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "Streptococcus pneumoniae",
+      "type": "PATHOGEN"
+    },
+    {
+      "id": "E1",
+      "text": "Hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E2",
+      "text": "ECBC",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "S. pneumoniae",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E4",
+      "text": "Antigénurie",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E5",
+      "text": "légionellose",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "pneumocoque",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E7",
+      "text": "Sérologie",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E8",
+      "text": "syphilis",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E9",
+      "text": "crachats",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E10",
+      "text": "BAAR",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E11",
+      "text": "M. tuberculosis",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E12",
+      "text": "1er jet urinaire",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E13",
+      "text": "Gonocoque",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E14",
+      "text": "Chlamydia",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E15",
+      "text": "écouvillon vaginal",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E16",
+      "text": "écouvillon oropharyngé",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E17",
+      "text": "lobaire inférieur gauche",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E18",
+      "text": "Pneumocoque",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E19",
+      "text": "PFLA",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E20",
+      "text": "pneumopathie",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E21",
+      "text": "bactériémie",
+      "type": "DISEASE"
+    },
+    {
+      "id": "E22",
+      "text": "Pneumopathie franche lobaire aiguë",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E23",
+      "text": "LIG",
+      "type": "ENTITY"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E5",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E8",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E10",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E9",
+      "target": "E11",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E12",
+      "target": "E13",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E12",
+      "target": "E14",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E15",
+      "target": "E13",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E15",
+      "target": "E14",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E16",
+      "target": "E13",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E16",
+      "target": "E14",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E17",
+      "target": "E18",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E19",
+      "target": "E18",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E20",
+      "target": "E18",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E18",
+      "target": "E21",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E22",
+      "target": "E21",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E23",
+      "target": "E21",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E22",
+      "target": "E18",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E23",
+      "target": "E18",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

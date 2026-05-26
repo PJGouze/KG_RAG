@@ -1,0 +1,131 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00644_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "S. aureus",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E2",
+      "text": "bactériémie",
+      "type": "DISEASE"
+    },
+    {
+      "id": "E3",
+      "text": "pulmonaire",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E4",
+      "text": "Surinfection bactérienne",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E5",
+      "text": "lobe inférieur gauche",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "bronchopneumonie",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E7",
+      "text": "bibasale",
+      "type": "ENTITY"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E0",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E7",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

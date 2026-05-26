@@ -1,0 +1,65 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00743_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "Staphylococcus aureus",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "Hémocultures",
+      "type": "EXAM"
+    },
+    {
+      "id": "E2",
+      "text": "SAMS",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "hémocultures positives",
+      "type": "EXAM"
+    },
+    {
+      "id": "E4",
+      "text": "Bactériémie",
+      "type": "DISEASE"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E3",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E4",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}

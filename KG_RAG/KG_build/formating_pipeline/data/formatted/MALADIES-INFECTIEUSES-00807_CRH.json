@@ -1,0 +1,124 @@
+{
+  "report_id": "MALADIES-INFECTIEUSES-00807_CRH",
+  "entities": [
+    {
+      "id": "E0",
+      "text": "Pyélonéphrite",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E1",
+      "text": "bactériémiante",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E2",
+      "text": "E.coli",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E3",
+      "text": "point de départ urinaire",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E4",
+      "text": "sepsis",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E5",
+      "text": "ECBU",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E6",
+      "text": "e.coli",
+      "type": "ENTITY"
+    },
+    {
+      "id": "E7",
+      "text": "hémocultures",
+      "type": "EXAM"
+    }
+  ],
+  "relations": [
+    {
+      "source": "E0",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "SitePrimaire"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E1",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E0",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E3",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E4",
+      "target": "E2",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E5",
+      "target": "E6",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "Origine"
+        ],
+        "source_of_truth": "attribute"
+      }
+    },
+    {
+      "source": "E2",
+      "target": "E7",
+      "relation": {
+        "type": "UNKNOWN",
+        "candidates": [
+          "AgentPathogene"
+        ],
+        "source_of_truth": "attribute"
+      }
+    }
+  ]
+}
