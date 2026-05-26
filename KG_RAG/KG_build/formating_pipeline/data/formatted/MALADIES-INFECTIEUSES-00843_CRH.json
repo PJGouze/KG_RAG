@@ -3,78 +3,63 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Citrobacter freundii",
-      "type": "ENTITY"
+      "text": "Citrobacter freundii"
     },
     {
       "id": "E1",
-      "text": "bactériémiante",
-      "type": "ENTITY"
+      "text": "bactériémiante"
     },
     {
       "id": "E2",
-      "text": "arthrite septique",
-      "type": "ENTITY"
+      "text": "arthrite septique"
     },
     {
       "id": "E3",
-      "text": "genou droit",
-      "type": "ENTITY"
+      "text": "genou droit"
     },
     {
       "id": "E4",
-      "text": "bactériémie associée",
-      "type": "DISEASE"
+      "text": "bactériémie associée"
     },
     {
       "id": "E5",
-      "text": "Infection urinaire masculine fébrile",
-      "type": "ENTITY"
+      "text": "Infection urinaire masculine fébrile"
     },
     {
       "id": "E6",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E7",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E8",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E9",
-      "text": "Ponction articulaire de genou droit",
-      "type": "ENTITY"
+      "text": "Ponction articulaire de genou droit"
     },
     {
       "id": "E10",
-      "text": "Prélèvements peropératoires d'arthro-lavage de genou droit",
-      "type": "ENTITY"
+      "text": "Prélèvements peropératoires d'arthro-lavage de genou droit"
     },
     {
       "id": "E11",
-      "text": "prostatite",
-      "type": "ENTITY"
+      "text": "prostatite"
     },
     {
       "id": "E12",
-      "text": "hématogène",
-      "type": "ENTITY"
+      "text": "hématogène"
     },
     {
       "id": "E13",
-      "text": "prélèvements peropératoires",
-      "type": "ENTITY"
+      "text": "prélèvements peropératoires"
     },
     {
       "id": "E14",
-      "text": "C. freundii",
-      "type": "ENTITY"
+      "text": "C. freundii"
     }
   ],
   "relations": [

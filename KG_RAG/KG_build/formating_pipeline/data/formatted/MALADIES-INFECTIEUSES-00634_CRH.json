@@ -3,13 +3,11 @@
   "entities": [
     {
       "id": "E0",
-      "text": "nasopharyngée",
-      "type": "ENTITY"
+      "text": "nasopharyngée"
     },
     {
       "id": "E1",
-      "text": "M. pneumoniae",
-      "type": "ENTITY"
+      "text": "M. pneumoniae"
     }
   ],
   "relations": [

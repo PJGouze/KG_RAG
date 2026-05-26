@@ -3,68 +3,55 @@
   "entities": [
     {
       "id": "E0",
-      "text": "S aureus",
-      "type": "ENTITY"
+      "text": "S aureus"
     },
     {
       "id": "E1",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E2",
-      "text": "SAMS",
-      "type": "ENTITY"
+      "text": "SAMS"
     },
     {
       "id": "E3",
-      "text": "HC",
-      "type": "ENTITY"
+      "text": "HC"
     },
     {
       "id": "E4",
-      "text": "Porte d'entrée potentielle : cutanée",
-      "type": "ENTITY"
+      "text": "Porte d'entrée potentielle : cutanée"
     },
     {
       "id": "E5",
-      "text": "Antigénuries",
-      "type": "ENTITY"
+      "text": "Antigénuries"
     },
     {
       "id": "E6",
-      "text": "légionnelle",
-      "type": "ENTITY"
+      "text": "légionnelle"
     },
     {
       "id": "E7",
-      "text": "pneumocoque",
-      "type": "ENTITY"
+      "text": "pneumocoque"
     },
     {
       "id": "E8",
-      "text": "Staphylococcus aureus",
-      "type": "ENTITY"
+      "text": "Staphylococcus aureus"
     },
     {
       "id": "E9",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E10",
-      "text": "hémocultures positives",
-      "type": "EXAM"
+      "text": "hémocultures positives"
     },
     {
       "id": "E11",
-      "text": "plaie du deuxième orteil",
-      "type": "ENTITY"
+      "text": "plaie du deuxième orteil"
     },
     {
       "id": "E12",
-      "text": "à porte d'entrée cutanée",
-      "type": "ENTITY"
+      "text": "à porte d'entrée cutanée"
     }
   ],
   "relations": [

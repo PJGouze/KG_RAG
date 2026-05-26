@@ -3,38 +3,31 @@
   "entities": [
     {
       "id": "E0",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E1",
-      "text": "bactériémiante",
-      "type": "ENTITY"
+      "text": "bactériémiante"
     },
     {
       "id": "E2",
-      "text": "PNA",
-      "type": "ENTITY"
+      "text": "PNA"
     },
     {
       "id": "E3",
-      "text": "sur PAC",
-      "type": "ENTITY"
+      "text": "sur PAC"
     },
     {
       "id": "E4",
-      "text": "d'hémocultures",
-      "type": "EXAM"
+      "text": "d'hémocultures"
     },
     {
       "id": "E5",
-      "text": "périphériques",
-      "type": "ENTITY"
+      "text": "périphériques"
     },
     {
       "id": "E6",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     }
   ],
   "relations": [

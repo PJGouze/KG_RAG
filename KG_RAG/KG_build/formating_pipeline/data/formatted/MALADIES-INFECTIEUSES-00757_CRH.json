@@ -3,23 +3,19 @@
   "entities": [
     {
       "id": "E0",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E1",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E2",
-      "text": "d'hémocultures",
-      "type": "EXAM"
+      "text": "d'hémocultures"
     },
     {
       "id": "E3",
-      "text": "Pneumopathie d'inhalation",
-      "type": "ENTITY"
+      "text": "Pneumopathie d'inhalation"
     }
   ],
   "relations": [

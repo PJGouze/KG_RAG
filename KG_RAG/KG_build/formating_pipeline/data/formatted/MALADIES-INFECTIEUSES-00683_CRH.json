@@ -3,108 +3,87 @@
   "entities": [
     {
       "id": "E0",
-      "text": "cocci gram + en amas",
-      "type": "ENTITY"
+      "text": "cocci gram + en amas"
     },
     {
       "id": "E1",
-      "text": "Septicémie",
-      "type": "ENTITY"
+      "text": "Septicémie"
     },
     {
       "id": "E2",
-      "text": "Cocci Gram+ en amas.",
-      "type": "ENTITY"
+      "text": "Cocci Gram+ en amas."
     },
     {
       "id": "E3",
-      "text": "d'hémocultures",
-      "type": "EXAM"
+      "text": "d'hémocultures"
     },
     {
       "id": "E4",
-      "text": "périphériques",
-      "type": "ENTITY"
+      "text": "périphériques"
     },
     {
       "id": "E5",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E6",
-      "text": "sur PAC",
-      "type": "ENTITY"
+      "text": "sur PAC"
     },
     {
       "id": "E7",
-      "text": "infection du PAC",
-      "type": "ENTITY"
+      "text": "infection du PAC"
     },
     {
       "id": "E8",
-      "text": "hématogène",
-      "type": "ENTITY"
+      "text": "hématogène"
     },
     {
       "id": "E9",
-      "text": "périphérie",
-      "type": "ENTITY"
+      "text": "périphérie"
     },
     {
       "id": "E10",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E11",
-      "text": "Staphylococcus aureus",
-      "type": "ENTITY"
+      "text": "Staphylococcus aureus"
     },
     {
       "id": "E12",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E13",
-      "text": "drain biliaire",
-      "type": "ENTITY"
+      "text": "drain biliaire"
     },
     {
       "id": "E14",
-      "text": "PAC",
-      "type": "ENTITY"
+      "text": "PAC"
     },
     {
       "id": "E15",
-      "text": "infection de PAC",
-      "type": "ENTITY"
+      "text": "infection de PAC"
     },
     {
       "id": "E16",
-      "text": "SARM",
-      "type": "ENTITY"
+      "text": "SARM"
     },
     {
       "id": "E17",
-      "text": "septicémie",
-      "type": "ENTITY"
+      "text": "septicémie"
     },
     {
       "id": "E18",
-      "text": "angiocholite",
-      "type": "ENTITY"
+      "text": "angiocholite"
     },
     {
       "id": "E19",
-      "text": "sur drain biliaire",
-      "type": "ENTITY"
+      "text": "sur drain biliaire"
     },
     {
       "id": "E20",
-      "text": "infection",
-      "type": "ENTITY"
+      "text": "infection"
     }
   ],
   "relations": [

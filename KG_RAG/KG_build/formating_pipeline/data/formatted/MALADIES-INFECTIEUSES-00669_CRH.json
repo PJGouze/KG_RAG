@@ -3,63 +3,51 @@
   "entities": [
     {
       "id": "E0",
-      "text": "greffon",
-      "type": "ENTITY"
+      "text": "greffon"
     },
     {
       "id": "E1",
-      "text": "E. clocae",
-      "type": "ENTITY"
+      "text": "E. clocae"
     },
     {
       "id": "E2",
-      "text": "PNA",
-      "type": "ENTITY"
+      "text": "PNA"
     },
     {
       "id": "E3",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E4",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E5",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E6",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E7",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E8",
-      "text": "greffon rénal droit",
-      "type": "ENTITY"
+      "text": "greffon rénal droit"
     },
     {
       "id": "E9",
-      "text": "Pyélonéphrite",
-      "type": "ENTITY"
+      "text": "Pyélonéphrite"
     },
     {
       "id": "E10",
-      "text": "MID",
-      "type": "ENTITY"
+      "text": "MID"
     },
     {
       "id": "E11",
-      "text": "d'érysipèle",
-      "type": "ENTITY"
+      "text": "d'érysipèle"
     }
   ],
   "relations": [

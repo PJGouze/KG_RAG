@@ -3,73 +3,59 @@
   "entities": [
     {
       "id": "E0",
-      "text": "porte d'entrée cutanée",
-      "type": "ENTITY"
+      "text": "porte d'entrée cutanée"
     },
     {
       "id": "E1",
-      "text": "SAMS",
-      "type": "ENTITY"
+      "text": "SAMS"
     },
     {
       "id": "E2",
-      "text": "Cocci Gram positif en amas",
-      "type": "ENTITY"
+      "text": "Cocci Gram positif en amas"
     },
     {
       "id": "E3",
-      "text": "d'hémocultures",
-      "type": "EXAM"
+      "text": "d'hémocultures"
     },
     {
       "id": "E4",
-      "text": "Staphylococcus aureus",
-      "type": "ENTITY"
+      "text": "Staphylococcus aureus"
     },
     {
       "id": "E5",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E6",
-      "text": "infection",
-      "type": "ENTITY"
+      "text": "infection"
     },
     {
       "id": "E7",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E8",
-      "text": "d'endoprothèse aortique",
-      "type": "ENTITY"
+      "text": "d'endoprothèse aortique"
     },
     {
       "id": "E9",
-      "text": "furoncle",
-      "type": "ENTITY"
+      "text": "furoncle"
     },
     {
       "id": "E10",
-      "text": "Infection",
-      "type": "ENTITY"
+      "text": "Infection"
     },
     {
       "id": "E11",
-      "text": "hématogène",
-      "type": "ENTITY"
+      "text": "hématogène"
     },
     {
       "id": "E12",
-      "text": "Staphylocoque doré",
-      "type": "ENTITY"
+      "text": "Staphylocoque doré"
     },
     {
       "id": "E13",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     }
   ],
   "relations": [

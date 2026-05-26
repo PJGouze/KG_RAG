@@ -3,43 +3,35 @@
   "entities": [
     {
       "id": "E0",
-      "text": "point de départ urinaire",
-      "type": "ENTITY"
+      "text": "point de départ urinaire"
     },
     {
       "id": "E1",
-      "text": "E.coli",
-      "type": "ENTITY"
+      "text": "E.coli"
     },
     {
       "id": "E2",
-      "text": "périphériques",
-      "type": "ENTITY"
+      "text": "périphériques"
     },
     {
       "id": "E3",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E4",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E5",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E6",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E7",
-      "text": "choc septique",
-      "type": "ENTITY"
+      "text": "choc septique"
     }
   ],
   "relations": [

@@ -3,43 +3,35 @@
   "entities": [
     {
       "id": "E0",
-      "text": "S. aureus",
-      "type": "ENTITY"
+      "text": "S. aureus"
     },
     {
       "id": "E1",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E2",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E3",
-      "text": "pulmonaire",
-      "type": "ENTITY"
+      "text": "pulmonaire"
     },
     {
       "id": "E4",
-      "text": "Surinfection bactérienne",
-      "type": "ENTITY"
+      "text": "Surinfection bactérienne"
     },
     {
       "id": "E5",
-      "text": "lobe inférieur gauche",
-      "type": "ENTITY"
+      "text": "lobe inférieur gauche"
     },
     {
       "id": "E6",
-      "text": "bronchopneumonie",
-      "type": "ENTITY"
+      "text": "bronchopneumonie"
     },
     {
       "id": "E7",
-      "text": "bibasale",
-      "type": "ENTITY"
+      "text": "bibasale"
     }
   ],
   "relations": [

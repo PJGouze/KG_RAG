@@ -3,103 +3,83 @@
   "entities": [
     {
       "id": "E0",
-      "text": "crachats",
-      "type": "ENTITY"
+      "text": "crachats"
     },
     {
       "id": "E1",
-      "text": "BK",
-      "type": "ENTITY"
+      "text": "BK"
     },
     {
       "id": "E2",
-      "text": "BAAR",
-      "type": "ENTITY"
+      "text": "BAAR"
     },
     {
       "id": "E3",
-      "text": "M. tuberculosis",
-      "type": "ENTITY"
+      "text": "M. tuberculosis"
     },
     {
       "id": "E4",
-      "text": "Staphylococcus lugdunensis",
-      "type": "ENTITY"
+      "text": "Staphylococcus lugdunensis"
     },
     {
       "id": "E5",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E6",
-      "text": "Cocci Gram + en amas",
-      "type": "ENTITY"
+      "text": "Cocci Gram + en amas"
     },
     {
       "id": "E7",
-      "text": "urines",
-      "type": "ENTITY"
+      "text": "urines"
     },
     {
       "id": "E8",
-      "text": "oropharyngé",
-      "type": "ENTITY"
+      "text": "oropharyngé"
     },
     {
       "id": "E9",
-      "text": "Gonocoque",
-      "type": "ENTITY"
+      "text": "Gonocoque"
     },
     {
       "id": "E10",
-      "text": "Chlamydia trachomatis",
-      "type": "ENTITY"
+      "text": "Chlamydia trachomatis"
     },
     {
       "id": "E11",
-      "text": "anal",
-      "type": "ENTITY"
+      "text": "anal"
     },
     {
       "id": "E12",
-      "text": "1er jet urinaire",
-      "type": "ENTITY"
+      "text": "1er jet urinaire"
     },
     {
       "id": "E13",
-      "text": "tuberculose",
-      "type": "ENTITY"
+      "text": "tuberculose"
     },
     {
       "id": "E14",
-      "text": "pulmonaire",
-      "type": "ENTITY"
+      "text": "pulmonaire"
     },
     {
       "id": "E15",
-      "text": "orchi-épididymite",
-      "type": "ENTITY"
+      "text": "orchi-épididymite"
     },
     {
       "id": "E16",
-      "text": "septicémie",
-      "type": "ENTITY"
+      "text": "septicémie"
     },
     {
       "id": "E17",
-      "text": "porte d'entrée probablement cutanée",
-      "type": "ENTITY"
+      "text": "porte d'entrée probablement cutanée"
     },
     {
       "id": "E18",
-      "text": "porte d'entrée cutanée",
-      "type": "ENTITY"
+      "text": "porte d'entrée cutanée"
     },
     {
       "id": "E19",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     }
   ],
   "relations": [

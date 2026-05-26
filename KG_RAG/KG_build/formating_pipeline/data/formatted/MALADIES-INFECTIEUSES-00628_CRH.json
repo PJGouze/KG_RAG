@@ -3,78 +3,63 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Pyélonéphrite",
-      "type": "ENTITY"
+      "text": "Pyélonéphrite"
     },
     {
       "id": "E1",
-      "text": "P. aeruginosa",
-      "type": "ENTITY"
+      "text": "P. aeruginosa"
     },
     {
       "id": "E2",
-      "text": "l'ECBU",
-      "type": "ENTITY"
+      "text": "l'ECBU"
     },
     {
       "id": "E3",
-      "text": "Pseudomonas aeruginosa",
-      "type": "ENTITY"
+      "text": "Pseudomonas aeruginosa"
     },
     {
       "id": "E4",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E5",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E6",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E7",
-      "text": "pyélonéphrite",
-      "type": "ENTITY"
+      "text": "pyélonéphrite"
     },
     {
       "id": "E8",
-      "text": "bactériémique",
-      "type": "ENTITY"
+      "text": "bactériémique"
     },
     {
       "id": "E9",
-      "text": "survenant sur sonde vésicale à demeure",
-      "type": "ENTITY"
+      "text": "survenant sur sonde vésicale à demeure"
     },
     {
       "id": "E10",
-      "text": "Pyélonéphrite aiguë",
-      "type": "ENTITY"
+      "text": "Pyélonéphrite aiguë"
     },
     {
       "id": "E11",
-      "text": "septicémie",
-      "type": "ENTITY"
+      "text": "septicémie"
     },
     {
       "id": "E12",
-      "text": "rein gauche",
-      "type": "ENTITY"
+      "text": "rein gauche"
     },
     {
       "id": "E13",
-      "text": "néphrite",
-      "type": "ENTITY"
+      "text": "néphrite"
     },
     {
       "id": "E14",
-      "text": "micro-abcédation",
-      "type": "ENTITY"
+      "text": "micro-abcédation"
     }
   ],
   "relations": [

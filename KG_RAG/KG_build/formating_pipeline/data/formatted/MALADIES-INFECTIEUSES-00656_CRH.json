@@ -3,43 +3,35 @@
   "entities": [
     {
       "id": "E0",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E1",
-      "text": "BGN",
-      "type": "ENTITY"
+      "text": "BGN"
     },
     {
       "id": "E2",
-      "text": "Escherichia coli",
-      "type": "ENTITY"
+      "text": "Escherichia coli"
     },
     {
       "id": "E3",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E4",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E5",
-      "text": "hémocultures centrales et périphériques",
-      "type": "EXAM"
+      "text": "hémocultures centrales et périphériques"
     },
     {
       "id": "E6",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E7",
-      "text": "pyélonéphrite aiguë",
-      "type": "ENTITY"
+      "text": "pyélonéphrite aiguë"
     }
   ],
   "relations": [

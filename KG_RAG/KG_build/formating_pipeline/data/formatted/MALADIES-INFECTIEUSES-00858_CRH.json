@@ -3,68 +3,55 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Staphylococcus capitis",
-      "type": "ENTITY"
+      "text": "Staphylococcus capitis"
     },
     {
       "id": "E1",
-      "text": "bactériémie associée",
-      "type": "DISEASE"
+      "text": "bactériémie associée"
     },
     {
       "id": "E2",
-      "text": "sang",
-      "type": "ENTITY"
+      "text": "sang"
     },
     {
       "id": "E3",
-      "text": "leptospirose",
-      "type": "ENTITY"
+      "text": "leptospirose"
     },
     {
       "id": "E4",
-      "text": "urine",
-      "type": "ENTITY"
+      "text": "urine"
     },
     {
       "id": "E5",
-      "text": "Hémocultures (",
-      "type": "EXAM"
+      "text": "Hémocultures ("
     },
     {
       "id": "E6",
-      "text": "périphérie",
-      "type": "ENTITY"
+      "text": "périphérie"
     },
     {
       "id": "E7",
-      "text": "VVP",
-      "type": "ENTITY"
+      "text": "VVP"
     },
     {
       "id": "E8",
-      "text": "Culture de VVP",
-      "type": "ENTITY"
+      "text": "Culture de VVP"
     },
     {
       "id": "E9",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E10",
-      "text": "S. capitis",
-      "type": "ENTITY"
+      "text": "S. capitis"
     },
     {
       "id": "E11",
-      "text": "culture de cathéter",
-      "type": "ENTITY"
+      "text": "culture de cathéter"
     },
     {
       "id": "E12",
-      "text": "Veinite",
-      "type": "ENTITY"
+      "text": "Veinite"
     }
   ],
   "relations": [

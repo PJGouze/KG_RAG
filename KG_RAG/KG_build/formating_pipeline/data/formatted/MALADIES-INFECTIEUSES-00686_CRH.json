@@ -3,13 +3,11 @@
   "entities": [
     {
       "id": "E0",
-      "text": "staphylocoque epidermidis",
-      "type": "ENTITY"
+      "text": "staphylocoque epidermidis"
     },
     {
       "id": "E1",
-      "text": "hémocultures positives",
-      "type": "EXAM"
+      "text": "hémocultures positives"
     }
   ],
   "relations": [

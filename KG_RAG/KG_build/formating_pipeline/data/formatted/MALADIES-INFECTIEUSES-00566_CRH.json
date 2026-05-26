@@ -3,58 +3,47 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Escherichia coli",
-      "type": "ENTITY"
+      "text": "Escherichia coli"
     },
     {
       "id": "E1",
-      "text": "Hémocultures prélevées aux urgences : 3 flacons sur 4 positifs",
-      "type": "EXAM"
+      "text": "Hémocultures prélevées aux urgences : 3 flacons sur 4 positifs"
     },
     {
       "id": "E2",
-      "text": "ECBU : leucocyturie significative et bactériurie",
-      "type": "ENTITY"
+      "text": "ECBU : leucocyturie significative et bactériurie"
     },
     {
       "id": "E3",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E4",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E5",
-      "text": "point de départ urinaire",
-      "type": "ENTITY"
+      "text": "point de départ urinaire"
     },
     {
       "id": "E6",
-      "text": "pyélonéphrite",
-      "type": "ENTITY"
+      "text": "pyélonéphrite"
     },
     {
       "id": "E7",
-      "text": "Sepsis",
-      "type": "ENTITY"
+      "text": "Sepsis"
     },
     {
       "id": "E8",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E9",
-      "text": "même germe retrouvé à l'ECBU",
-      "type": "ENTITY"
+      "text": "même germe retrouvé à l'ECBU"
     },
     {
       "id": "E10",
-      "text": "pyélonéphrite aiguë",
-      "type": "ENTITY"
+      "text": "pyélonéphrite aiguë"
     }
   ],
   "relations": [

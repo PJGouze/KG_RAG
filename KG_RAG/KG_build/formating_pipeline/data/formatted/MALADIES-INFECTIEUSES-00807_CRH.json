@@ -3,43 +3,35 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Pyélonéphrite",
-      "type": "ENTITY"
+      "text": "Pyélonéphrite"
     },
     {
       "id": "E1",
-      "text": "bactériémiante",
-      "type": "ENTITY"
+      "text": "bactériémiante"
     },
     {
       "id": "E2",
-      "text": "E.coli",
-      "type": "ENTITY"
+      "text": "E.coli"
     },
     {
       "id": "E3",
-      "text": "point de départ urinaire",
-      "type": "ENTITY"
+      "text": "point de départ urinaire"
     },
     {
       "id": "E4",
-      "text": "sepsis",
-      "type": "ENTITY"
+      "text": "sepsis"
     },
     {
       "id": "E5",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E6",
-      "text": "e.coli",
-      "type": "ENTITY"
+      "text": "e.coli"
     },
     {
       "id": "E7",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     }
   ],
   "relations": [

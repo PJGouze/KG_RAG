@@ -3,33 +3,27 @@
   "entities": [
     {
       "id": "E0",
-      "text": "SAMS",
-      "type": "ENTITY"
+      "text": "SAMS"
     },
     {
       "id": "E1",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E2",
-      "text": "porte d'entrée cutanée",
-      "type": "ENTITY"
+      "text": "porte d'entrée cutanée"
     },
     {
       "id": "E3",
-      "text": "Staphylococcus aureus",
-      "type": "ENTITY"
+      "text": "Staphylococcus aureus"
     },
     {
       "id": "E4",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E5",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     }
   ],
   "relations": [

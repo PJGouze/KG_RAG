@@ -3,33 +3,27 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Staphylococcus epidermidis",
-      "type": "ENTITY"
+      "text": "Staphylococcus epidermidis"
     },
     {
       "id": "E1",
-      "text": "hémocultures centrales et périphériques",
-      "type": "EXAM"
+      "text": "hémocultures centrales et périphériques"
     },
     {
       "id": "E2",
-      "text": "infection",
-      "type": "ENTITY"
+      "text": "infection"
     },
     {
       "id": "E3",
-      "text": "chambre implantable",
-      "type": "ENTITY"
+      "text": "chambre implantable"
     },
     {
       "id": "E4",
-      "text": "CIP",
-      "type": "ENTITY"
+      "text": "CIP"
     },
     {
       "id": "E5",
-      "text": "Infection",
-      "type": "ENTITY"
+      "text": "Infection"
     }
   ],
   "relations": [

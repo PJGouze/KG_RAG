@@ -3,43 +3,35 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Pneumopathie d'inhalation",
-      "type": "ENTITY"
+      "text": "Pneumopathie d'inhalation"
     },
     {
       "id": "E1",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E2",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E3",
-      "text": "point de départ pulmonaire",
-      "type": "ENTITY"
+      "text": "point de départ pulmonaire"
     },
     {
       "id": "E4",
-      "text": "pneumocoque",
-      "type": "ENTITY"
+      "text": "pneumocoque"
     },
     {
       "id": "E5",
-      "text": "lobe inférieur droit",
-      "type": "ENTITY"
+      "text": "lobe inférieur droit"
     },
     {
       "id": "E6",
-      "text": "Hémocultures positives",
-      "type": "EXAM"
+      "text": "Hémocultures positives"
     },
     {
       "id": "E7",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     }
   ],
   "relations": [

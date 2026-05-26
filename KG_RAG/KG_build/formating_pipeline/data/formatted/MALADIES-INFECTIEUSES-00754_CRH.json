@@ -3,28 +3,23 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E3",
-      "text": "de point de départ pulmonaire",
-      "type": "ENTITY"
+      "text": "de point de départ pulmonaire"
     },
     {
       "id": "E4",
-      "text": "foyer pulmonaire",
-      "type": "ENTITY"
+      "text": "foyer pulmonaire"
     }
   ],
   "relations": [

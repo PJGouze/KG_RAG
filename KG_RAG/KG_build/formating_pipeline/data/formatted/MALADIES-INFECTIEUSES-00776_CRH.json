@@ -3,38 +3,31 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Pyélonéphrite",
-      "type": "ENTITY"
+      "text": "Pyélonéphrite"
     },
     {
       "id": "E1",
-      "text": "M. morganii",
-      "type": "ENTITY"
+      "text": "M. morganii"
     },
     {
       "id": "E2",
-      "text": "bactériémie associée",
-      "type": "DISEASE"
+      "text": "bactériémie associée"
     },
     {
       "id": "E3",
-      "text": "Morganella morganii",
-      "type": "ENTITY"
+      "text": "Morganella morganii"
     },
     {
       "id": "E4",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E5",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E6",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     }
   ],
   "relations": [

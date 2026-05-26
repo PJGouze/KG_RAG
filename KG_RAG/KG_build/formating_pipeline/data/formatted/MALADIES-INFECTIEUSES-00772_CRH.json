@@ -3,28 +3,23 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Prostatite",
-      "type": "ENTITY"
+      "text": "Prostatite"
     },
     {
       "id": "E1",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E2",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E3",
-      "text": "Escherichia coli",
-      "type": "ENTITY"
+      "text": "Escherichia coli"
     },
     {
       "id": "E4",
-      "text": "Hémoculture",
-      "type": "EXAM"
+      "text": "Hémoculture"
     }
   ],
   "relations": [

@@ -3,33 +3,27 @@
   "entities": [
     {
       "id": "E0",
-      "text": "staphylocoque aureus",
-      "type": "ENTITY"
+      "text": "staphylocoque aureus"
     },
     {
       "id": "E1",
-      "text": "hémoculture",
-      "type": "EXAM"
+      "text": "hémoculture"
     },
     {
       "id": "E2",
-      "text": "Dermohypodermite bactérienne non nécrosante",
-      "type": "ENTITY"
+      "text": "Dermohypodermite bactérienne non nécrosante"
     },
     {
       "id": "E3",
-      "text": "membre inférieur gauche",
-      "type": "ENTITY"
+      "text": "membre inférieur gauche"
     },
     {
       "id": "E4",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E5",
-      "text": "érysipèle",
-      "type": "ENTITY"
+      "text": "érysipèle"
     }
   ],
   "relations": [

@@ -3,123 +3,99 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "ECBC",
-      "type": "ENTITY"
+      "text": "ECBC"
     },
     {
       "id": "E3",
-      "text": "S. pneumoniae",
-      "type": "ENTITY"
+      "text": "S. pneumoniae"
     },
     {
       "id": "E4",
-      "text": "Antigénurie",
-      "type": "ENTITY"
+      "text": "Antigénurie"
     },
     {
       "id": "E5",
-      "text": "légionellose",
-      "type": "ENTITY"
+      "text": "légionellose"
     },
     {
       "id": "E6",
-      "text": "pneumocoque",
-      "type": "ENTITY"
+      "text": "pneumocoque"
     },
     {
       "id": "E7",
-      "text": "Sérologie",
-      "type": "ENTITY"
+      "text": "Sérologie"
     },
     {
       "id": "E8",
-      "text": "syphilis",
-      "type": "ENTITY"
+      "text": "syphilis"
     },
     {
       "id": "E9",
-      "text": "crachats",
-      "type": "ENTITY"
+      "text": "crachats"
     },
     {
       "id": "E10",
-      "text": "BAAR",
-      "type": "ENTITY"
+      "text": "BAAR"
     },
     {
       "id": "E11",
-      "text": "M. tuberculosis",
-      "type": "ENTITY"
+      "text": "M. tuberculosis"
     },
     {
       "id": "E12",
-      "text": "1er jet urinaire",
-      "type": "ENTITY"
+      "text": "1er jet urinaire"
     },
     {
       "id": "E13",
-      "text": "Gonocoque",
-      "type": "ENTITY"
+      "text": "Gonocoque"
     },
     {
       "id": "E14",
-      "text": "Chlamydia",
-      "type": "ENTITY"
+      "text": "Chlamydia"
     },
     {
       "id": "E15",
-      "text": "écouvillon vaginal",
-      "type": "ENTITY"
+      "text": "écouvillon vaginal"
     },
     {
       "id": "E16",
-      "text": "écouvillon oropharyngé",
-      "type": "ENTITY"
+      "text": "écouvillon oropharyngé"
     },
     {
       "id": "E17",
-      "text": "lobaire inférieur gauche",
-      "type": "ENTITY"
+      "text": "lobaire inférieur gauche"
     },
     {
       "id": "E18",
-      "text": "Pneumocoque",
-      "type": "ENTITY"
+      "text": "Pneumocoque"
     },
     {
       "id": "E19",
-      "text": "PFLA",
-      "type": "ENTITY"
+      "text": "PFLA"
     },
     {
       "id": "E20",
-      "text": "pneumopathie",
-      "type": "ENTITY"
+      "text": "pneumopathie"
     },
     {
       "id": "E21",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E22",
-      "text": "Pneumopathie franche lobaire aiguë",
-      "type": "ENTITY"
+      "text": "Pneumopathie franche lobaire aiguë"
     },
     {
       "id": "E23",
-      "text": "LIG",
-      "type": "ENTITY"
+      "text": "LIG"
     }
   ],
   "relations": [

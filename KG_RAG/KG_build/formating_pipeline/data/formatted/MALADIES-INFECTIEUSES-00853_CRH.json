@@ -3,33 +3,27 @@
   "entities": [
     {
       "id": "E0",
-      "text": "pneumonie",
-      "type": "ENTITY"
+      "text": "pneumonie"
     },
     {
       "id": "E1",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E2",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E3",
-      "text": "lobaire droite",
-      "type": "ENTITY"
+      "text": "lobaire droite"
     },
     {
       "id": "E4",
-      "text": "Hémocultures positives",
-      "type": "EXAM"
+      "text": "Hémocultures positives"
     },
     {
       "id": "E5",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     }
   ],
   "relations": [

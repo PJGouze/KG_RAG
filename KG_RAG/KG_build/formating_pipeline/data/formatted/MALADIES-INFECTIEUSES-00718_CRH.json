@@ -3,53 +3,43 @@
   "entities": [
     {
       "id": "E0",
-      "text": "IU",
-      "type": "ENTITY"
+      "text": "IU"
     },
     {
       "id": "E1",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E2",
-      "text": "sur autosondages",
-      "type": "ENTITY"
+      "text": "sur autosondages"
     },
     {
       "id": "E3",
-      "text": "Pyélonéphrite aiguë à risque de complications",
-      "type": "ENTITY"
+      "text": "Pyélonéphrite aiguë à risque de complications"
     },
     {
       "id": "E4",
-      "text": "Escherichia coli",
-      "type": "ENTITY"
+      "text": "Escherichia coli"
     },
     {
       "id": "E5",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E6",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E7",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E8",
-      "text": "bactériémiante",
-      "type": "ENTITY"
+      "text": "bactériémiante"
     },
     {
       "id": "E9",
-      "text": "sur autosondage",
-      "type": "ENTITY"
+      "text": "sur autosondage"
     }
   ],
   "relations": [

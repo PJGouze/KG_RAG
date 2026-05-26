@@ -3,43 +3,35 @@
   "entities": [
     {
       "id": "E0",
-      "text": "ECBC",
-      "type": "ENTITY"
+      "text": "ECBC"
     },
     {
       "id": "E1",
-      "text": "staphylocoque aureus",
-      "type": "ENTITY"
+      "text": "staphylocoque aureus"
     },
     {
       "id": "E2",
-      "text": "haemophilus influenzae",
-      "type": "ENTITY"
+      "text": "haemophilus influenzae"
     },
     {
       "id": "E3",
-      "text": "Haemophilus Inlfluenzae",
-      "type": "ENTITY"
+      "text": "Haemophilus Inlfluenzae"
     },
     {
       "id": "E4",
-      "text": "Hémoculture",
-      "type": "EXAM"
+      "text": "Hémoculture"
     },
     {
       "id": "E5",
-      "text": "Pneumopathie grippale surinfectée",
-      "type": "ENTITY"
+      "text": "Pneumopathie grippale surinfectée"
     },
     {
       "id": "E6",
-      "text": "SAMS",
-      "type": "ENTITY"
+      "text": "SAMS"
     },
     {
       "id": "E7",
-      "text": "Haemophilus",
-      "type": "ENTITY"
+      "text": "Haemophilus"
     }
   ],
   "relations": [

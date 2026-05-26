@@ -3,58 +3,47 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Érysipèle",
-      "type": "ENTITY"
+      "text": "Érysipèle"
     },
     {
       "id": "E1",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E2",
-      "text": "Streptococcus dysgalactiae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus dysgalactiae"
     },
     {
       "id": "E3",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E4",
-      "text": "streptocoque bêta-hémolytique du groupe C/G",
-      "type": "ENTITY"
+      "text": "streptocoque bêta-hémolytique du groupe C/G"
     },
     {
       "id": "E5",
-      "text": "à point de départ cutané jambe gauche",
-      "type": "ENTITY"
+      "text": "à point de départ cutané jambe gauche"
     },
     {
       "id": "E6",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E7",
-      "text": "point de départ cutané",
-      "type": "ENTITY"
+      "text": "point de départ cutané"
     },
     {
       "id": "E8",
-      "text": "jambe gauche",
-      "type": "ENTITY"
+      "text": "jambe gauche"
     },
     {
       "id": "E9",
-      "text": "porte d'entrée à type d'intertrigo inter-orteils",
-      "type": "ENTITY"
+      "text": "porte d'entrée à type d'intertrigo inter-orteils"
     },
     {
       "id": "E10",
-      "text": "hémocultures positives",
-      "type": "EXAM"
+      "text": "hémocultures positives"
     }
   ],
   "relations": [

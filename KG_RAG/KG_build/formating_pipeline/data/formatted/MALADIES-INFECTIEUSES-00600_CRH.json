@@ -3,38 +3,31 @@
   "entities": [
     {
       "id": "E0",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E1",
-      "text": "K. pneumoniae",
-      "type": "ENTITY"
+      "text": "K. pneumoniae"
     },
     {
       "id": "E2",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E3",
-      "text": "Infection urinaire masculine",
-      "type": "ENTITY"
+      "text": "Infection urinaire masculine"
     },
     {
       "id": "E4",
-      "text": "bactériémiante",
-      "type": "ENTITY"
+      "text": "bactériémiante"
     },
     {
       "id": "E5",
-      "text": "cathéter",
-      "type": "ENTITY"
+      "text": "cathéter"
     },
     {
       "id": "E6",
-      "text": "Veinite",
-      "type": "ENTITY"
+      "text": "Veinite"
     }
   ],
   "relations": [

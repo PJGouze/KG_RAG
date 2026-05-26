@@ -3,83 +3,67 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "Antigénurie",
-      "type": "ENTITY"
+      "text": "Antigénurie"
     },
     {
       "id": "E3",
-      "text": "légionellose",
-      "type": "ENTITY"
+      "text": "légionellose"
     },
     {
       "id": "E4",
-      "text": "antigénurie",
-      "type": "ENTITY"
+      "text": "antigénurie"
     },
     {
       "id": "E5",
-      "text": "pneumocoque",
-      "type": "ENTITY"
+      "text": "pneumocoque"
     },
     {
       "id": "E6",
-      "text": "ECBC",
-      "type": "ENTITY"
+      "text": "ECBC"
     },
     {
       "id": "E7",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E8",
-      "text": "Pneumocoque",
-      "type": "ENTITY"
+      "text": "Pneumocoque"
     },
     {
       "id": "E9",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E10",
-      "text": "pneumopathie aiguë communautaire",
-      "type": "ENTITY"
+      "text": "pneumopathie aiguë communautaire"
     },
     {
       "id": "E11",
-      "text": "Pneumopathie aiguë communautaire",
-      "type": "ENTITY"
+      "text": "Pneumopathie aiguë communautaire"
     },
     {
       "id": "E12",
-      "text": "base droite",
-      "type": "ENTITY"
+      "text": "base droite"
     },
     {
       "id": "E13",
-      "text": "PFLA",
-      "type": "ENTITY"
+      "text": "PFLA"
     },
     {
       "id": "E14",
-      "text": "fébrile à 39°C",
-      "type": "ENTITY"
+      "text": "fébrile à 39°C"
     },
     {
       "id": "E15",
-      "text": "Condensation pulmonaire basale droite touchant les lobes inférieur et moyen",
-      "type": "ENTITY"
+      "text": "Condensation pulmonaire basale droite touchant les lobes inférieur et moyen"
     }
   ],
   "relations": [

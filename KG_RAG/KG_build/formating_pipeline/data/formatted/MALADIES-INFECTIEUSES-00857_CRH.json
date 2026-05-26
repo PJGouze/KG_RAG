@@ -3,33 +3,27 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Pneumopathie d'inhalation",
-      "type": "ENTITY"
+      "text": "Pneumopathie d'inhalation"
     },
     {
       "id": "E1",
-      "text": "Pseudomonas aeruginosa",
-      "type": "ENTITY"
+      "text": "Pseudomonas aeruginosa"
     },
     {
       "id": "E2",
-      "text": "point de départ pulmonaire",
-      "type": "ENTITY"
+      "text": "point de départ pulmonaire"
     },
     {
       "id": "E3",
-      "text": "Hémocultures positives",
-      "type": "EXAM"
+      "text": "Hémocultures positives"
     },
     {
       "id": "E4",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E5",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     }
   ],
   "relations": [

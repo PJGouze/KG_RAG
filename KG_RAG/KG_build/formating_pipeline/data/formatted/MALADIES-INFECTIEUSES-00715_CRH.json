@@ -3,38 +3,31 @@
   "entities": [
     {
       "id": "E0",
-      "text": "VVP",
-      "type": "ENTITY"
+      "text": "VVP"
     },
     {
       "id": "E1",
-      "text": "Staphylocoque capitis",
-      "type": "ENTITY"
+      "text": "Staphylocoque capitis"
     },
     {
       "id": "E2",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E3",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E4",
-      "text": "KT",
-      "type": "ENTITY"
+      "text": "KT"
     },
     {
       "id": "E5",
-      "text": "Veinite",
-      "type": "ENTITY"
+      "text": "Veinite"
     },
     {
       "id": "E6",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     }
   ],
   "relations": [

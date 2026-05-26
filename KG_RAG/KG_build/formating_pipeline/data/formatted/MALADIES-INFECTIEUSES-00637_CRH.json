@@ -3,38 +3,31 @@
   "entities": [
     {
       "id": "E0",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "L'ECBU",
-      "type": "ENTITY"
+      "text": "L'ECBU"
     },
     {
       "id": "E3",
-      "text": "pyélonéphrite aiguë",
-      "type": "ENTITY"
+      "text": "pyélonéphrite aiguë"
     },
     {
       "id": "E4",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E5",
-      "text": "abcès rénal",
-      "type": "ENTITY"
+      "text": "abcès rénal"
     },
     {
       "id": "E6",
-      "text": "l'abcès rénal",
-      "type": "ENTITY"
+      "text": "l'abcès rénal"
     }
   ],
   "relations": [

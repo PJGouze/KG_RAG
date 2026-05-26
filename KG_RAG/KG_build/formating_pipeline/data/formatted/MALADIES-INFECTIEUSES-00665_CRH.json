@@ -3,63 +3,51 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Escherichia coli",
-      "type": "ENTITY"
+      "text": "Escherichia coli"
     },
     {
       "id": "E1",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E2",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E3",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E4",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E5",
-      "text": "Prostatite",
-      "type": "ENTITY"
+      "text": "Prostatite"
     },
     {
       "id": "E6",
-      "text": "prostatite",
-      "type": "ENTITY"
+      "text": "prostatite"
     },
     {
       "id": "E7",
-      "text": "sepsis",
-      "type": "ENTITY"
+      "text": "sepsis"
     },
     {
       "id": "E8",
-      "text": "brûlures mictionnelles",
-      "type": "ENTITY"
+      "text": "brûlures mictionnelles"
     },
     {
       "id": "E9",
-      "text": "Fièvre, frissons",
-      "type": "ENTITY"
+      "text": "Fièvre, frissons"
     },
     {
       "id": "E10",
-      "text": "douleurs pelviennes",
-      "type": "ENTITY"
+      "text": "douleurs pelviennes"
     },
     {
       "id": "E11",
-      "text": "fièvre à 39°C",
-      "type": "ENTITY"
+      "text": "fièvre à 39°C"
     }
   ],
   "relations": [

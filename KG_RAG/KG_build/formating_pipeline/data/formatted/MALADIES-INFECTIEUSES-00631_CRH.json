@@ -3,48 +3,39 @@
   "entities": [
     {
       "id": "E0",
-      "text": "infection urinaire masculine",
-      "type": "ENTITY"
+      "text": "infection urinaire masculine"
     },
     {
       "id": "E1",
-      "text": "Sepsis",
-      "type": "ENTITY"
+      "text": "Sepsis"
     },
     {
       "id": "E2",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E3",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E4",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E5",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E6",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E7",
-      "text": "Infection urinaire masculine",
-      "type": "ENTITY"
+      "text": "Infection urinaire masculine"
     },
     {
       "id": "E8",
-      "text": "Escherichia coli",
-      "type": "ENTITY"
+      "text": "Escherichia coli"
     }
   ],
   "relations": [

@@ -3,78 +3,63 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Escherichia coli",
-      "type": "ENTITY"
+      "text": "Escherichia coli"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E3",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E4",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E5",
-      "text": "1er jet urinaire",
-      "type": "ENTITY"
+      "text": "1er jet urinaire"
     },
     {
       "id": "E6",
-      "text": "Chlamydia trachomatis",
-      "type": "ENTITY"
+      "text": "Chlamydia trachomatis"
     },
     {
       "id": "E7",
-      "text": "écouvillon anal",
-      "type": "ENTITY"
+      "text": "écouvillon anal"
     },
     {
       "id": "E8",
-      "text": "oropharyngé",
-      "type": "ENTITY"
+      "text": "oropharyngé"
     },
     {
       "id": "E9",
-      "text": "Gonocoque",
-      "type": "ENTITY"
+      "text": "Gonocoque"
     },
     {
       "id": "E10",
-      "text": "septicémie",
-      "type": "ENTITY"
+      "text": "septicémie"
     },
     {
       "id": "E11",
-      "text": "orchi-épididymite",
-      "type": "ENTITY"
+      "text": "orchi-épididymite"
     },
     {
       "id": "E12",
-      "text": "infection urinaire masculine",
-      "type": "ENTITY"
+      "text": "infection urinaire masculine"
     },
     {
       "id": "E13",
-      "text": "prostatite",
-      "type": "ENTITY"
+      "text": "prostatite"
     },
     {
       "id": "E14",
-      "text": "Infection urinaire masculine",
-      "type": "ENTITY"
+      "text": "Infection urinaire masculine"
     }
   ],
   "relations": [

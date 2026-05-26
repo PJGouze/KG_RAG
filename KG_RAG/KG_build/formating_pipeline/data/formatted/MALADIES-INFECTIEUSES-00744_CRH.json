@@ -3,33 +3,27 @@
   "entities": [
     {
       "id": "E0",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E1",
-      "text": "Proteus mirabilis",
-      "type": "ENTITY"
+      "text": "Proteus mirabilis"
     },
     {
       "id": "E2",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E3",
-      "text": "pyélonéphrite aiguë droite à risque de complications",
-      "type": "ENTITY"
+      "text": "pyélonéphrite aiguë droite à risque de complications"
     },
     {
       "id": "E4",
-      "text": "bactériémiante",
-      "type": "ENTITY"
+      "text": "bactériémiante"
     },
     {
       "id": "E5",
-      "text": "PNA droite à risque de complications",
-      "type": "ENTITY"
+      "text": "PNA droite à risque de complications"
     }
   ],
   "relations": [

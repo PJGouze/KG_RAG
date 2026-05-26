@@ -3,33 +3,27 @@
   "entities": [
     {
       "id": "E0",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E1",
-      "text": "Escherichia coli",
-      "type": "ENTITY"
+      "text": "Escherichia coli"
     },
     {
       "id": "E2",
-      "text": "Infection urinaire",
-      "type": "ENTITY"
+      "text": "Infection urinaire"
     },
     {
       "id": "E3",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E4",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E5",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     }
   ],
   "relations": [

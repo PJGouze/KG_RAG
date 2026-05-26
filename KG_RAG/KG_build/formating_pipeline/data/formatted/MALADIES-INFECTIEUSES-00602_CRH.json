@@ -3,58 +3,47 @@
   "entities": [
     {
       "id": "E0",
-      "text": "antigénurie",
-      "type": "ENTITY"
+      "text": "antigénurie"
     },
     {
       "id": "E1",
-      "text": "pneumocoque",
-      "type": "ENTITY"
+      "text": "pneumocoque"
     },
     {
       "id": "E2",
-      "text": "L'antigénurie",
-      "type": "ENTITY"
+      "text": "L'antigénurie"
     },
     {
       "id": "E3",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E4",
-      "text": "pneumopathie franche lobaire aiguë",
-      "type": "ENTITY"
+      "text": "pneumopathie franche lobaire aiguë"
     },
     {
       "id": "E5",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E6",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E7",
-      "text": "Antigénurie",
-      "type": "ENTITY"
+      "text": "Antigénurie"
     },
     {
       "id": "E8",
-      "text": "légionellose",
-      "type": "ENTITY"
+      "text": "légionellose"
     },
     {
       "id": "E9",
-      "text": "Pneumopathie",
-      "type": "ENTITY"
+      "text": "Pneumopathie"
     },
     {
       "id": "E10",
-      "text": "bactériémiante",
-      "type": "ENTITY"
+      "text": "bactériémiante"
     }
   ],
   "relations": [

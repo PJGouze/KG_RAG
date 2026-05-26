@@ -3,48 +3,39 @@
   "entities": [
     {
       "id": "E0",
-      "text": "périphériques",
-      "type": "ENTITY"
+      "text": "périphériques"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "Streptococcus pyogenes",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pyogenes"
     },
     {
       "id": "E3",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E4",
-      "text": "Erysipèle",
-      "type": "ENTITY"
+      "text": "Erysipèle"
     },
     {
       "id": "E5",
-      "text": "MIG",
-      "type": "ENTITY"
+      "text": "MIG"
     },
     {
       "id": "E6",
-      "text": "S. pyogenes",
-      "type": "ENTITY"
+      "text": "S. pyogenes"
     },
     {
       "id": "E7",
-      "text": "Dermohypodermite infectieuse non nécrosante",
-      "type": "ENTITY"
+      "text": "Dermohypodermite infectieuse non nécrosante"
     },
     {
       "id": "E8",
-      "text": "du membre inférieur gauche",
-      "type": "ENTITY"
+      "text": "du membre inférieur gauche"
     }
   ],
   "relations": [

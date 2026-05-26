@@ -3,73 +3,59 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Antigénurie",
-      "type": "ENTITY"
+      "text": "Antigénurie"
     },
     {
       "id": "E1",
-      "text": "légionellose",
-      "type": "ENTITY"
+      "text": "légionellose"
     },
     {
       "id": "E2",
-      "text": "antigénurie",
-      "type": "ENTITY"
+      "text": "antigénurie"
     },
     {
       "id": "E3",
-      "text": "pneumocoque",
-      "type": "ENTITY"
+      "text": "pneumocoque"
     },
     {
       "id": "E4",
-      "text": "Staphylococcus capitis",
-      "type": "ENTITY"
+      "text": "Staphylococcus capitis"
     },
     {
       "id": "E5",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E6",
-      "text": "VVP",
-      "type": "ENTITY"
+      "text": "VVP"
     },
     {
       "id": "E7",
-      "text": "l'antigénurie",
-      "type": "ENTITY"
+      "text": "l'antigénurie"
     },
     {
       "id": "E8",
-      "text": "cathéter",
-      "type": "ENTITY"
+      "text": "cathéter"
     },
     {
       "id": "E9",
-      "text": "S. capitis",
-      "type": "ENTITY"
+      "text": "S. capitis"
     },
     {
       "id": "E10",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E11",
-      "text": "Veinite",
-      "type": "ENTITY"
+      "text": "Veinite"
     },
     {
       "id": "E12",
-      "text": "Pneumopathie",
-      "type": "ENTITY"
+      "text": "Pneumopathie"
     },
     {
       "id": "E13",
-      "text": "Legionnella pneumophila",
-      "type": "ENTITY"
+      "text": "Legionnella pneumophila"
     }
   ],
   "relations": [

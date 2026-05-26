@@ -3,38 +3,31 @@
   "entities": [
     {
       "id": "E0",
-      "text": "l'ECBU",
-      "type": "ENTITY"
+      "text": "l'ECBU"
     },
     {
       "id": "E1",
-      "text": "BGN",
-      "type": "ENTITY"
+      "text": "BGN"
     },
     {
       "id": "E2",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E3",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E4",
-      "text": "L'ECBU",
-      "type": "ENTITY"
+      "text": "L'ECBU"
     },
     {
       "id": "E5",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E6",
-      "text": "infection urinaire masculine",
-      "type": "ENTITY"
+      "text": "infection urinaire masculine"
     }
   ],
   "relations": [

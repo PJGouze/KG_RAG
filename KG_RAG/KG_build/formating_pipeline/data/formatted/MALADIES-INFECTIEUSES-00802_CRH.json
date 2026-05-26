@@ -3,53 +3,43 @@
   "entities": [
     {
       "id": "E0",
-      "text": "d'orchite",
-      "type": "ENTITY"
+      "text": "d'orchite"
     },
     {
       "id": "E1",
-      "text": "Proteus mirabilis",
-      "type": "ENTITY"
+      "text": "Proteus mirabilis"
     },
     {
       "id": "E2",
-      "text": "SERM",
-      "type": "ENTITY"
+      "text": "SERM"
     },
     {
       "id": "E3",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E4",
-      "text": "abcès",
-      "type": "ENTITY"
+      "text": "abcès"
     },
     {
       "id": "E5",
-      "text": "prostatiques",
-      "type": "ENTITY"
+      "text": "prostatiques"
     },
     {
       "id": "E6",
-      "text": "L'ECBU",
-      "type": "ENTITY"
+      "text": "L'ECBU"
     },
     {
       "id": "E7",
-      "text": "BGN",
-      "type": "ENTITY"
+      "text": "BGN"
     },
     {
       "id": "E8",
-      "text": "P.mirabilis",
-      "type": "ENTITY"
+      "text": "P.mirabilis"
     },
     {
       "id": "E9",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     }
   ],
   "relations": [

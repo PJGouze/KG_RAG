@@ -3,33 +3,27 @@
   "entities": [
     {
       "id": "E0",
-      "text": "ECBC",
-      "type": "ENTITY"
+      "text": "ECBC"
     },
     {
       "id": "E1",
-      "text": "H.influenzae",
-      "type": "ENTITY"
+      "text": "H.influenzae"
     },
     {
       "id": "E2",
-      "text": "Haemophilus influenzae",
-      "type": "ENTITY"
+      "text": "Haemophilus influenzae"
     },
     {
       "id": "E3",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E4",
-      "text": "bactérémiante",
-      "type": "ENTITY"
+      "text": "bactérémiante"
     },
     {
       "id": "E5",
-      "text": "surinfection",
-      "type": "ENTITY"
+      "text": "surinfection"
     }
   ],
   "relations": [

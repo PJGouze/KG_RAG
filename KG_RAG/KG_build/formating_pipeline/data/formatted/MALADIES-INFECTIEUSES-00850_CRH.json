@@ -3,58 +3,47 @@
   "entities": [
     {
       "id": "E0",
-      "text": "d'endocardite",
-      "type": "ENTITY"
+      "text": "d'endocardite"
     },
     {
       "id": "E1",
-      "text": "Staphylocoque doré",
-      "type": "ENTITY"
+      "text": "Staphylocoque doré"
     },
     {
       "id": "E2",
-      "text": "endocardite",
-      "type": "ENTITY"
+      "text": "endocardite"
     },
     {
       "id": "E3",
-      "text": "SAMS",
-      "type": "ENTITY"
+      "text": "SAMS"
     },
     {
       "id": "E4",
-      "text": "sonde de pacemaker",
-      "type": "ENTITY"
+      "text": "sonde de pacemaker"
     },
     {
       "id": "E5",
-      "text": "Endocardite",
-      "type": "ENTITY"
+      "text": "Endocardite"
     },
     {
       "id": "E6",
-      "text": "porte d'entrée cutanée",
-      "type": "ENTITY"
+      "text": "porte d'entrée cutanée"
     },
     {
       "id": "E7",
-      "text": "panaris",
-      "type": "ENTITY"
+      "text": "panaris"
     },
     {
       "id": "E8",
-      "text": "périphériques",
-      "type": "ENTITY"
+      "text": "périphériques"
     },
     {
       "id": "E9",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E10",
-      "text": "d'hémocultures",
-      "type": "EXAM"
+      "text": "d'hémocultures"
     }
   ],
   "relations": [

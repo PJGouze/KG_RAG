@@ -3,38 +3,31 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Pneumopathie d'inhalation",
-      "type": "ENTITY"
+      "text": "Pneumopathie d'inhalation"
     },
     {
       "id": "E1",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E2",
-      "text": "pneumopathie d'inhalation",
-      "type": "ENTITY"
+      "text": "pneumopathie d'inhalation"
     },
     {
       "id": "E3",
-      "text": "Escherichia coli",
-      "type": "ENTITY"
+      "text": "Escherichia coli"
     },
     {
       "id": "E4",
-      "text": "d'origine pulmonaire",
-      "type": "ENTITY"
+      "text": "d'origine pulmonaire"
     },
     {
       "id": "E5",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E6",
-      "text": "point de départ pulmonaire",
-      "type": "ENTITY"
+      "text": "point de départ pulmonaire"
     }
   ],
   "relations": [

@@ -3,63 +3,51 @@
   "entities": [
     {
       "id": "E0",
-      "text": "point de départ pulmonaire",
-      "type": "ENTITY"
+      "text": "point de départ pulmonaire"
     },
     {
       "id": "E1",
-      "text": "S.pneumoniae",
-      "type": "ENTITY"
+      "text": "S.pneumoniae"
     },
     {
       "id": "E2",
-      "text": "Agurie",
-      "type": "ENTITY"
+      "text": "Agurie"
     },
     {
       "id": "E3",
-      "text": "pneumocoque",
-      "type": "ENTITY"
+      "text": "pneumocoque"
     },
     {
       "id": "E4",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E5",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E6",
-      "text": "S.saprophyticus",
-      "type": "ENTITY"
+      "text": "S.saprophyticus"
     },
     {
       "id": "E7",
-      "text": "colonisation",
-      "type": "ENTITY"
+      "text": "colonisation"
     },
     {
       "id": "E8",
-      "text": "Antigénurie",
-      "type": "ENTITY"
+      "text": "Antigénurie"
     },
     {
       "id": "E9",
-      "text": "ECBC",
-      "type": "ENTITY"
+      "text": "ECBC"
     },
     {
       "id": "E10",
-      "text": "s.saprophyticus",
-      "type": "ENTITY"
+      "text": "s.saprophyticus"
     },
     {
       "id": "E11",
-      "text": "sepsis",
-      "type": "ENTITY"
+      "text": "sepsis"
     }
   ],
   "relations": [

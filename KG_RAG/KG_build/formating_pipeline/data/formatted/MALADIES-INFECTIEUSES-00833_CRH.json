@@ -3,48 +3,39 @@
   "entities": [
     {
       "id": "E0",
-      "text": "d'origine urinaire",
-      "type": "ENTITY"
+      "text": "d'origine urinaire"
     },
     {
       "id": "E1",
-      "text": "Escherichia coli",
-      "type": "ENTITY"
+      "text": "Escherichia coli"
     },
     {
       "id": "E2",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E3",
-      "text": "Pyélonéphrite",
-      "type": "ENTITY"
+      "text": "Pyélonéphrite"
     },
     {
       "id": "E4",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E5",
-      "text": "pyélonéphrite",
-      "type": "ENTITY"
+      "text": "pyélonéphrite"
     },
     {
       "id": "E6",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E7",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E8",
-      "text": "Proteus mirabilis",
-      "type": "ENTITY"
+      "text": "Proteus mirabilis"
     }
   ],
   "relations": [

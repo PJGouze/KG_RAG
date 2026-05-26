@@ -3,38 +3,31 @@
   "entities": [
     {
       "id": "E0",
-      "text": "S.capitis",
-      "type": "ENTITY"
+      "text": "S.capitis"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "thrombophlébite superficielle",
-      "type": "ENTITY"
+      "text": "thrombophlébite superficielle"
     },
     {
       "id": "E3",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E4",
-      "text": "VVP",
-      "type": "ENTITY"
+      "text": "VVP"
     },
     {
       "id": "E5",
-      "text": "d'hémocultures",
-      "type": "EXAM"
+      "text": "d'hémocultures"
     },
     {
       "id": "E6",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     }
   ],
   "relations": [

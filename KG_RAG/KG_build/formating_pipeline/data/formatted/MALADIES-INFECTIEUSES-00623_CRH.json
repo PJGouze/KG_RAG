@@ -3,33 +3,27 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Achromobacter xylosoxidans",
-      "type": "ENTITY"
+      "text": "Achromobacter xylosoxidans"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E3",
-      "text": "A.xylosoxidans",
-      "type": "ENTITY"
+      "text": "A.xylosoxidans"
     },
     {
       "id": "E4",
-      "text": "bactériémiante",
-      "type": "ENTITY"
+      "text": "bactériémiante"
     },
     {
       "id": "E5",
-      "text": "Pyélonéphrite aiguë",
-      "type": "ENTITY"
+      "text": "Pyélonéphrite aiguë"
     }
   ],
   "relations": [

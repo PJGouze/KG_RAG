@@ -3,33 +3,27 @@
   "entities": [
     {
       "id": "E0",
-      "text": "pneumopathie d'inhalation",
-      "type": "ENTITY"
+      "text": "pneumopathie d'inhalation"
     },
     {
       "id": "E1",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E2",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E3",
-      "text": "compliquée d'une pneumopathie d'inhalation",
-      "type": "ENTITY"
+      "text": "compliquée d'une pneumopathie d'inhalation"
     },
     {
       "id": "E4",
-      "text": "basale droite",
-      "type": "ENTITY"
+      "text": "basale droite"
     },
     {
       "id": "E5",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     }
   ],
   "relations": [

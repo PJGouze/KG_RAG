@@ -3,48 +3,39 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Coproculture",
-      "type": "ENTITY"
+      "text": "Coproculture"
     },
     {
       "id": "E1",
-      "text": "Salmonella enterica sérotype enteriditis",
-      "type": "ENTITY"
+      "text": "Salmonella enterica sérotype enteriditis"
     },
     {
       "id": "E2",
-      "text": "coproculture",
-      "type": "ENTITY"
+      "text": "coproculture"
     },
     {
       "id": "E3",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E4",
-      "text": "Salmonella enterica",
-      "type": "ENTITY"
+      "text": "Salmonella enterica"
     },
     {
       "id": "E5",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E6",
-      "text": "diarrhée aiguë fébrile",
-      "type": "ENTITY"
+      "text": "diarrhée aiguë fébrile"
     },
     {
       "id": "E7",
-      "text": "Salmonella enterica sérovar enteritidis",
-      "type": "ENTITY"
+      "text": "Salmonella enterica sérovar enteritidis"
     },
     {
       "id": "E8",
-      "text": "Diarrhée aiguë fébrile",
-      "type": "ENTITY"
+      "text": "Diarrhée aiguë fébrile"
     }
   ],
   "relations": [

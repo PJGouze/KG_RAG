@@ -3,33 +3,27 @@
   "entities": [
     {
       "id": "E0",
-      "text": "bacille Gram positif",
-      "type": "ENTITY"
+      "text": "bacille Gram positif"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "Corynebacterium macginleyi",
-      "type": "ENTITY"
+      "text": "Corynebacterium macginleyi"
     },
     {
       "id": "E3",
-      "text": "cutanée",
-      "type": "ENTITY"
+      "text": "cutanée"
     },
     {
       "id": "E4",
-      "text": "Corynébactérie",
-      "type": "ENTITY"
+      "text": "Corynébactérie"
     },
     {
       "id": "E5",
-      "text": "hémoculture",
-      "type": "EXAM"
+      "text": "hémoculture"
     }
   ],
   "relations": [

@@ -3,63 +3,51 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Abcès hépatique",
-      "type": "ENTITY"
+      "text": "Abcès hépatique"
     },
     {
       "id": "E1",
-      "text": "K. oxytoca",
-      "type": "ENTITY"
+      "text": "K. oxytoca"
     },
     {
       "id": "E2",
-      "text": "C. koserii",
-      "type": "ENTITY"
+      "text": "C. koserii"
     },
     {
       "id": "E3",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E4",
-      "text": "Klebsiella oxytoca",
-      "type": "ENTITY"
+      "text": "Klebsiella oxytoca"
     },
     {
       "id": "E5",
-      "text": "Hémocultures (",
-      "type": "EXAM"
+      "text": "Hémocultures ("
     },
     {
       "id": "E6",
-      "text": "Ponction-aspiration de l'abcès hépatique",
-      "type": "ENTITY"
+      "text": "Ponction-aspiration de l'abcès hépatique"
     },
     {
       "id": "E7",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E8",
-      "text": "Citrobacter koserii",
-      "type": "ENTITY"
+      "text": "Citrobacter koserii"
     },
     {
       "id": "E9",
-      "text": "Ponction échoguidée de l'abcès hépatique",
-      "type": "ENTITY"
+      "text": "Ponction échoguidée de l'abcès hépatique"
     },
     {
       "id": "E10",
-      "text": "du lobe droit",
-      "type": "ENTITY"
+      "text": "du lobe droit"
     },
     {
       "id": "E11",
-      "text": "thrombophlébite septique",
-      "type": "ENTITY"
+      "text": "thrombophlébite septique"
     }
   ],
   "relations": [

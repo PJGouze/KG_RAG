@@ -3,68 +3,55 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "Antigène urinaire",
-      "type": "ENTITY"
+      "text": "Antigène urinaire"
     },
     {
       "id": "E3",
-      "text": "pneumococcique",
-      "type": "ENTITY"
+      "text": "pneumococcique"
     },
     {
       "id": "E4",
-      "text": "point de départ pulmonaire",
-      "type": "ENTITY"
+      "text": "point de départ pulmonaire"
     },
     {
       "id": "E5",
-      "text": "pneumonie lobaire inférieure droite",
-      "type": "ENTITY"
+      "text": "pneumonie lobaire inférieure droite"
     },
     {
       "id": "E6",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E7",
-      "text": "38,2 °C.",
-      "type": "ENTITY"
+      "text": "38,2 °C."
     },
     {
       "id": "E8",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E9",
-      "text": "pneumonie lobaire inférieure",
-      "type": "ENTITY"
+      "text": "pneumonie lobaire inférieure"
     },
     {
       "id": "E10",
-      "text": "basale droite",
-      "type": "ENTITY"
+      "text": "basale droite"
     },
     {
       "id": "E11",
-      "text": "Infiltrat alvéolaire bas droit",
-      "type": "ENTITY"
+      "text": "Infiltrat alvéolaire bas droit"
     },
     {
       "id": "E12",
-      "text": "Fièvre",
-      "type": "ENTITY"
+      "text": "Fièvre"
     }
   ],
   "relations": [

@@ -3,73 +3,59 @@
   "entities": [
     {
       "id": "E0",
-      "text": "d'origine urinaire",
-      "type": "ENTITY"
+      "text": "d'origine urinaire"
     },
     {
       "id": "E1",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E2",
-      "text": "Infection urinaire",
-      "type": "ENTITY"
+      "text": "Infection urinaire"
     },
     {
       "id": "E3",
-      "text": "Escherichia coli BLSE",
-      "type": "ENTITY"
+      "text": "Escherichia coli BLSE"
     },
     {
       "id": "E4",
-      "text": "porte d'entrée urinaire",
-      "type": "ENTITY"
+      "text": "porte d'entrée urinaire"
     },
     {
       "id": "E5",
-      "text": "Expectoration",
-      "type": "ENTITY"
+      "text": "Expectoration"
     },
     {
       "id": "E6",
-      "text": "bacilles acido-alcoolo-résistants",
-      "type": "ENTITY"
+      "text": "bacilles acido-alcoolo-résistants"
     },
     {
       "id": "E7",
-      "text": "Mycobacterium tuberculosis",
-      "type": "ENTITY"
+      "text": "Mycobacterium tuberculosis"
     },
     {
       "id": "E8",
-      "text": "Escherichia coli",
-      "type": "ENTITY"
+      "text": "Escherichia coli"
     },
     {
       "id": "E9",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E10",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E11",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E12",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E13",
-      "text": "d'hémocultures",
-      "type": "EXAM"
+      "text": "d'hémocultures"
     }
   ],
   "relations": [

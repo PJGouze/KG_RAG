@@ -3,98 +3,79 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Staphylococcus aureus",
-      "type": "ENTITY"
+      "text": "Staphylococcus aureus"
     },
     {
       "id": "E1",
-      "text": "d'hémocultures",
-      "type": "EXAM"
+      "text": "d'hémocultures"
     },
     {
       "id": "E2",
-      "text": "l'orifice du cathéter",
-      "type": "ENTITY"
+      "text": "l'orifice du cathéter"
     },
     {
       "id": "E3",
-      "text": "SAMS",
-      "type": "ENTITY"
+      "text": "SAMS"
     },
     {
       "id": "E4",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E5",
-      "text": "cathéter de dialyse",
-      "type": "ENTITY"
+      "text": "cathéter de dialyse"
     },
     {
       "id": "E6",
-      "text": "endocardite infectieuse",
-      "type": "ENTITY"
+      "text": "endocardite infectieuse"
     },
     {
       "id": "E7",
-      "text": "infection de cathéter de dialyse",
-      "type": "ENTITY"
+      "text": "infection de cathéter de dialyse"
     },
     {
       "id": "E8",
-      "text": "sepsis sévère",
-      "type": "ENTITY"
+      "text": "sepsis sévère"
     },
     {
       "id": "E9",
-      "text": "choc septique",
-      "type": "ENTITY"
+      "text": "choc septique"
     },
     {
       "id": "E10",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E11",
-      "text": "point de départ cathéter de dialyse",
-      "type": "ENTITY"
+      "text": "point de départ cathéter de dialyse"
     },
     {
       "id": "E12",
-      "text": "endocardite",
-      "type": "ENTITY"
+      "text": "endocardite"
     },
     {
       "id": "E13",
-      "text": "l'endocardite",
-      "type": "ENTITY"
+      "text": "l'endocardite"
     },
     {
       "id": "E14",
-      "text": "point de départ du cathéter de dialyse",
-      "type": "ENTITY"
+      "text": "point de départ du cathéter de dialyse"
     },
     {
       "id": "E15",
-      "text": "Endocardite infectieuse",
-      "type": "ENTITY"
+      "text": "Endocardite infectieuse"
     },
     {
       "id": "E16",
-      "text": "porte d'entrée au niveau du cathéter de dialyse",
-      "type": "ENTITY"
+      "text": "porte d'entrée au niveau du cathéter de dialyse"
     },
     {
       "id": "E17",
-      "text": "suintement purulent",
-      "type": "ENTITY"
+      "text": "suintement purulent"
     },
     {
       "id": "E18",
-      "text": "Orifice du cathéter",
-      "type": "ENTITY"
+      "text": "Orifice du cathéter"
     }
   ],
   "relations": [

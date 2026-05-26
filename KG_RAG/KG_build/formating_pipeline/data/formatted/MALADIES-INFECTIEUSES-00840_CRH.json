@@ -3,48 +3,39 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Pneumopathie",
-      "type": "ENTITY"
+      "text": "Pneumopathie"
     },
     {
       "id": "E1",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E2",
-      "text": "pulmonaire",
-      "type": "ENTITY"
+      "text": "pulmonaire"
     },
     {
       "id": "E3",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E4",
-      "text": "pneumonie",
-      "type": "ENTITY"
+      "text": "pneumonie"
     },
     {
       "id": "E5",
-      "text": "point de départ pulmonaire",
-      "type": "ENTITY"
+      "text": "point de départ pulmonaire"
     },
     {
       "id": "E6",
-      "text": "lobaire basale droite",
-      "type": "ENTITY"
+      "text": "lobaire basale droite"
     },
     {
       "id": "E7",
-      "text": "ECBC",
-      "type": "ENTITY"
+      "text": "ECBC"
     },
     {
       "id": "E8",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     }
   ],
   "relations": [

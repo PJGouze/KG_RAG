@@ -3,43 +3,35 @@
   "entities": [
     {
       "id": "E0",
-      "text": "surinfection bactérienne",
-      "type": "ENTITY"
+      "text": "surinfection bactérienne"
     },
     {
       "id": "E1",
-      "text": "pneumocoque",
-      "type": "ENTITY"
+      "text": "pneumocoque"
     },
     {
       "id": "E2",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E3",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E4",
-      "text": "hémocultures positives",
-      "type": "EXAM"
+      "text": "hémocultures positives"
     },
     {
       "id": "E5",
-      "text": "pneumonie",
-      "type": "ENTITY"
+      "text": "pneumonie"
     },
     {
       "id": "E6",
-      "text": "d'hémocultures",
-      "type": "EXAM"
+      "text": "d'hémocultures"
     },
     {
       "id": "E7",
-      "text": "d'origine pulmonaire",
-      "type": "ENTITY"
+      "text": "d'origine pulmonaire"
     }
   ],
   "relations": [

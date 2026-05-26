@@ -3,63 +3,51 @@
   "entities": [
     {
       "id": "E0",
-      "text": "S. epidermidis",
-      "type": "ENTITY"
+      "text": "S. epidermidis"
     },
     {
       "id": "E1",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E2",
-      "text": "nasopharyngée",
-      "type": "ENTITY"
+      "text": "nasopharyngée"
     },
     {
       "id": "E3",
-      "text": "M. pneumoniae",
-      "type": "ENTITY"
+      "text": "M. pneumoniae"
     },
     {
       "id": "E4",
-      "text": "périphériques",
-      "type": "ENTITY"
+      "text": "périphériques"
     },
     {
       "id": "E5",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E6",
-      "text": "Staphylococcus epidermidis",
-      "type": "ENTITY"
+      "text": "Staphylococcus epidermidis"
     },
     {
       "id": "E7",
-      "text": "VVP",
-      "type": "ENTITY"
+      "text": "VVP"
     },
     {
       "id": "E8",
-      "text": "KT",
-      "type": "ENTITY"
+      "text": "KT"
     },
     {
       "id": "E9",
-      "text": "périphérique",
-      "type": "ENTITY"
+      "text": "périphérique"
     },
     {
       "id": "E10",
-      "text": "hémoculture",
-      "type": "EXAM"
+      "text": "hémoculture"
     },
     {
       "id": "E11",
-      "text": "Veinite",
-      "type": "ENTITY"
+      "text": "Veinite"
     }
   ],
   "relations": [

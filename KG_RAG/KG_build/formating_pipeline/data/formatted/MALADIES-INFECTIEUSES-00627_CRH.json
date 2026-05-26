@@ -3,88 +3,71 @@
   "entities": [
     {
       "id": "E0",
-      "text": "SAMS",
-      "type": "ENTITY"
+      "text": "SAMS"
     },
     {
       "id": "E1",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E2",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E3",
-      "text": "sur PAC",
-      "type": "ENTITY"
+      "text": "sur PAC"
     },
     {
       "id": "E4",
-      "text": "Porte d'entrée : Piccline",
-      "type": "ENTITY"
+      "text": "Porte d'entrée : Piccline"
     },
     {
       "id": "E5",
-      "text": "Thrombophlébite septique",
-      "type": "ENTITY"
+      "text": "Thrombophlébite septique"
     },
     {
       "id": "E6",
-      "text": "Escherichia hermanii",
-      "type": "ENTITY"
+      "text": "Escherichia hermanii"
     },
     {
       "id": "E7",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E8",
-      "text": "E.faecalis",
-      "type": "ENTITY"
+      "text": "E.faecalis"
     },
     {
       "id": "E9",
-      "text": "sur Piccline",
-      "type": "ENTITY"
+      "text": "sur Piccline"
     },
     {
       "id": "E10",
-      "text": "S. epidermidis",
-      "type": "ENTITY"
+      "text": "S. epidermidis"
     },
     {
       "id": "E11",
-      "text": "hémoculture",
-      "type": "EXAM"
+      "text": "hémoculture"
     },
     {
       "id": "E12",
-      "text": "initiée d'un PICC-line",
-      "type": "ENTITY"
+      "text": "initiée d'un PICC-line"
     },
     {
       "id": "E13",
-      "text": "thrombophlébite septique",
-      "type": "ENTITY"
+      "text": "thrombophlébite septique"
     },
     {
       "id": "E14",
-      "text": "HC",
-      "type": "ENTITY"
+      "text": "HC"
     },
     {
       "id": "E15",
-      "text": "Aplasie fébrile",
-      "type": "ENTITY"
+      "text": "Aplasie fébrile"
     },
     {
       "id": "E16",
-      "text": "basilique droite",
-      "type": "ENTITY"
+      "text": "basilique droite"
     }
   ],
   "relations": [

@@ -3,98 +3,79 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Méningite purulente",
-      "type": "ENTITY"
+      "text": "Méningite purulente"
     },
     {
       "id": "E1",
-      "text": "Pneumocoque",
-      "type": "ENTITY"
+      "text": "Pneumocoque"
     },
     {
       "id": "E2",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E3",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E4",
-      "text": "paracentèse",
-      "type": "ENTITY"
+      "text": "paracentèse"
     },
     {
       "id": "E5",
-      "text": "S. pneumoniae",
-      "type": "ENTITY"
+      "text": "S. pneumoniae"
     },
     {
       "id": "E6",
-      "text": "LCS",
-      "type": "ENTITY"
+      "text": "LCS"
     },
     {
       "id": "E7",
-      "text": "pneumocoque",
-      "type": "ENTITY"
+      "text": "pneumocoque"
     },
     {
       "id": "E8",
-      "text": "Listeria",
-      "type": "ENTITY"
+      "text": "Listeria"
     },
     {
       "id": "E9",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E10",
-      "text": "Cocci Gram plus en diplocoques",
-      "type": "ENTITY"
+      "text": "Cocci Gram plus en diplocoques"
     },
     {
       "id": "E11",
-      "text": "Ponction lombaire",
-      "type": "ENTITY"
+      "text": "Ponction lombaire"
     },
     {
       "id": "E12",
-      "text": "l'infection invasive",
-      "type": "ENTITY"
+      "text": "l'infection invasive"
     },
     {
       "id": "E13",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E14",
-      "text": "Méningite aiguë purulente",
-      "type": "ENTITY"
+      "text": "Méningite aiguë purulente"
     },
     {
       "id": "E15",
-      "text": "sur porte d'entrée ORL",
-      "type": "ENTITY"
+      "text": "sur porte d'entrée ORL"
     },
     {
       "id": "E16",
-      "text": "bactériémiante",
-      "type": "ENTITY"
+      "text": "bactériémiante"
     },
     {
       "id": "E17",
-      "text": "d'otite moyenne aiguë droite",
-      "type": "ENTITY"
+      "text": "d'otite moyenne aiguë droite"
     },
     {
       "id": "E18",
-      "text": "otite moyenne chronique cholestéatomateuse",
-      "type": "ENTITY"
+      "text": "otite moyenne chronique cholestéatomateuse"
     }
   ],
   "relations": [

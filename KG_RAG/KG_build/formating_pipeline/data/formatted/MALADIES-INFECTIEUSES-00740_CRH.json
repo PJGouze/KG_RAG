@@ -3,43 +3,35 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Pneumopathie hypoxémiante",
-      "type": "ENTITY"
+      "text": "Pneumopathie hypoxémiante"
     },
     {
       "id": "E1",
-      "text": "Haemophilus influenzae",
-      "type": "ENTITY"
+      "text": "Haemophilus influenzae"
     },
     {
       "id": "E2",
-      "text": "H. influenzae",
-      "type": "ENTITY"
+      "text": "H. influenzae"
     },
     {
       "id": "E3",
-      "text": "bactériémiante",
-      "type": "ENTITY"
+      "text": "bactériémiante"
     },
     {
       "id": "E4",
-      "text": "pneumopathie",
-      "type": "ENTITY"
+      "text": "pneumopathie"
     },
     {
       "id": "E5",
-      "text": "lobaire inférieure droite",
-      "type": "ENTITY"
+      "text": "lobaire inférieure droite"
     },
     {
       "id": "E6",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E7",
-      "text": "ECBC",
-      "type": "ENTITY"
+      "text": "ECBC"
     }
   ],
   "relations": [

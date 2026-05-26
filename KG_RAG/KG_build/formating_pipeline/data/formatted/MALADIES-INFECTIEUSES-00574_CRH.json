@@ -3,73 +3,59 @@
   "entities": [
     {
       "id": "E0",
-      "text": "escarre infectée.",
-      "type": "ENTITY"
+      "text": "escarre infectée."
     },
     {
       "id": "E1",
-      "text": "sepsis",
-      "type": "ENTITY"
+      "text": "sepsis"
     },
     {
       "id": "E2",
-      "text": "Staphylococcus aureus",
-      "type": "ENTITY"
+      "text": "Staphylococcus aureus"
     },
     {
       "id": "E3",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E4",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E5",
-      "text": "Sepsis",
-      "type": "ENTITY"
+      "text": "Sepsis"
     },
     {
       "id": "E6",
-      "text": "choc septique",
-      "type": "ENTITY"
+      "text": "choc septique"
     },
     {
       "id": "E7",
-      "text": "escarre sacrée infectée",
-      "type": "ENTITY"
+      "text": "escarre sacrée infectée"
     },
     {
       "id": "E8",
-      "text": "porte d'entrée cutanée",
-      "type": "ENTITY"
+      "text": "porte d'entrée cutanée"
     },
     {
       "id": "E9",
-      "text": "septicémie",
-      "type": "ENTITY"
+      "text": "septicémie"
     },
     {
       "id": "E10",
-      "text": "Choc septique",
-      "type": "ENTITY"
+      "text": "Choc septique"
     },
     {
       "id": "E11",
-      "text": "d'escarre sacrée chronique surinfectée",
-      "type": "ENTITY"
+      "text": "d'escarre sacrée chronique surinfectée"
     },
     {
       "id": "E12",
-      "text": "Porte d'entrée identifiée : escarre sacrée chronique surinfectée",
-      "type": "ENTITY"
+      "text": "Porte d'entrée identifiée : escarre sacrée chronique surinfectée"
     },
     {
       "id": "E13",
-      "text": "d'hémocultures",
-      "type": "EXAM"
+      "text": "d'hémocultures"
     }
   ],
   "relations": [

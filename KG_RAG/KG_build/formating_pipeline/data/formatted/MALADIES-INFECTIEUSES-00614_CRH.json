@@ -3,33 +3,27 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E3",
-      "text": "Pneumopathie d'inhalation",
-      "type": "ENTITY"
+      "text": "Pneumopathie d'inhalation"
     },
     {
       "id": "E4",
-      "text": "basale droite",
-      "type": "ENTITY"
+      "text": "basale droite"
     },
     {
       "id": "E5",
-      "text": "point de départ pulmonaire",
-      "type": "ENTITY"
+      "text": "point de départ pulmonaire"
     }
   ],
   "relations": [

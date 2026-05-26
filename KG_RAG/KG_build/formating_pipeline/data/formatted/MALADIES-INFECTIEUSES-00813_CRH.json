@@ -3,33 +3,27 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Klebsiella pneumoniae",
-      "type": "ENTITY"
+      "text": "Klebsiella pneumoniae"
     },
     {
       "id": "E1",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E2",
-      "text": "Pneumopathie d'inhalation",
-      "type": "ENTITY"
+      "text": "Pneumopathie d'inhalation"
     },
     {
       "id": "E3",
-      "text": "d'origine pulmonaire",
-      "type": "ENTITY"
+      "text": "d'origine pulmonaire"
     },
     {
       "id": "E4",
-      "text": "pneumopathie d'inhalation",
-      "type": "ENTITY"
+      "text": "pneumopathie d'inhalation"
     },
     {
       "id": "E5",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     }
   ],
   "relations": [

@@ -128,67 +128,43 @@ class ConversionPipeline:
     # =========================================================================
     # ENTITY EXTRACTION
     # =========================================================================
-
     def _extract_entities(
         self,
         group: pd.DataFrame
     ):
         """
-        Extract unique entities from a report.
-
-        Parameters
-        ----------
-        group : pd.DataFrame
-            Report dataframe.
-
-        Returns
-        -------
-        tuple
-            (
-                entities,
-                entity_map
-            )
+        Extract unique entities from a report (no typing).
         """
 
         entity_map = {}
-
         entities = []
-
         entity_counter = 0
 
         for _, row in group.iterrows():
 
-            for text in [
-                row["source_text"],
-                row["target_text"]
-            ]:
+            for text in [row["source_text"], row["target_text"]]:
 
                 if pd.isna(text):
                     continue
 
                 text = str(text).strip()
-                
+
                 if text == "":
                     continue
 
                 if text not in entity_map:
 
                     entity_id = f"E{entity_counter}"
-
                     entity_map[text] = entity_id
 
                     entities.append({
                         "id": entity_id,
-                        "text": text,
-                        "type": self._infer_entity_type(
-                            text
-                        )
+                        "text": text
                     })
 
                     entity_counter += 1
 
         return entities, entity_map
-
     # =========================================================================
     # RELATION EXTRACTION
     # =========================================================================
@@ -260,40 +236,6 @@ class ConversionPipeline:
             })
 
         return relations
-    # =========================================================================
-    # ENTITY TYPING
-    # =========================================================================
-
-    def _infer_entity_type(
-        self,
-        text: str
-    ) -> str:
-        """
-        Infer entity semantic type.
-
-        Parameters
-        ----------
-        text : str
-            Entity text.
-
-        Returns
-        -------
-        str
-            Entity type.
-        """
-
-        text = text.lower()
-
-        if "streptococcus" in text:
-            return "PATHOGEN"
-
-        if "bactériémie" in text:
-            return "DISEASE"
-
-        if "hémoculture" in text:
-            return "EXAM"
-
-        return "ENTITY"
 
     # =========================================================================
     # OUTPUT

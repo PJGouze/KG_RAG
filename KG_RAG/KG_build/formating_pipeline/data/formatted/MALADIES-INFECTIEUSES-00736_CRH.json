@@ -3,53 +3,43 @@
   "entities": [
     {
       "id": "E0",
-      "text": "point de départ cutané jambe gauche",
-      "type": "ENTITY"
+      "text": "point de départ cutané jambe gauche"
     },
     {
       "id": "E1",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E2",
-      "text": "Streptococcus pyogenes",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pyogenes"
     },
     {
       "id": "E3",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E4",
-      "text": "streptocoque du groupe A",
-      "type": "ENTITY"
+      "text": "streptocoque du groupe A"
     },
     {
       "id": "E5",
-      "text": "Érysipèle",
-      "type": "ENTITY"
+      "text": "Érysipèle"
     },
     {
       "id": "E6",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E7",
-      "text": "jambe gauche",
-      "type": "ENTITY"
+      "text": "jambe gauche"
     },
     {
       "id": "E8",
-      "text": "point de départ cutané intertrigo",
-      "type": "ENTITY"
+      "text": "point de départ cutané intertrigo"
     },
     {
       "id": "E9",
-      "text": "sur porte d'entrée intertrigo inter-orteils",
-      "type": "ENTITY"
+      "text": "sur porte d'entrée intertrigo inter-orteils"
     }
   ],
   "relations": [

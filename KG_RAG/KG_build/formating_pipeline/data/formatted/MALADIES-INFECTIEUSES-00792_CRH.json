@@ -3,48 +3,39 @@
   "entities": [
     {
       "id": "E0",
-      "text": "antigénurie",
-      "type": "ENTITY"
+      "text": "antigénurie"
     },
     {
       "id": "E1",
-      "text": "pneumocoque",
-      "type": "ENTITY"
+      "text": "pneumocoque"
     },
     {
       "id": "E2",
-      "text": "S.pneumoniae",
-      "type": "ENTITY"
+      "text": "S.pneumoniae"
     },
     {
       "id": "E3",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E4",
-      "text": "Antigénurie",
-      "type": "ENTITY"
+      "text": "Antigénurie"
     },
     {
       "id": "E5",
-      "text": "ECBC",
-      "type": "ENTITY"
+      "text": "ECBC"
     },
     {
       "id": "E6",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E7",
-      "text": "pneumopathie",
-      "type": "ENTITY"
+      "text": "pneumopathie"
     },
     {
       "id": "E8",
-      "text": "bactériémiante",
-      "type": "ENTITY"
+      "text": "bactériémiante"
     }
   ],
   "relations": [

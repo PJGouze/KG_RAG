@@ -3,28 +3,23 @@
   "entities": [
     {
       "id": "E0",
-      "text": "pneumopathie",
-      "type": "ENTITY"
+      "text": "pneumopathie"
     },
     {
       "id": "E1",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E2",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E3",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E4",
-      "text": "Hémocultures positives",
-      "type": "EXAM"
+      "text": "Hémocultures positives"
     }
   ],
   "relations": [

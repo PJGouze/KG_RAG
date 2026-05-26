@@ -3,43 +3,35 @@
   "entities": [
     {
       "id": "E0",
-      "text": "surinfection bactérienne",
-      "type": "ENTITY"
+      "text": "surinfection bactérienne"
     },
     {
       "id": "E1",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E2",
-      "text": "point de départ pulmonaire",
-      "type": "ENTITY"
+      "text": "point de départ pulmonaire"
     },
     {
       "id": "E3",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E4",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E5",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E6",
-      "text": "lobaire droite",
-      "type": "ENTITY"
+      "text": "lobaire droite"
     },
     {
       "id": "E7",
-      "text": "lobaire inférieure droite",
-      "type": "ENTITY"
+      "text": "lobaire inférieure droite"
     }
   ],
   "relations": [

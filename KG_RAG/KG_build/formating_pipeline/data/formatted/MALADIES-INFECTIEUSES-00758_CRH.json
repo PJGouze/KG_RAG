@@ -3,63 +3,51 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Spondylodiscite",
-      "type": "ENTITY"
+      "text": "Spondylodiscite"
     },
     {
       "id": "E1",
-      "text": "Morganella morganii",
-      "type": "ENTITY"
+      "text": "Morganella morganii"
     },
     {
       "id": "E2",
-      "text": "lombaire L4-L5",
-      "type": "ENTITY"
+      "text": "lombaire L4-L5"
     },
     {
       "id": "E3",
-      "text": "infection urinaire masculine fébrile",
-      "type": "ENTITY"
+      "text": "infection urinaire masculine fébrile"
     },
     {
       "id": "E4",
-      "text": "PBDV",
-      "type": "ENTITY"
+      "text": "PBDV"
     },
     {
       "id": "E5",
-      "text": "M. morganii",
-      "type": "ENTITY"
+      "text": "M. morganii"
     },
     {
       "id": "E6",
-      "text": "L4-L5",
-      "type": "ENTITY"
+      "text": "L4-L5"
     },
     {
       "id": "E7",
-      "text": "spondylodiscite",
-      "type": "ENTITY"
+      "text": "spondylodiscite"
     },
     {
       "id": "E8",
-      "text": "Hémoculture",
-      "type": "EXAM"
+      "text": "Hémoculture"
     },
     {
       "id": "E9",
-      "text": "Ponction-biopsie disco-vertébrale",
-      "type": "ENTITY"
+      "text": "Ponction-biopsie disco-vertébrale"
     },
     {
       "id": "E10",
-      "text": "Ténosynovite",
-      "type": "ENTITY"
+      "text": "Ténosynovite"
     },
     {
       "id": "E11",
-      "text": "S. aureus",
-      "type": "ENTITY"
+      "text": "S. aureus"
     }
   ],
   "relations": [

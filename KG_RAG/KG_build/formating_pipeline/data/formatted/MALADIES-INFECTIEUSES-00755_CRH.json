@@ -3,93 +3,75 @@
   "entities": [
     {
       "id": "E0",
-      "text": "KT tunnelisé",
-      "type": "ENTITY"
+      "text": "KT tunnelisé"
     },
     {
       "id": "E1",
-      "text": "SAMS",
-      "type": "ENTITY"
+      "text": "SAMS"
     },
     {
       "id": "E2",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E3",
-      "text": "infection",
-      "type": "ENTITY"
+      "text": "infection"
     },
     {
       "id": "E4",
-      "text": "périphérie",
-      "type": "ENTITY"
+      "text": "périphérie"
     },
     {
       "id": "E5",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E6",
-      "text": "KT tunnélisé de dialyse",
-      "type": "ENTITY"
+      "text": "KT tunnélisé de dialyse"
     },
     {
       "id": "E7",
-      "text": "Ponction-biopsie disco-vertébrale",
-      "type": "ENTITY"
+      "text": "Ponction-biopsie disco-vertébrale"
     },
     {
       "id": "E8",
-      "text": "Staphylococcus aureus",
-      "type": "ENTITY"
+      "text": "Staphylococcus aureus"
     },
     {
       "id": "E9",
-      "text": "périphérique",
-      "type": "ENTITY"
+      "text": "périphérique"
     },
     {
       "id": "E10",
-      "text": "Hémoculture",
-      "type": "EXAM"
+      "text": "Hémoculture"
     },
     {
       "id": "E11",
-      "text": "spondylodiscite",
-      "type": "ENTITY"
+      "text": "spondylodiscite"
     },
     {
       "id": "E12",
-      "text": "PBDV",
-      "type": "ENTITY"
+      "text": "PBDV"
     },
     {
       "id": "E13",
-      "text": "L4-L5",
-      "type": "ENTITY"
+      "text": "L4-L5"
     },
     {
       "id": "E14",
-      "text": "KT tunnelisé de dialyse",
-      "type": "ENTITY"
+      "text": "KT tunnelisé de dialyse"
     },
     {
       "id": "E15",
-      "text": "Staphylocoque doré",
-      "type": "ENTITY"
+      "text": "Staphylocoque doré"
     },
     {
       "id": "E16",
-      "text": "d'E. Coli.",
-      "type": "ENTITY"
+      "text": "d'E. Coli."
     },
     {
       "id": "E17",
-      "text": "Spondylodiscite",
-      "type": "ENTITY"
+      "text": "Spondylodiscite"
     }
   ],
   "relations": [

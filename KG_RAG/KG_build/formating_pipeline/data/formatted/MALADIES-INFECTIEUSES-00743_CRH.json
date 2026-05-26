@@ -3,28 +3,23 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Staphylococcus aureus",
-      "type": "ENTITY"
+      "text": "Staphylococcus aureus"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "SAMS",
-      "type": "ENTITY"
+      "text": "SAMS"
     },
     {
       "id": "E3",
-      "text": "hémocultures positives",
-      "type": "EXAM"
+      "text": "hémocultures positives"
     },
     {
       "id": "E4",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     }
   ],
   "relations": [

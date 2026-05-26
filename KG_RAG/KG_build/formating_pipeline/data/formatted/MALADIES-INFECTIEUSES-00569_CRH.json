@@ -3,63 +3,51 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Escherichia coli",
-      "type": "ENTITY"
+      "text": "Escherichia coli"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E3",
-      "text": "d'Escherichia coli",
-      "type": "ENTITY"
+      "text": "d'Escherichia coli"
     },
     {
       "id": "E4",
-      "text": "pyélonéphrite aiguë",
-      "type": "ENTITY"
+      "text": "pyélonéphrite aiguë"
     },
     {
       "id": "E5",
-      "text": "Sepsis",
-      "type": "ENTITY"
+      "text": "Sepsis"
     },
     {
       "id": "E6",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E7",
-      "text": "point de départ urinaire",
-      "type": "ENTITY"
+      "text": "point de départ urinaire"
     },
     {
       "id": "E8",
-      "text": "ECBU concordant",
-      "type": "ENTITY"
+      "text": "ECBU concordant"
     },
     {
       "id": "E9",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E10",
-      "text": "Pyélonéphrite aiguë",
-      "type": "ENTITY"
+      "text": "Pyélonéphrite aiguë"
     },
     {
       "id": "E11",
-      "text": "sepsis",
-      "type": "ENTITY"
+      "text": "sepsis"
     }
   ],
   "relations": [

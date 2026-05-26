@@ -3,68 +3,55 @@
   "entities": [
     {
       "id": "E0",
-      "text": "E. cloacae",
-      "type": "ENTITY"
+      "text": "E. cloacae"
     },
     {
       "id": "E1",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E2",
-      "text": "ECBU sur sonde de néphrostomie droite",
-      "type": "ENTITY"
+      "text": "ECBU sur sonde de néphrostomie droite"
     },
     {
       "id": "E3",
-      "text": "sur PAC",
-      "type": "ENTITY"
+      "text": "sur PAC"
     },
     {
       "id": "E4",
-      "text": "d'hémocultures",
-      "type": "EXAM"
+      "text": "d'hémocultures"
     },
     {
       "id": "E5",
-      "text": "Enterobacter clocae",
-      "type": "ENTITY"
+      "text": "Enterobacter clocae"
     },
     {
       "id": "E6",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E7",
-      "text": "périphériques",
-      "type": "ENTITY"
+      "text": "périphériques"
     },
     {
       "id": "E8",
-      "text": "pyélonéphrite",
-      "type": "ENTITY"
+      "text": "pyélonéphrite"
     },
     {
       "id": "E9",
-      "text": "bactériémique",
-      "type": "ENTITY"
+      "text": "bactériémique"
     },
     {
       "id": "E10",
-      "text": "voies urinaires",
-      "type": "ENTITY"
+      "text": "voies urinaires"
     },
     {
       "id": "E11",
-      "text": "Pyélonéphrite aiguë",
-      "type": "ENTITY"
+      "text": "Pyélonéphrite aiguë"
     },
     {
       "id": "E12",
-      "text": "Enterobacter cloacae",
-      "type": "ENTITY"
+      "text": "Enterobacter cloacae"
     }
   ],
   "relations": [

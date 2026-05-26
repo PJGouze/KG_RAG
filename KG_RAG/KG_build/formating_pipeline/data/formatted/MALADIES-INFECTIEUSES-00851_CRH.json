@@ -3,73 +3,59 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Infection urinaire fébrile",
-      "type": "ENTITY"
+      "text": "Infection urinaire fébrile"
     },
     {
       "id": "E1",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E2",
-      "text": "infection urinaire fébrile",
-      "type": "ENTITY"
+      "text": "infection urinaire fébrile"
     },
     {
       "id": "E3",
-      "text": "point de départ urinaire",
-      "type": "ENTITY"
+      "text": "point de départ urinaire"
     },
     {
       "id": "E4",
-      "text": "bactérie",
-      "type": "ENTITY"
+      "text": "bactérie"
     },
     {
       "id": "E5",
-      "text": "urinaire",
-      "type": "ENTITY"
+      "text": "urinaire"
     },
     {
       "id": "E6",
-      "text": "BHRe",
-      "type": "ENTITY"
+      "text": "BHRe"
     },
     {
       "id": "E7",
-      "text": "Escherichia coli",
-      "type": "ENTITY"
+      "text": "Escherichia coli"
     },
     {
       "id": "E8",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E9",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E10",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E11",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E12",
-      "text": "EPC",
-      "type": "ENTITY"
+      "text": "EPC"
     },
     {
       "id": "E13",
-      "text": "bactérie hautement résistante émergente",
-      "type": "ENTITY"
+      "text": "bactérie hautement résistante émergente"
     }
   ],
   "relations": [

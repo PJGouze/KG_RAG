@@ -3,43 +3,35 @@
   "entities": [
     {
       "id": "E0",
-      "text": "pneumopathie",
-      "type": "ENTITY"
+      "text": "pneumopathie"
     },
     {
       "id": "E1",
-      "text": "M.Catarrhalis",
-      "type": "ENTITY"
+      "text": "M.Catarrhalis"
     },
     {
       "id": "E2",
-      "text": "S.epidermidis",
-      "type": "ENTITY"
+      "text": "S.epidermidis"
     },
     {
       "id": "E3",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E4",
-      "text": "ECBC",
-      "type": "ENTITY"
+      "text": "ECBC"
     },
     {
       "id": "E5",
-      "text": "M.catarrhalis",
-      "type": "ENTITY"
+      "text": "M.catarrhalis"
     },
     {
       "id": "E6",
-      "text": "Agurie",
-      "type": "ENTITY"
+      "text": "Agurie"
     },
     {
       "id": "E7",
-      "text": "pneumocoque",
-      "type": "ENTITY"
+      "text": "pneumocoque"
     }
   ],
   "relations": [

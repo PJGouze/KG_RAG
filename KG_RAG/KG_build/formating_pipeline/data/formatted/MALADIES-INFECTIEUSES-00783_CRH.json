@@ -3,43 +3,35 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Antigénurie",
-      "type": "ENTITY"
+      "text": "Antigénurie"
     },
     {
       "id": "E1",
-      "text": "pneumocoque",
-      "type": "ENTITY"
+      "text": "pneumocoque"
     },
     {
       "id": "E2",
-      "text": "lésionnelle",
-      "type": "ENTITY"
+      "text": "lésionnelle"
     },
     {
       "id": "E3",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E4",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E5",
-      "text": "ECBC",
-      "type": "ENTITY"
+      "text": "ECBC"
     },
     {
       "id": "E6",
-      "text": "bactériémiante",
-      "type": "ENTITY"
+      "text": "bactériémiante"
     },
     {
       "id": "E7",
-      "text": "Pneumopathie franche lobaire aiguë",
-      "type": "ENTITY"
+      "text": "Pneumopathie franche lobaire aiguë"
     }
   ],
   "relations": [

@@ -3,43 +3,35 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Streptococcus pyogenes",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pyogenes"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "S. pyogenes",
-      "type": "ENTITY"
+      "text": "S. pyogenes"
     },
     {
       "id": "E3",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E4",
-      "text": "Dermo-hypodermite",
-      "type": "ENTITY"
+      "text": "Dermo-hypodermite"
     },
     {
       "id": "E5",
-      "text": "membre inférieur droit",
-      "type": "ENTITY"
+      "text": "membre inférieur droit"
     },
     {
       "id": "E6",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E7",
-      "text": "Demo-hypodermite non nécrosante",
-      "type": "ENTITY"
+      "text": "Demo-hypodermite non nécrosante"
     }
   ],
   "relations": [

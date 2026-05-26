@@ -3,58 +3,47 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Staphylococcus aureus",
-      "type": "ENTITY"
+      "text": "Staphylococcus aureus"
     },
     {
       "id": "E1",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E2",
-      "text": "SASM",
-      "type": "ENTITY"
+      "text": "SASM"
     },
     {
       "id": "E3",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E4",
-      "text": "Érysipèle",
-      "type": "ENTITY"
+      "text": "Érysipèle"
     },
     {
       "id": "E5",
-      "text": "sepsis",
-      "type": "ENTITY"
+      "text": "sepsis"
     },
     {
       "id": "E6",
-      "text": "mollet gauche",
-      "type": "ENTITY"
+      "text": "mollet gauche"
     },
     {
       "id": "E7",
-      "text": "érysipèle",
-      "type": "ENTITY"
+      "text": "érysipèle"
     },
     {
       "id": "E8",
-      "text": "membre inférieur gauche",
-      "type": "ENTITY"
+      "text": "membre inférieur gauche"
     },
     {
       "id": "E9",
-      "text": "fébrile",
-      "type": "ENTITY"
+      "text": "fébrile"
     },
     {
       "id": "E10",
-      "text": "infiltration des tissus sous-cutanés",
-      "type": "ENTITY"
+      "text": "infiltration des tissus sous-cutanés"
     }
   ],
   "relations": [

@@ -3,53 +3,43 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Salmonella enterica",
-      "type": "ENTITY"
+      "text": "Salmonella enterica"
     },
     {
       "id": "E1",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E2",
-      "text": "Coproculture",
-      "type": "ENTITY"
+      "text": "Coproculture"
     },
     {
       "id": "E3",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E4",
-      "text": "Salmonella Enteritidis",
-      "type": "ENTITY"
+      "text": "Salmonella Enteritidis"
     },
     {
       "id": "E5",
-      "text": "septicémie",
-      "type": "ENTITY"
+      "text": "septicémie"
     },
     {
       "id": "E6",
-      "text": "infection digestive",
-      "type": "ENTITY"
+      "text": "infection digestive"
     },
     {
       "id": "E7",
-      "text": "toxi-infection alimentaire collective",
-      "type": "ENTITY"
+      "text": "toxi-infection alimentaire collective"
     },
     {
       "id": "E8",
-      "text": "septicémique",
-      "type": "ENTITY"
+      "text": "septicémique"
     },
     {
       "id": "E9",
-      "text": "Infection digestive",
-      "type": "ENTITY"
+      "text": "Infection digestive"
     }
   ],
   "relations": [

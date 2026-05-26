@@ -3,83 +3,67 @@
   "entities": [
     {
       "id": "E0",
-      "text": "point de départ urinaire",
-      "type": "ENTITY"
+      "text": "point de départ urinaire"
     },
     {
       "id": "E1",
-      "text": "E. coli",
-      "type": "ENTITY"
+      "text": "E. coli"
     },
     {
       "id": "E2",
-      "text": "Escherichia coli",
-      "type": "ENTITY"
+      "text": "Escherichia coli"
     },
     {
       "id": "E3",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E4",
-      "text": "Pyélonéphrite",
-      "type": "ENTITY"
+      "text": "Pyélonéphrite"
     },
     {
       "id": "E5",
-      "text": "pyélonéphrite",
-      "type": "ENTITY"
+      "text": "pyélonéphrite"
     },
     {
       "id": "E6",
-      "text": "d'origine urinaire",
-      "type": "ENTITY"
+      "text": "d'origine urinaire"
     },
     {
       "id": "E7",
-      "text": "ECBU",
-      "type": "ENTITY"
+      "text": "ECBU"
     },
     {
       "id": "E8",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E9",
-      "text": "PCR",
-      "type": "ENTITY"
+      "text": "PCR"
     },
     {
       "id": "E10",
-      "text": "Mycobacterium tuberculosis",
-      "type": "ENTITY"
+      "text": "Mycobacterium tuberculosis"
     },
     {
       "id": "E11",
-      "text": "expectorations",
-      "type": "ENTITY"
+      "text": "expectorations"
     },
     {
       "id": "E12",
-      "text": "BAAR",
-      "type": "ENTITY"
+      "text": "BAAR"
     },
     {
       "id": "E13",
-      "text": "Bactériémie",
-      "type": "DISEASE"
+      "text": "Bactériémie"
     },
     {
       "id": "E14",
-      "text": "hémocultures",
-      "type": "EXAM"
+      "text": "hémocultures"
     },
     {
       "id": "E15",
-      "text": "expectoration",
-      "type": "ENTITY"
+      "text": "expectoration"
     }
   ],
   "relations": [

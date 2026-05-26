@@ -3,38 +3,31 @@
   "entities": [
     {
       "id": "E0",
-      "text": "choc septique",
-      "type": "ENTITY"
+      "text": "choc septique"
     },
     {
       "id": "E1",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     },
     {
       "id": "E2",
-      "text": "Streptococcus pneumoniae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus pneumoniae"
     },
     {
       "id": "E3",
-      "text": "surinfection bactérienne",
-      "type": "ENTITY"
+      "text": "surinfection bactérienne"
     },
     {
       "id": "E4",
-      "text": "surinfection",
-      "type": "ENTITY"
+      "text": "surinfection"
     },
     {
       "id": "E5",
-      "text": "pneumococcique",
-      "type": "ENTITY"
+      "text": "pneumococcique"
     },
     {
       "id": "E6",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     }
   ],
   "relations": [

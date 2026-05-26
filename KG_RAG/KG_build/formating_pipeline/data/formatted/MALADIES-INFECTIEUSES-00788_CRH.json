@@ -3,33 +3,27 @@
   "entities": [
     {
       "id": "E0",
-      "text": "périphériques",
-      "type": "ENTITY"
+      "text": "périphériques"
     },
     {
       "id": "E1",
-      "text": "d'hémocultures",
-      "type": "EXAM"
+      "text": "d'hémocultures"
     },
     {
       "id": "E2",
-      "text": "S.pneumoniae",
-      "type": "ENTITY"
+      "text": "S.pneumoniae"
     },
     {
       "id": "E3",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E4",
-      "text": "pan sinusite",
-      "type": "ENTITY"
+      "text": "pan sinusite"
     },
     {
       "id": "E5",
-      "text": "Hc",
-      "type": "ENTITY"
+      "text": "Hc"
     }
   ],
   "relations": [

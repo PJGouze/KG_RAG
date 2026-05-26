@@ -3,38 +3,31 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Érysipèle",
-      "type": "ENTITY"
+      "text": "Érysipèle"
     },
     {
       "id": "E1",
-      "text": "S. dysgalactiae",
-      "type": "ENTITY"
+      "text": "S. dysgalactiae"
     },
     {
       "id": "E2",
-      "text": "Streptococcus dysgalactiae",
-      "type": "PATHOGEN"
+      "text": "Streptococcus dysgalactiae"
     },
     {
       "id": "E3",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E4",
-      "text": "périphériques",
-      "type": "ENTITY"
+      "text": "périphériques"
     },
     {
       "id": "E5",
-      "text": "membre inférieur droit",
-      "type": "ENTITY"
+      "text": "membre inférieur droit"
     },
     {
       "id": "E6",
-      "text": "bactériémie",
-      "type": "DISEASE"
+      "text": "bactériémie"
     }
   ],
   "relations": [

@@ -3,38 +3,31 @@
   "entities": [
     {
       "id": "E0",
-      "text": "Streptococcus gallolyticus",
-      "type": "PATHOGEN"
+      "text": "Streptococcus gallolyticus"
     },
     {
       "id": "E1",
-      "text": "Septicémie",
-      "type": "ENTITY"
+      "text": "Septicémie"
     },
     {
       "id": "E2",
-      "text": "d'hémocultures",
-      "type": "EXAM"
+      "text": "d'hémocultures"
     },
     {
       "id": "E3",
-      "text": "Cocci Gram positif en chaînettes",
-      "type": "ENTITY"
+      "text": "Cocci Gram positif en chaînettes"
     },
     {
       "id": "E4",
-      "text": "CGC",
-      "type": "ENTITY"
+      "text": "CGC"
     },
     {
       "id": "E5",
-      "text": "Hémocultures",
-      "type": "EXAM"
+      "text": "Hémocultures"
     },
     {
       "id": "E6",
-      "text": "porte d'entrée probablement digestive",
-      "type": "ENTITY"
+      "text": "porte d'entrée probablement digestive"
     }
   ],
   "relations": [
